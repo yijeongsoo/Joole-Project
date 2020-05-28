@@ -25,6 +25,7 @@ namespace JooleStoreApp
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/JooleStyles/Layout.css",
+                      "~/Content/JooleStyles/Login.css",
                       "~/Content/site.css"));
         }
     }

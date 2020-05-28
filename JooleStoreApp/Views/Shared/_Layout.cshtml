@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    <script src="https://kit.fontawesome.com/5d6d6a5d19.js" crossorigin="anonymous"></script>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -13,12 +15,14 @@
         <!-- For this form to refer to specific pages, I think we need to refer to current url -->
         <form class="header__search">
             <select id="search-dropdown" name="search-dropdown">
-                <option value="temp">temp</option>
-                <option value="temp">temp</option>
-                <option value="temp">temp</option>
+                <option class="search__dropdown-list" value="temp">temp</option>
+                <option class="search__dropdown-list" value="temp">temp</option>
+                <option class="search__dropdown-list" value="temp">temp</option>
             </select>
-            <input id="search-textinput" type="text" />
-            <input id="search-submit" type="submit" />
+            <input id="search-textinput" type="text" placeholder="Search..."/>
+            <button id="search-submit" type="submit">
+                <i class="fas fa-search"></i>
+            </button>
         </form>
         <div class="header__user-image"></div>
     </div>

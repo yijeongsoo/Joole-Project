@@ -13,46 +13,76 @@ namespace JooleStoreApp
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            // Default
+            // Login
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
+                name: "Login1",
+                url: "Login",
                 defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional }
             );
 
-            // Login
             routes.MapRoute(
-                name: "Login",
-                url: "Login",
+                name: "Login2",
+                url: "Login/{id}",
                 defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional }
             );
 
             // Search
             routes.MapRoute(
-                name: "Search",
+                name: "Search1",
                 url: "Search",
+                defaults: new { controller = "Search", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "Search2",
+                url: "Search/{id}",
                 defaults: new { controller = "Search", action = "Index", id = UrlParameter.Optional }
             );
 
             // Product Detail
             routes.MapRoute(
-                name: "Product Detail",
+                name: "Product Detail1",
                 url: "ProductDetail",
+                defaults: new { controller = "ProductDetail", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "Product Detail2",
+                url: "ProductDetail/{id}",
                 defaults: new { controller = "ProductDetail", action = "Index", id = UrlParameter.Optional }
             );
 
             // Product Summary
             routes.MapRoute(
-                name: "Product",
+                name: "Product1",
                 url: "ProductSummary",
+                defaults: new { controller = "ProductSummary", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "Product2",
+                url: "ProductSummary/{id}",
                 defaults: new { controller = "ProductSummary", action = "Index", id = UrlParameter.Optional }
             );
 
             // Compare Product
             routes.MapRoute(
-                name: "Compare Product",
+                name: "Compare Product1",
                 url: "CompareProduct",
                 defaults: new { controller = "CompareProduct", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "Compare Product2",
+                url: "CompareProduct/{id}",
+                defaults: new { controller = "CompareProduct", action = "Index", id = UrlParameter.Optional }
+            );
+
+            // Default
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
