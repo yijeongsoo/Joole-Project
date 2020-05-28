@@ -4,37 +4,34 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    <script src="https://kit.fontawesome.com/5d6d6a5d19.js" crossorigin="anonymous"></script>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-            </div>
+    <div class="header">
+        <img src="~/Images/joole Logo.png" class="header__logo">
+        <!-- For this form to refer to specific pages, I think we need to refer to current url -->
+        <form class="header__search">
+            <select id="search-dropdown" name="search-dropdown">
+                <option class="search__dropdown-list" value="temp">temp</option>
+                <option class="search__dropdown-list" value="temp">temp</option>
+                <option class="search__dropdown-list" value="temp">temp</option>
+            </select>
+            <input id="search-textinput" type="text" placeholder="Search..."/>
+            <button id="search-submit" type="submit">
+                <i class="fas fa-search"></i>
+            </button>
+        </form>
+        <div class="header__user-image"></div>
+    </div>
+    <div class="container">
+        <div class="row">
+            @RenderBody()
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
-
+    
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

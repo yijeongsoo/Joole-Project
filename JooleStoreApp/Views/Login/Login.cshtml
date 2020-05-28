@@ -1,0 +1,38 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Joole Store</title>
+
+    <script src="https://kit.fontawesome.com/5d6d6a5d19.js" crossorigin="anonymous"></script>
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <div class="login">
+        <div class="login__signup">
+            <a link="" class="login__signup-link">Sign Up</a>
+        </div>
+        <div class="login__container">
+            <img src="~/Images/joole Logo.png" />
+            <h4 class="login__subtitle">Building Product Selection Platform</h4>
+            <form class="login__form">
+                <div class="login__input-container">
+                    <input class="login__textinput" type="text" placeholder="Username or Email" />
+                    <i class="fas fa-user login__icon"></i>
+                </div>
+                <div class="login__input-container">
+                    <input class="login__textinput" type="text" placeholder="Password" />
+                    <i class="fas fa-lock login__icon"></i>
+                </div>
+                <input class="login__submit" type="submit" value="Login"/>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
