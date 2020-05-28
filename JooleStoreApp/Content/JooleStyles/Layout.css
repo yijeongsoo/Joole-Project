@@ -15,7 +15,7 @@
 .header__search{
     margin-right: 40px;
     font-family: Calibri;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .header__user-image {
@@ -29,9 +29,16 @@
 #search-dropdown {
     width: 150px;
     height: 35px;
-    background-color: #1f90d1;
+    color: white;
+    background-color: #1170ab;
     border: none;
     border-radius: 5px;
+}
+
+.search__dropdown-list{
+    background-color: white;
+    color: black;
+    border: none;
 }
 
 #search-textinput {
@@ -39,16 +46,18 @@
     height: 35px;
     border: none;
     border-radius: 5px;
+    padding: 5px;
 }
 
 #search-submit {
     color: white;
-    background-color: #1f90d1;
+    background-color: #1170ab;
     height: 35px;
     border: none;
     border-radius: 5px;
+    padding: 0px 15px;
 }
 
 #search-submit:hover {
-    background-color: #1974a8;
+    background-color: #0d5582;
 }

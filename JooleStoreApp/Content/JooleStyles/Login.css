@@ -33,10 +33,11 @@ html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-size: 16px;
 }
 
 .login__subtitle{
-    font-size: 25px;
+    font-size: 22px;
     margin-bottom: 10px;
 }
 
@@ -46,11 +47,17 @@ html {
     align-items: flex-end;
 }
 
+.login__input-container{
+    margin-left: 15px;
+}
+
 .login__textinput {
-    width: 250px;
+    width: 400px;
+    max-width: 400px;
     height: 35px;
 
     margin: 5px 0px;
+    padding: 5px;
     border: none;
     border-radius: 5px;
 }
@@ -58,9 +65,20 @@ html {
 .login__submit {
     width: 100px;
     height: 35px;
-
-    margin-top: 5px;
+    background-color: #1170ab;
+    color: white;
+    margin-top: 20px;
     margin-bottom: 140px;
+    margin-right: 20px;
     border: none;
     border-radius: 5px;
+}
+
+.login__icon{
+    position:relative;
+    left: -30px;
+}
+
+.login__submit:hover {
+    background-color: #0d5582;
 }
