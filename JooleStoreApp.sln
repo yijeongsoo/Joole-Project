@@ -5,6 +5,7 @@ VisualStudioVersion = 16.0.29424.173
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JooleStoreApp", "JooleStoreApp\JooleStoreApp.csproj", "{71222F35-83E0-4F74-BE3D-12FD456AECDB}"
 EndProject
+
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JooleStore_DAL", "JooleStore_DAL\JooleStore_DAL.csproj", "{864C027D-112C-4170-9E98-5673B8A49C2D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JooleStore_Repository", "JooleStore_Repository\JooleStore_Repository.csproj", "{88ACD694-E30F-421A-A6DC-ED3E6F29385C}"
@@ -33,6 +34,7 @@ Global
 		{CEBF97E9-DD1E-4375-8121-C929F33C16A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEBF97E9-DD1E-4375-8121-C929F33C16A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEBF97E9-DD1E-4375-8121-C929F33C16A2}.Release|Any CPU.Build.0 = Release|Any CPU
+    
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
