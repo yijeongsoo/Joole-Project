@@ -7,19 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JooleStoreApp.ModelsVM
+namespace JooleStore_DAL
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Department
+    public partial class tblPropertyValue
     {
-        public int DepartmentId { get; set; }
-        public int ManufacturerId { get; set; }
-        public string DepartmentName { get; set; }
-        public Nullable<int> DepartmentPhone { get; set; }
-        public string DepartmentEmail { get; set; }
+        public int PropertyId { get; set; }
+        public int ProductId { get; set; }
+        public int PropertyValue { get; set; }
     
-        public virtual Manufacturer Manufacturer { get; set; }
+        public virtual Product Product { get; set; }
+        public virtual Property Property { get; set; }
     }
 }

@@ -7,31 +7,31 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JooleStoreApp.ModelsVM
+namespace JooleStore_DAL
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Product
+    public partial class Property
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Product()
+        public Property()
         {
             this.tblPropertyValues = new HashSet<tblPropertyValue>();
+            this.tblTechSpecRanges = new HashSet<tblTechSpecRange>();
+            this.tblTypeRanges = new HashSet<tblTypeRange>();
         }
     
-        public int ProductId { get; set; }
-        public int ManufacturerId { get; set; }
-        public int SubcategoryId { get; set; }
-        public string ProductName { get; set; }
-        public string ProductImage { get; set; }
-        public string Series { get; set; }
-        public int ModelYear { get; set; }
-        public string Model { get; set; }
+        public int PropertyId { get; set; }
+        public string PropertyName { get; set; }
+        public bool isTechSpec { get; set; }
+        public bool isType { get; set; }
     
-        public virtual Manufacturer Manufacturer { get; set; }
-        public virtual Subcategory Subcategory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblPropertyValue> tblPropertyValues { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblTechSpecRange> tblTechSpecRanges { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblTypeRange> tblTypeRanges { get; set; }
     }
 }

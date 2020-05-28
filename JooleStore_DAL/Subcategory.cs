@@ -7,28 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JooleStoreApp.ModelsVM
+namespace JooleStore_DAL
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Property
+    public partial class Subcategory
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Property()
+        public Subcategory()
         {
-            this.tblPropertyValues = new HashSet<tblPropertyValue>();
+            this.Products = new HashSet<Product>();
             this.tblTechSpecRanges = new HashSet<tblTechSpecRange>();
             this.tblTypeRanges = new HashSet<tblTypeRange>();
         }
     
-        public int PropertyId { get; set; }
-        public string PropertyName { get; set; }
-        public bool isTechSpec { get; set; }
-        public bool isType { get; set; }
+        public int SubcategoryId { get; set; }
+        public int CategoryId { get; set; }
+        public string SubcategoryName { get; set; }
     
+        public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tblPropertyValue> tblPropertyValues { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tblTechSpecRange> tblTechSpecRanges { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

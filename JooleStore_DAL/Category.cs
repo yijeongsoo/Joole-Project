@@ -7,28 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JooleStoreApp.ModelsVM
+namespace JooleStore_DAL
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Manufacturer
+    public partial class Category
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Manufacturer()
+        public Category()
         {
-            this.Departments = new HashSet<Department>();
-            this.Products = new HashSet<Product>();
+            this.Subcategories = new HashSet<Subcategory>();
         }
     
-        public int ManufacturerId { get; set; }
-        public string ManufacturerName { get; set; }
-        public string ManufacturerDepartment { get; set; }
-        public string ManufacturerWeb { get; set; }
+        public int CategoryId { get; set; }
+        public string CategoryName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Department> Departments { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<Subcategory> Subcategories { get; set; }
     }
 }

@@ -7,18 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JooleStoreApp.ModelsVM
+namespace JooleStore_DAL
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class tblPropertyValue
+    public partial class User
     {
-        public int PropertyId { get; set; }
-        public int ProductId { get; set; }
-        public int PropertyValue { get; set; }
-    
-        public virtual Product Product { get; set; }
-        public virtual Property Property { get; set; }
+        public int UserId { get; set; }
+        public string UserName { get; set; }
+        public string UserEmail { get; set; }
+        public string UserImage { get; set; }
+        public string UserPassword { get; set; }
     }
 }

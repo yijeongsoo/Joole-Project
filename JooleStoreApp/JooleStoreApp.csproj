@@ -137,51 +137,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="ModelsVM\Category.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelsVM\Department.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelsVM\JooleModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>JooleModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelsVM\JooleModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>JooleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelsVM\JooleModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>JooleModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="ModelsVM\Manufacturer.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelsVM\Product.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelsVM\Property.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelsVM\Subcategory.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelsVM\tblPropertyValue.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelsVM\tblTechSpecRange.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelsVM\tblTypeRange.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelsVM\User.cs">
-      <DependentUpon>JooleModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -196,25 +151,8 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\joole Logo.png" />
-    <Content Include="ModelsVM\JooleModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>JooleModel.edmx</DependentUpon>
-      <LastGenOutput>JooleModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="ModelsVM\JooleModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>JooleModel.edmx</DependentUpon>
-      <LastGenOutput>JooleModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="ModelsVM\JooleModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>JooleModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="ModelsVM\JooleModel.edmx.diagram">
-      <DependentUpon>JooleModel.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -245,6 +183,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
