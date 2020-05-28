@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.29424.173
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JooleStoreApp", "JooleStoreApp\JooleStoreApp.csproj", "{71222F35-83E0-4F74-BE3D-12FD456AECDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JooleStore_Service", "JooleStore_Service\JooleStore_Service.csproj", "{F00A2752-B1CD-4A92-9E59-35A32A33288D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JooleStore_DAL", "JooleStore_DAL\JooleStore_DAL.csproj", "{864C027D-112C-4170-9E98-5673B8A49C2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JooleStore_Repository", "JooleStore_Repository\JooleStore_Repository.csproj", "{23F93DC3-D2A0-40A4-A905-2DF7D83C18E4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JooleStore_Repository", "JooleStore_Repository\JooleStore_Repository.csproj", "{88ACD694-E30F-421A-A6DC-ED3E6F29385C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JooleStore_DAL", "JooleStore_DAL\JooleStore_DAL.csproj", "{360C264A-574A-40FD-A75C-AA824757AE62}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JooleStore_Service", "JooleStore_Service\JooleStore_Service.csproj", "{CEBF97E9-DD1E-4375-8121-C929F33C16A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,18 +21,18 @@ Global
 		{71222F35-83E0-4F74-BE3D-12FD456AECDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71222F35-83E0-4F74-BE3D-12FD456AECDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71222F35-83E0-4F74-BE3D-12FD456AECDB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F00A2752-B1CD-4A92-9E59-35A32A33288D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F00A2752-B1CD-4A92-9E59-35A32A33288D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F00A2752-B1CD-4A92-9E59-35A32A33288D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F00A2752-B1CD-4A92-9E59-35A32A33288D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{23F93DC3-D2A0-40A4-A905-2DF7D83C18E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{23F93DC3-D2A0-40A4-A905-2DF7D83C18E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{23F93DC3-D2A0-40A4-A905-2DF7D83C18E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{23F93DC3-D2A0-40A4-A905-2DF7D83C18E4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{360C264A-574A-40FD-A75C-AA824757AE62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{360C264A-574A-40FD-A75C-AA824757AE62}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{360C264A-574A-40FD-A75C-AA824757AE62}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{360C264A-574A-40FD-A75C-AA824757AE62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{864C027D-112C-4170-9E98-5673B8A49C2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{864C027D-112C-4170-9E98-5673B8A49C2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{864C027D-112C-4170-9E98-5673B8A49C2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{864C027D-112C-4170-9E98-5673B8A49C2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88ACD694-E30F-421A-A6DC-ED3E6F29385C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88ACD694-E30F-421A-A6DC-ED3E6F29385C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88ACD694-E30F-421A-A6DC-ED3E6F29385C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88ACD694-E30F-421A-A6DC-ED3E6F29385C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEBF97E9-DD1E-4375-8121-C929F33C16A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEBF97E9-DD1E-4375-8121-C929F33C16A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEBF97E9-DD1E-4375-8121-C929F33C16A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEBF97E9-DD1E-4375-8121-C929F33C16A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
