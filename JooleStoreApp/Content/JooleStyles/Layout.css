@@ -31,14 +31,14 @@
     height: 35px;
     background-color: #1f90d1;
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
 }
 
 #search-textinput {
     width: 250px;
     height: 35px;
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
 }
 
 #search-submit {
@@ -46,7 +46,7 @@
     background-color: #1f90d1;
     height: 35px;
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
 }
 
 #search-submit:hover {
