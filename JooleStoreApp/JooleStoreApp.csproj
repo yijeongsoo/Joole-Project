@@ -212,10 +212,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JooleStore_Repository\JooleStore_Repository.csproj">
-      <Project>{88ACD694-E30F-421A-A6DC-ED3E6F29385C}</Project>
-      <Name>JooleStore_Repository</Name>
-    </ProjectReference>
     <ProjectReference Include="..\JooleStore_Service\JooleStore_Service.csproj">
       <Project>{cebf97e9-dd1e-4375-8121-c929f33c16a2}</Project>
       <Name>JooleStore_Service</Name>

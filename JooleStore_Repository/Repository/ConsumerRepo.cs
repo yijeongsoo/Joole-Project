@@ -27,6 +27,7 @@ namespace JooleStore_Repository
                 if (element.UserEmail.ToString() == email && element.UserPassword.ToString() == password)
                 {
                     confirmLogin = true;
+                    break;
                 }
             }
             return confirmLogin;

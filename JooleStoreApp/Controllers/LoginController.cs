@@ -19,8 +19,6 @@ namespace JooleStoreApp.Controllers
         }
         public ActionResult Login()
         {
-            System.Diagnostics.Debug.WriteLine("Login function called");
-
             Consumer consumer = new Consumer
             {
                 UserEmail = Request.Form["LoginID"],

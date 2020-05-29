@@ -19,5 +19,12 @@ namespace JooleStore_Service
         {
             return unit.consumer.CheckCredentials(email, password);
         }
+
+
+        public List<string> FindProduct(string ProductName)
+        {
+            List<string> ProductList = unit.product.FindProduct(ProductName);
+            return ProductList;
+        }
     }
 }
