@@ -12,14 +12,25 @@ namespace JooleStoreApp.Controllers
     public class LoginController : Controller
     {
         // GET: Login
+
         public ActionResult Index()
         {
             return View("Login");
         }
+        public ActionResult Login()
+        {
+            return View();
+        }
 
         [HttpPost]
-        public ActionResult Login(Consumer consumer)
+        public ActionResult LoginRequest()
         {
+            Consumer consumer = new Consumer
+            {
+                UserEmail = Request.Form["LoginID"],
+                UserPassword = Request.Form["LoginPW"]
+            };
+
             Service service = new Service();
             bool login = service.LoginCustomer(consumer.UserEmail, consumer.UserPassword);
 
@@ -28,7 +39,7 @@ namespace JooleStoreApp.Controllers
                 FormsAuthentication.SetAuthCookie(consumer.UserEmail, true);
                 return RedirectToAction("ProductSearch", "ProductSearch");
             }
-            return View();
+            return View("Login");
         }
     }
 }

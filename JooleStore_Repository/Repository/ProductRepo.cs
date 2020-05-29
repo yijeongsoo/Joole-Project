@@ -1,5 +1,5 @@
 ﻿using JooleStore_DAL;
-using JooleStore_Repository.Repository;
+using JooleStore_Repository;
 using System.Data.Entity;
 
 namespace JooleStore_Repository
