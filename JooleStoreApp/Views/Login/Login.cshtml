@@ -12,12 +12,59 @@
 
     <script src="https://kit.fontawesome.com/5d6d6a5d19.js" crossorigin="anonymous"></script>
     @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     <div class="login">
         <div class="login__signup">
-            <a link="" class="login__signup-link">Sign Up</a>
+            <p class="login__signup-link" data-toggle="modal" data-target="#exampleModalCenter">Sign Up</p>
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-content modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <div class="modal__title" id="exampleModalLongTitle">Register as User</div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal__image-container">
+                            <p>Image Preview</p>
+                            <img id="modal-profile-image" class="modal__profile-image" />
+                            <p>Your Profile Pic</p>
+                            <input type="file" onchange="loadImage(event)"/>
+                        </div>
+                        <form class="modal__form">
+                            <div class="modal__input">
+                                <div class="modal__text">Username: </div>
+                                <input class="modal__textinput" type="text" placeholder="User Name" />
+                            </div>
+                            <div class="modal__input">
+                                <div class="modal__text">Email Address: </div>
+                                <input class="modal__textinput" type="text" placeholder="User Name" />
+                            </div>
+                            <div class="modal__input">
+                                <div class="modal__text">Password: </div>
+                                <input class="modal__textinput" type="text" placeholder="User Name" />
+                            </div>
+                            <div class="modal__input">
+                                <div class="modal__text">Confirm Password: </div>
+                                <input class="modal__textinput" type="text" placeholder="User Name" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="login__container">
             <img src="~/Images/joole Logo.png" />
             <h4 class="login__subtitle">Building Product Selection Platform</h4>
@@ -30,9 +77,19 @@
                     <input class="login__textinput" name="LoginPW" type="text" placeholder="Password" />
                     <i class="fas fa-lock login__icon"></i>
                 </div>
-                <input class="login__submit" type="submit" value="Login"/>
+                <input class="login__submit" type="submit" value="Login" />
             </form>
         </div>
     </div>
+
+    <script>
+        var loadImage = function(event) {
+            var image = document.getElementById('modal-profile-image');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
 </body>
 </html>
