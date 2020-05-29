@@ -137,6 +137,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Consumer.cs" />
+    <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Manufacturer.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Property.cs" />
+    <Compile Include="Models\tblPropertyValue.cs" />
+    <Compile Include="Models\Subcategory.cs" />
+    <Compile Include="Models\tblTechSpecRange.cs" />
+    <Compile Include="Models\tblTypeRange.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +154,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\JooleStyles\CompareProduct.css" />
     <Content Include="Content\JooleStyles\Layout.css" />
     <Content Include="Content\JooleStyles\Login.css" />
     <Content Include="favicon.ico" />
@@ -183,7 +194,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -202,6 +212,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JooleStore_Repository\JooleStore_Repository.csproj">
+      <Project>{88ACD694-E30F-421A-A6DC-ED3E6F29385C}</Project>
+      <Name>JooleStore_Repository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JooleStore_Service\JooleStore_Service.csproj">
       <Project>{cebf97e9-dd1e-4375-8121-c929f33c16a2}</Project>
       <Name>JooleStore_Service</Name>
