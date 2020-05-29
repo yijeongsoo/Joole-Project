@@ -24,7 +24,7 @@ namespace JooleStore_Repository
             var dbList = db.Users.ToList();
 
             foreach (User element in dbList) {
-                if (element.UserEmail == email && element.UserPassword == password)
+                if (element.UserEmail.ToString() == email && element.UserPassword.ToString() == password)
                 {
                     confirmLogin = true;
                 }

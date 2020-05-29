@@ -21,6 +21,12 @@ namespace JooleStoreApp
             );
 
             routes.MapRoute(
+                name: "Login Function",
+                url: "Login/Login",
+                defaults: new { controller = "Login", action = "Login", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "Login2",
                 url: "Login/{id}",
                 defaults: new { controller = "Login", action = "Index", id = UrlParameter.Optional }

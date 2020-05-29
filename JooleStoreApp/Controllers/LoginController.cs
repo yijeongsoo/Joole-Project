@@ -19,12 +19,8 @@ namespace JooleStoreApp.Controllers
         }
         public ActionResult Login()
         {
-            return View();
-        }
+            System.Diagnostics.Debug.WriteLine("Login function callled");
 
-        [HttpPost]
-        public ActionResult LoginRequest()
-        {
             Consumer consumer = new Consumer
             {
                 UserEmail = Request.Form["LoginID"],
@@ -32,14 +28,16 @@ namespace JooleStoreApp.Controllers
             };
 
             Service service = new Service();
-            bool login = service.LoginCustomer(consumer.UserEmail, consumer.UserPassword);
+            bool login = false;
+            login = service.LoginCustomer(consumer.UserEmail, consumer.UserPassword);
 
             if (login)
             {
                 FormsAuthentication.SetAuthCookie(consumer.UserEmail, true);
-                return RedirectToAction("ProductSearch", "ProductSearch");
+                return RedirectToAction("Index", "Search");
             }
-            return View("Login");
+            return View();
         }
+
     }
 }
