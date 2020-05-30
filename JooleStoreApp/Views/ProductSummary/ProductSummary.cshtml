@@ -1,8 +1,47 @@
-﻿
+﻿@using JooleStoreApp.Models
+@model Product
+
 @{
     ViewBag.Title = "View";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<!-- TODO: move style to separate sheet -->
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+th {
+    border: 1px solid #bdbdbd;
+    background-color: lightgray;
+}
+</style>
+
 <h2>Product Summary</h2>
 
+<br />
+
+<div style="width: 500px">
+    <h4> Product Description </h4>
+    <table>
+        <tr>
+            <th>Product Name</th>
+            <td>@Html.DisplayFor(Product => Product.ProductName)</td>
+        </tr>
+        <tr>
+            <th>Product Series</th>
+            <td>@Html.DisplayFor(Product => Product.Series)</td>
+        </tr>
+        <tr>
+            <th>Product Model</th>
+            <td>@Html.DisplayFor(Product => Product.Model)</td>
+        </tr>
+    </table>
+</div>
