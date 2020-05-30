@@ -1,2 +1,61 @@
-﻿body {
+﻿html {
+    
+}
+
+table {
+    border: solid 1px;
+    border-color: grey;
+}
+
+tr {
+    height: 30px;
+}
+
+td {
+}
+
+.compareProduct {
+}
+
+.compareProduct_container {
+}
+
+.compareProduct_table {
+}
+.compareProduct_table_image {
+    height: 200px;
+    border: solid 1px;
+    border-color: grey;
+}
+.compareProduct_table_bigLabel {
+    background-color: lightgrey;
+    width: 200px;
+    border: solid 1px;
+    border-color: grey;
+}
+
+.compareProduct_table_smallLabel {
+    background-color: lightgrey;
+    width: 200px;
+    border: solid 1px;
+    border-color: grey;
+}
+
+.compareProduct_table_data {
+    background-color: white;
+    border: solid 1px;
+    border-color: grey;
+}
+
+.compareProduct_table_smallerLabel {
+    background-color: lightgrey;
+    border-right: solid 1px;
+    border-right-color: grey;
+    width: 50px;
+}
+
+.compareProduct_table_smallerData {
+    background-color: white;
+    border-right:solid 1px;
+    border-right-color: grey;
 }

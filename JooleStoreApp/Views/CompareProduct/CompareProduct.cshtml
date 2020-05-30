@@ -4,65 +4,187 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Compare Product</h2>
+@section CSSFilename
+{
+    <link href="~/Content/JooleStyles/CompareProduct.css" rel="stylesheet" />
+}
+
 
 <body>
-    <div class="compare">
+    <div class="compareProduct">
         <div class="compareProduct_container">
-            <table>
+            <a>Mechanical > HVAC FANS > Compare</a>
+            <table class="compareProduct_table" style="overflow-y:scroll">
                 <tr>
-                    <th></th>
-                    <th>ImageLink 1</th>
-                    <th>ImageLink 2</th>
+                    <td class="compareProduct_table_image"></td>
+                    <td class="compareProduct_table_image">ImageLink 1</td>
+                    <td class="compareProduct_table_image">ImageLink 2</td>
                 </tr>
                 <tr>
-                    <td>DESCRIPTION</td>
+                    <td class="compareProduct_table_bigLabel" colspan="3">DESCRIPTION</td>
                 </tr>
                 <tr>
-                    <td>Manufacturer</td>
-                    <td>Item1 Name</td>
-                    <td>Item2 Name</td>
+                    <td class="compareProduct_table_smallLabel">Manufacturer</td>
+                    <td class="compareProduct_table_data">Item1 Name</td>
+                    <td class="compareProduct_table_data">Item2 Name</td>
                 </tr>
                 <tr>
-                    <td>Series</td>
-                    <td>Item1 Series</td>
-                    <td>Item2 Series</td>
+                    <td class="compareProduct_table_smallLabel">Series</td>
+                    <td class="compareProduct_table_data">Item1 Series</td>
+                    <td class="compareProduct_table_data">Item2 Series</td>
                 </tr>
                 <tr>
-                    <td>Model</td>
-                    <td>Item1 Model</td>
-                    <td>Item2 Model</td>
+                    <td class="compareProduct_table_smallLabel">Model</td>
+                    <td class="compareProduct_table_data">Item1 Model</td>
+                    <td class="compareProduct_table_data">Item2 Model</td>
                 </tr>
                 <tr>
-                    <td>TYPE</td>
+                    <td class="compareProduct_table_bigLabel" colspan="3">TYPE</td>
                 </tr>
                 <tr>
-                    <td>Use Type</td>
-                    <td>Item1 Use Type</td>
-                    <td>Item2 Use Type</td>
+                    <td class="compareProduct_table_smallLabel">Use Type</td>
+                    <td class="compareProduct_table_data">Item1 Use Type</td>
+                    <td class="compareProduct_table_data">Item2 Use Type</td>
                 </tr>
                 <tr>
-                    <td>Application</td>
-                    <td>Item1 Application</td>
-                    <td>Item2 Application</td>
+                    <td class="compareProduct_table_smallLabel">Application</td>
+                    <td class="compareProduct_table_data">Item1 Application</td>
+                    <td class="compareProduct_table_data">Item2 Application</td>
                 </tr>
                 <tr>
-                    <td>Mounting Location</td>
-                    <td>Item1 Mounting Location</td>
-                    <td>Item2 Mounting Location</td>
+                    <td class="compareProduct_table_smallLabel">Mounting Location</td>
+                    <td class="compareProduct_table_data">Item1 Mounting Location</td>
+                    <td class="compareProduct_table_data">Item2 Mounting Location</td>
                 </tr>
                 <tr>
-                    <td>Accessories</td>
-                    <td>Item1 Accessories</td>
-                    <td>Item2 Accessories</td>
+                    <td class="compareProduct_table_smallLabel">Accessories</td>
+                    <td class="compareProduct_table_data">Item1 Accessories</td>
+                    <td class="compareProduct_table_data">Item2 Accessories</td>
                 </tr>
                 <tr>
-                    <td>Model Year</td>
-                    <td>Item1 Model Year</td>
-                    <td>Item2 Model Year</td>
+                    <td class="compareProduct_table_smallLabel">Model Year</td>
+                    <td class="compareProduct_table_data">Item1 Model Year</td>
+                    <td class="compareProduct_table_data">Item2 Model Year</td>
                 </tr>
                 <tr>
-                    <td>TECHNICAL SPECIFICATIONS</td>
+                    <td class="compareProduct_table_bigLabel" colspan="3">TECHNICAL SPECIFICATIONS</td>
+                </tr>
+                <tr>
+                    <td class="compareProduct_table_smallLabel">Air Flow (CFM)</td>
+                    <td class="compareProduct_table_data">Item1 Air Flow</td>
+                    <td class="compareProduct_table_data">Item2 Air Flow</td>
+                </tr>
+                <tr>
+                    <td class="compareProduct_table_smallLabel">Power (W)</td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td class="compareProduct_table_smallerLabel">Min</td>
+                                <td class="compareProduct_table_data">Item1Min</td>
+                                <td class="compareProduct_table_smallerLabel">Max</td>
+                                <td class="compareProduct_table_data">Item1Max</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td class="compareProduct_table_smallerLabel">Min</td>
+                                <td class="compareProduct_table_data">Item2Min</td>
+                                <td class="compareProduct_table_smallerLabel">Max</td>
+                                <td class="compareProduct_table_data">Item2Max</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="compareProduct_table_smallLabel">Operating Voltage (VAC)</td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td class="compareProduct_table_smallerLabel">Min</td>
+                                <td class="compareProduct_table_data">Item1Min</td>
+                                <td class="compareProduct_table_smallerLabel">Max</td>
+                                <td class="compareProduct_table_data">Item1Max</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td class="compareProduct_table_smallerLabel">Min</td>
+                                <td class="compareProduct_table_data">Item2Min</td>
+                                <td class="compareProduct_table_smallerLabel">Max</td>
+                                <td class="compareProduct_table_data">Item2Max</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="compareProduct_table_smallLabel">Fan Speed (RPM)</td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td class="compareProduct_table_smallerLabel">Min</td>
+                                <td class="compareProduct_table_data">Item1Min</td>
+                                <td class="compareProduct_table_smallerLabel">Max</td>
+                                <td class="compareProduct_table_data">Item1Max</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td class="compareProduct_table_smallerLabel">Min</td>
+                                <td class="compareProduct_table_data">Item2Min</td>
+                                <td class="compareProduct_table_smallerLabel">Max</td>
+                                <td class="compareProduct_table_data">Item2Max</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="compareProduct_table_smallLabel">Number of fan speeds</td>
+                    <td class="compareProduct_table_data">Item1 Number of fan speeds</td>
+                    <td class="compareProduct_table_data">Item2 Number of fan speeds</td>
+                </tr>
+                <tr>
+                    <td class="compareProduct_table_smallLabel">Sound at max speed (dBA)</td>
+                    <td class="compareProduct_table_data">Item1 Sound at max speed</td>
+                    <td class="compareProduct_table_data">Item2 Sound at max speed</td>
+                </tr>
+                <tr>
+                    <td class="compareProduct_table_smallLabel">Fan sweep diameter (in)</td>
+                    <td class="compareProduct_table_data">Item1 Fan sweep diameter</td>
+                    <td class="compareProduct_table_data">Item2 Fan sweep diameter</td>
+                </tr>
+                <tr>
+                    <td class="compareProduct_table_smallLabel">Height (in)</td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td class="compareProduct_table_smallerLabel">Min</td>
+                                <td class="compareProduct_table_data">Item1Min</td>
+                                <td class="compareProduct_table_smallerLabel">Max</td>
+                                <td class="compareProduct_table_data">Item1Max</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td class="compareProduct_table_smallerLabel">Min</td>
+                                <td class="compareProduct_table_data">Item2Min</td>
+                                <td class="compareProduct_table_smallerLabel">Max</td>
+                                <td class="compareProduct_table_data">Item2Max</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="compareProduct_table_smallLabel">Weight (lbs)</td>
+                    <td class="compareProduct_table_data">Item1 Weight</td>
+                    <td class="compareProduct_table_data">Item2 Weight</td>
                 </tr>
             </table>
         </div>
