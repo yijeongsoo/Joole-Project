@@ -374,7 +374,7 @@
           </Key>
           <Property Name="PropertyId" Type="Int32" Nullable="false" />
           <Property Name="ProductId" Type="Int32" Nullable="false" />
-          <Property Name="PropertyValue" Type="Int32" Nullable="false" />
+          <Property Name="PropertyValue" Type="String" Nullable="false" />
           <NavigationProperty Name="Product" Relationship="Self.FK_dbo_tblPropertyValue_dbo_Products_ProductId" FromRole="tblPropertyValue" ToRole="Products" />
           <NavigationProperty Name="Property" Relationship="Self.FK_dbo_tblPropertyValue_dbo_Property_PropertyId" FromRole="tblPropertyValue" ToRole="Property" />
         </EntityType>
