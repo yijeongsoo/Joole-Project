@@ -28,10 +28,11 @@ namespace JooleStoreApp.Controllers
             // create a product model to generate description table
             Product prod = new Product();
 
-            // list order: name, series, model
+            // list order: name, series, model, model year
             prod.ProductName = descriptionElements[0];
             prod.Series = descriptionElements[1];
             prod.Model = descriptionElements[2];
+            prod.ModelYear = int.Parse(descriptionElements[3]);
 
             return View("ProductSummary", prod);
         }

@@ -30,6 +30,7 @@ namespace JooleStore_Repository
                 descriptionElements.Add(prod.ProductName);
                 descriptionElements.Add(prod.Series);
                 descriptionElements.Add(prod.Model);
+                descriptionElements.Add(prod.ModelYear.ToString());
             }
 
             System.Diagnostics.Debug.WriteLine("Generated list: ");

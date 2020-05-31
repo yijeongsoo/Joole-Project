@@ -28,6 +28,7 @@ th {
 
 <br />
 
+<!-- TODO: move styles to separate stylesheet -->
 <div style="width: 500px">
     <h4> Product Description </h4>
     <table>
@@ -42,6 +43,10 @@ th {
         <tr>
             <th>Product Model</th>
             <td>@Html.DisplayFor(Product => Product.Model)</td>
+        </tr>
+        <tr>
+            <th>Model Year</th>
+            <td>@Html.DisplayFor(Product => Product.ModelYear)</td>
         </tr>
     </table>
 </div>
