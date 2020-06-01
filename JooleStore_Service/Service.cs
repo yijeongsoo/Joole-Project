@@ -43,7 +43,11 @@ namespace JooleStore_Service
             List<string> PropertyList = unit.property.FindProperty(PropertyId);
             return PropertyList;
         }
-
+        public List<List<string>> GetAllPropertyByProductId(int productId)
+        {
+            List<List<string>> PropertyList = unit.property.GetAllPropertyByProductId(productId);
+            return PropertyList;
+        }
         public List<List<string>> GetAllPropertyValueById(int productId)
         {
             List<List<string>> PropertyValueList = unit.propertyValue.FindPropertyValueByProduct(productId);

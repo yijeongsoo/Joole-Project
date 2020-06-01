@@ -12,6 +12,7 @@ namespace JooleStore_Repository
     {
         // TODO: Define Methods
         List<string> FindProperty(int PropertyId);
+        List<List<string>> GetAllPropertyByProductId(int ProductId);
     }
     public class PropertyRepo : Repository<Property>, IPropertyRepo
     {
@@ -43,6 +44,30 @@ namespace JooleStore_Repository
             return PropertyList;
         }
         // TODO: Implement Methods
-        // TODO: Implement find all prop by prodID
+        public List<List<string>> GetAllPropertyByProductId(int ProductId) {
+            List<List<string>> AllPropertyList = new List<List<string>>();
+            var dbPropertyList = db.Properties.ToList();
+            var dbPropertyValueList = db.tblPropertyValues.ToList();
+            foreach (tblPropertyValue PVElement in dbPropertyValueList)
+            {
+                if (PVElement.ProductId == ProductId)
+                {
+                    foreach (Property PElement in dbPropertyList)
+                    {
+                        if (PElement.PropertyId == PVElement.PropertyId)
+                        {
+                            List<string> PropertyList = new List<string>();
+                            PropertyList.Add("Yes");
+                            PropertyList.Add(PElement.PropertyId.ToString());
+                            PropertyList.Add(PElement.PropertyName);
+                            PropertyList.Add(PElement.isTechSpec.ToString());
+                            PropertyList.Add(PElement.isType.ToString());
+                            AllPropertyList.Add(PropertyList);
+                        }
+                    }
+                }
+            }
+            return AllPropertyList;
+        }
     }
 }

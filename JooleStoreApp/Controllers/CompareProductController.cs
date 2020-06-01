@@ -26,12 +26,22 @@ namespace JooleStoreApp.Controllers
             Product product2 = GetProductByName(3); // Comment out after testing
             ProductVM1.product = product1;
             ProductVM2.product = product2;
+            Manufacturer manufacturer1 = GetManufacturer(product1.ManufacturerId);
+            Manufacturer manufacturer2 = GetManufacturer(product2.ManufacturerId);
+            ProductVM1.manufacturer = manufacturer1;
+            ProductVM2.manufacturer = manufacturer2;
+            Subcategory subcategory1 = GetSubcategory(product1.SubcategoryId);
+            Subcategory subcategory2 = GetSubcategory(product2.SubcategoryId);
+            ProductVM1.subcategory = subcategory1;
+            ProductVM2.subcategory = subcategory2;
             List<tblPropertyValue> propertyValueList1 = GetAllPropertyValueById(product1.ProductId);
             List<tblPropertyValue> propertyValueList2 = GetAllPropertyValueById(product2.ProductId);
             ProductVM1.propertyValues = propertyValueList1;
             ProductVM2.propertyValues = propertyValueList2;
-            // Add Property Values for both models
-            // Add Manufacturer info / Subcategory info
+            List<Property> propertyList1 = GetAllPropertyByProductId(product1.ProductId);
+            List<Property> propertyList2 = GetAllPropertyByProductId(product2.ProductId);
+            ProductVM1.properties = propertyList1;
+            ProductVM2.properties = propertyList2;
             CompareVM.comparingProducts.Add(ProductVM1);
             CompareVM.comparingProducts.Add(ProductVM2);
             return View("CompareProduct", "CompareProduct", CompareVM);
@@ -55,20 +65,46 @@ namespace JooleStoreApp.Controllers
         }
         public Manufacturer GetManufacturer(int ManufacturerId)
         {
-            // TODO: IMPLEMENT
-            Manufacturer manufacturer = new Manufacturer();
+            Service service = new Service();
+            List<String> strList = service.FindManufacturer(ManufacturerId);
+            Manufacturer manufacturer = new Manufacturer
+            {
+                ManufacturerId = Int32.Parse(strList[1]),
+                ManufacturerName = strList[2],
+                ManufacturerDepartment = strList[3],
+                ManufacturerWeb = strList[4]
+            };
             return manufacturer;
         }
         public Subcategory GetSubcategory(int SubcategoryId)
         {
-            // TODO: IMPLEMENT
-            Subcategory subcategory = new Subcategory();
+            Service service = new Service();
+            List<String> strList = service.FindSubcategory(SubcategoryId);
+            Subcategory subcategory = new Subcategory
+            {
+                SubcategoryId = Int32.Parse(strList[1]),
+                CategoryId = Int32.Parse(strList[2]),
+                SubcategoryName = strList[3]
+            };
             return subcategory;
         }
-        public List<Property> GetAllPropertyById(int productId)
+        public List<Property> GetAllPropertyByProductId(int productId)
         {
             // TODO: IMPLEMENT
+            Service service = new Service();
+            List<List<string>> AllPropertyList = service.GetAllPropertyByProductId(productId);
             List<Property> properties = new List<Property>();
+            foreach (List<String> strList in AllPropertyList)
+            {
+                Property property = new Property
+                {
+                    PropertyId = Int32.Parse(strList[1]),
+                    PropertyName = strList[2],
+                    isTechSpec = Boolean.Parse(strList[3]),
+                    isType = Boolean.Parse(strList[4])
+                };
+                properties.Add(property);
+            }
             return properties;
         }
         
