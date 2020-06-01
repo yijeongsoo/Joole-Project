@@ -95,6 +95,22 @@ html {
     border-radius: 50px;
 }
 
+.modal__form-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.modal__error-container {
+    margin-left: 10px;
+}
+
+.modal__error-msg{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 37px;
+}
+
 .modal__form{
     display: flex;
     flex-direction: column;

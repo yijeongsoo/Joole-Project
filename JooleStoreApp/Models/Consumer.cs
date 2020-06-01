@@ -8,12 +8,12 @@ namespace JooleStoreApp.Models
 {
     public class Consumer
     {
-        [Required]
+        [Required(ErrorMessage = "Required")]
         public string UserName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Required")]
         public string UserEmail { get; set; }
         public string UserImage { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Required")]
         public string UserPassword { get; set; }
     }
 }

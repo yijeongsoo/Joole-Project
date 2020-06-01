@@ -45,7 +45,7 @@ namespace JooleStoreApp.Controllers
             string email = Request.Form["signup-email"];
             string password = Request.Form["signup-password"];
             string confirm = Request.Form["signup-confirm"];
-            string filename = Path.GetFileName(signupImage.FileName);
+            string filename = username + "-profile" + Path.GetExtension(signupImage.FileName);
 
             if(password != confirm)
             {
@@ -67,8 +67,6 @@ namespace JooleStoreApp.Controllers
             else {
                 return View("Login", new Consumer());
             }
-
-
         }
     }
 }

@@ -50,6 +50,5 @@ namespace JooleStore_Repository
 
             return true;
         }
-        
     }
 }

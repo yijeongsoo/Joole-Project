@@ -10,9 +10,12 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Joole Store</title>
-
     <script src="https://kit.fontawesome.com/5d6d6a5d19.js" crossorigin="anonymous"></script>
+
     @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
@@ -38,26 +41,46 @@
                             <p><b>Your Profile Pic</b></p>
                             <input type="file" name="signupImage" onchange="loadImage(event)" form="modal-form" />
                         </div>
-                        <form class="modal__form" method="post" action="@Url.Action("SignUp", "Login")" id="modal-form" enctype="multipart/form-data">
-                            <div class="modal__input">
-                                <div class="modal__text">Username: </div>
-                                <input class="modal__textinput" name="signup-username" value="@Model.UserName" type="text" placeholder="User Name" />
+                        <form class="modal__form-container" method="post" action="@Url.Action("SignUp", "Login")" id="modal-form" enctype="multipart/form-data">
+                            <div class="modal__form" >
+                                <div class="modal__input">
+                                    <div class="modal__text">Username: </div>
+                                    @Html.Editor("UserName", new { htmlAttributes = new { @class = "modal__textinput", placeholder = "User Name" } })
+                                </div>
+
+                                <div class="modal__input">
+                                    <div class="modal__text">Email Address: </div>
+                                    @Html.Editor("UserEmail", new { htmlAttributes = new { @class = "modal__textinput", placeholder = "Email Id" } })
+                                </div>
+
+                                <div class="modal__input">
+                                    <div class="modal__text">Password: </div>
+                                    @Html.Editor("UserPassword", new { htmlAttributes = new { @class = "modal__textinput", placeholder = "Password" } })
+                                </div>
+                                <div class="modal__input">
+                                    <div class="modal__text">Confirm Password: </div>
+                                    @Html.Editor("UserPassword", new { htmlAttributes = new { @class = "modal__textinput", placeholder = "Password" } })
+                                </div>
                             </div>
-                            <div class="modal__input">
-                                <div class="modal__text">Email Address: </div>
-                                <input class="modal__textinput" name="signup-email" value="@Model.UserEmail" type="email" placeholder="Email Id" />
+                            <div class="modal__error-container">
+                                <div class="modal__error-msg">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    @Html.ValidationMessageFor(m => m.UserName, null)
+                                </div>
+                                <div class="modal__error-msg">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    @Html.ValidationMessageFor(m => m.UserEmail, null)
+                                </div>
+                                <div class="modal__error-msg">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    @Html.ValidationMessageFor(m => m.UserPassword, null)
+                                </div>
+                                <div class="modal__error-msg">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    @Html.ValidationMessageFor(m => m.UserPassword, null)
+                                </div>
                             </div>
-                            <div class="modal__input">
-                                <div class="modal__text">Password: </div>
-                                <input class="modal__textinput" name="signup-password" value="@Model.UserPassword" type="text" placeholder="Password" />
-                            </div>
-                            <div class="modal__input">
-                                <div class="modal__text">Confirm Password: </div>
-                                <input class="modal__textinput" name="signup-confirm" type="text" placeholder="Password" />
-                            </div>
-                            @Html.ValidationMessage("signup-username")
                         </form>
-                        @Html.ValidationSummary(false)
                     </div>
                     <div class="modal-footer">
                         <input type="submit" class="btn btn-primary" form="modal-form" value="Sign Up" />
@@ -92,7 +115,7 @@
         };
     </script>
 
-    @Scripts.Render("~/bundles/jquery")
+    
     @Scripts.Render("~/bundles/bootstrap")
 </body>
 </html>
