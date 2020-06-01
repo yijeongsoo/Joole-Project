@@ -20,11 +20,34 @@ namespace JooleStore_Service
             return unit.consumer.CheckCredentials(email, password);
         }
 
-
-        public List<string> FindProduct(string ProductName)
+        public List<string> FindProduct(int ProductId)
         {
-            List<string> ProductList = unit.product.FindProduct(ProductName);
+            List<string> ProductList = unit.product.FindProduct(ProductId);
             return ProductList;
+        }
+
+        public List<string> FindManufacturer(int ManufacturerId)
+        {
+            List<string> ManufacturerList = unit.manufacturer.FindManufacturer(ManufacturerId);
+            return ManufacturerList;
+        }
+
+        public List<string> FindSubcategory(int SubcategoryId)
+        {
+            List<string> SubcategoryList = unit.subcategory.FindSubcategory(SubcategoryId);
+            return SubcategoryList;
+        }
+
+        public List<string> FindProperty(int PropertyId)
+        {
+            List<string> PropertyList = unit.property.FindProperty(PropertyId);
+            return PropertyList;
+        }
+
+        public List<List<string>> GetAllPropertyValueById(int productId)
+        {
+            List<List<string>> PropertyValueList = unit.propertyValue.FindPropertyValueByProduct(productId);
+            return PropertyValueList;
         }
     }
 }

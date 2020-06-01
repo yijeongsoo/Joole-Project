@@ -1,5 +1,6 @@
 ﻿using JooleStore_Service;
 using JooleStoreApp.Models;
+using JooleStoreApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,47 +17,77 @@ namespace JooleStoreApp.Controllers
         {
             return View("CompareProduct");
         }
-
-        public ActionResult CompareProductHelper(Product product1, Product product2)
+        public ActionResult CompareProduct(/*Product product1, Product product2*/)
+        {
+            CompareProductVM CompareVM = new CompareProductVM();
+            ProductValuesVM ProductVM1 = new ProductValuesVM();
+            ProductValuesVM ProductVM2 = new ProductValuesVM();
+            Product product1 = GetProductByName(2); // Comment out after testing
+            Product product2 = GetProductByName(3); // Comment out after testing
+            ProductVM1.product = product1;
+            ProductVM2.product = product2;
+            List<tblPropertyValue> propertyValueList1 = GetAllPropertyValueById(product1.ProductId);
+            List<tblPropertyValue> propertyValueList2 = GetAllPropertyValueById(product2.ProductId);
+            ProductVM1.propertyValues = propertyValueList1;
+            ProductVM2.propertyValues = propertyValueList2;
+            // Add Property Values for both models
+            // Add Manufacturer info / Subcategory info
+            CompareVM.comparingProducts.Add(ProductVM1);
+            CompareVM.comparingProducts.Add(ProductVM2);
+            return View("CompareProduct", "CompareProduct", CompareVM);
+        }
+        public Product GetProductByName(int productId)
         {
             Service service = new Service();
-            List<Product> ProductList = new List<Product>();
-            //Call Service Layer functions to get both product infos
-            List<string> Product1HelpList = service.FindProduct(product1.ProductName);
-            List<string> Product2HelpList = service.FindProduct(product2.ProductName);
-            // if both products are in the database
-            if (Product1HelpList[0] == "Yes" && Product2HelpList[0] == "Yes") {
-                Product Product1 = new Product
-                {
-                    ProductId = Int32.Parse(Product1HelpList[1]),
-                    ManufacturerId = Int32.Parse(Product1HelpList[2]),
-                    SubcategoryId = Int32.Parse(Product1HelpList[3]),
-                    ProductName = Product1HelpList[4],
-                    ProductImage = Product1HelpList[5],
-                    Series = Product1HelpList[6],
-                    ModelYear = Int32.Parse(Product1HelpList[7]),
-                    Model = Product1HelpList[8],
-                };
-                ProductList.Add(Product1);
-
-                Product Product2 = new Product
-                {
-                    ProductId = Int32.Parse(Product2HelpList[1]),
-                    ManufacturerId = Int32.Parse(Product2HelpList[2]),
-                    SubcategoryId = Int32.Parse(Product2HelpList[3]),
-                    ProductName = Product2HelpList[4],
-                    ProductImage = Product2HelpList[5],
-                    Series = Product2HelpList[6],
-                    ModelYear = Int32.Parse(Product2HelpList[7]),
-                    Model = Product2HelpList[8],
-                };
-                ProductList.Add(Product2);
-            }
-            return View("CompareProduct", "CompareProduct", ProductList);
+            List<String> strList = service.FindProduct(productId);
+            Product product = new Product
+            {
+                ProductId = Int32.Parse(strList[1]),
+                ManufacturerId = Int32.Parse(strList[2]),
+                SubcategoryId = Int32.Parse(strList[3]),
+                ProductName = strList[4],
+                ProductImage = strList[5],
+                Series = strList[6],
+                ModelYear = Int32.Parse(strList[7]),
+                Model = strList[8]
+            };
+            return product;
         }
-        public ActionResult CompareProduct(List<Product> ProductList)
+        public Manufacturer GetManufacturer(int ManufacturerId)
         {
-            return View(); 
+            // TODO: IMPLEMENT
+            Manufacturer manufacturer = new Manufacturer();
+            return manufacturer;
+        }
+        public Subcategory GetSubcategory(int SubcategoryId)
+        {
+            // TODO: IMPLEMENT
+            Subcategory subcategory = new Subcategory();
+            return subcategory;
+        }
+        public List<Property> GetAllPropertyById(int productId)
+        {
+            // TODO: IMPLEMENT
+            List<Property> properties = new List<Property>();
+            return properties;
+        }
+        
+        public List<tblPropertyValue> GetAllPropertyValueById(int productId)
+        {
+            Service service = new Service();
+            List<List<String>> strListList = service.GetAllPropertyValueById(productId);
+            List<tblPropertyValue> propertyValueList = new List<tblPropertyValue>();
+            foreach(List<String> strList in strListList)
+            {
+                tblPropertyValue propertyValue = new tblPropertyValue
+                {
+                    PropertyId = Int32.Parse(strList[1]),
+                    ProductId = Int32.Parse(strList[2]),
+                    PropertyValue = strList[3]
+                };
+                propertyValueList.Add(propertyValue);
+            }
+            return propertyValueList;
         }
     }
 }

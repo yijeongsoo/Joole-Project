@@ -17,5 +17,6 @@ namespace JooleStore_Repository
 
         }
         // TODO: Implement Methods
+        // TODO: Find Manufacturer
     }
 }

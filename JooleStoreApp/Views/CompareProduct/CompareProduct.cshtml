@@ -1,4 +1,5 @@
-﻿
+﻿@model JooleStoreApp.ViewModels.CompareProductVM
+
 @{
     ViewBag.Title = "View";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -14,30 +15,40 @@
 <body>
     <div class="compareProduct">
         <div class="compareProduct_container">
-            <a>Mechanical > HVAC FANS > Compare</a>
+            <div class="compareProduct_dirContainer">
+                <a class="compareProduct_directory">Mechanical > HVAC FANS > Compare</a>
+            </div>
             <table class="compareProduct_table" style="overflow-y:scroll">
+                @{ 
+                    var comparingProductList = Model.comparingProducts;
+                }
                 <tr>
                     <td class="compareProduct_table_image"></td>
                     <td class="compareProduct_table_image">ImageLink 1</td>
                     <td class="compareProduct_table_image">ImageLink 2</td>
                 </tr>
                 <tr>
-                    <td class="compareProduct_table_bigLabel" colspan="3">DESCRIPTION</td>
+                    <td class="compareProduct_table_big Label" colspan="3">DESCRIPTION</td>
                 </tr>
                 <tr>
                     <td class="compareProduct_table_smallLabel">Manufacturer</td>
-                    <td class="compareProduct_table_data">Item1 Name</td>
-                    <td class="compareProduct_table_data">Item2 Name</td>
+                    <td class="compareProduct_table_data">@Model.comparingProducts[0].product.ManufacturerId</td>
+                    <td class="compareProduct_table_data">@Model.comparingProducts[1].product.ManufacturerId</td>
                 </tr>
                 <tr>
                     <td class="compareProduct_table_smallLabel">Series</td>
-                    <td class="compareProduct_table_data">Item1 Series</td>
-                    <td class="compareProduct_table_data">Item2 Series</td>
+                    <td class="compareProduct_table_data">@Model.comparingProducts[0].product.Series</td>
+                    <td class="compareProduct_table_data">@Model.comparingProducts[1].product.Series</td>
                 </tr>
                 <tr>
                     <td class="compareProduct_table_smallLabel">Model</td>
                     <td class="compareProduct_table_data">Item1 Model</td>
                     <td class="compareProduct_table_data">Item2 Model</td>
+                </tr>
+                <tr>
+                    <td class="compareProduct_table_smallLabel">Model Year</td>
+                    <td class="compareProduct_table_data">Item1 Model Year</td>
+                    <td class="compareProduct_table_data">Item2 Model Year</td>
                 </tr>
                 <tr>
                     <td class="compareProduct_table_bigLabel" colspan="3">TYPE</td>
@@ -62,11 +73,7 @@
                     <td class="compareProduct_table_data">Item1 Accessories</td>
                     <td class="compareProduct_table_data">Item2 Accessories</td>
                 </tr>
-                <tr>
-                    <td class="compareProduct_table_smallLabel">Model Year</td>
-                    <td class="compareProduct_table_data">Item1 Model Year</td>
-                    <td class="compareProduct_table_data">Item2 Model Year</td>
-                </tr>
+
                 <tr>
                     <td class="compareProduct_table_bigLabel" colspan="3">TECHNICAL SPECIFICATIONS</td>
                 </tr>
@@ -77,69 +84,69 @@
                 </tr>
                 <tr>
                     <td class="compareProduct_table_smallLabel">Power (W)</td>
-                    <td>
+                    <td class="compareProduct_smallRow">
                         <table class="compareProduct_smallerTable">
                             <tr>
                                 <td class="compareProduct_table_smallerLabel">Min</td>
-                                <td class="compareProduct_table_data">Item1Min</td>
+                                <td class="compareProduct_table_smallerData">Item1Min</td>
                                 <td class="compareProduct_table_smallerLabel">Max</td>
-                                <td class="compareProduct_table_data">Item1Max</td>
+                                <td class="compareProduct_table_smallerData">Item1Max</td>
                             </tr>
                         </table>
                     </td>
-                    <td>
+                    <td class="compareProduct_smallRow">
                         <table class="compareProduct_smallerTable">
                             <tr>
                                 <td class="compareProduct_table_smallerLabel">Min</td>
-                                <td class="compareProduct_table_data">Item2Min</td>
+                                <td class="compareProduct_table_smallerData">Item2Min</td>
                                 <td class="compareProduct_table_smallerLabel">Max</td>
-                                <td class="compareProduct_table_data">Item2Max</td>
+                                <td class="compareProduct_table_smallerData">Item2Max</td>
                             </tr>
                         </table>
                     </td>
                 </tr>
                 <tr>
                     <td class="compareProduct_table_smallLabel">Operating Voltage (VAC)</td>
-                    <td>
+                    <td class="compareProduct_smallRow">
                         <table class="compareProduct_smallerTable">
                             <tr>
                                 <td class="compareProduct_table_smallerLabel">Min</td>
-                                <td class="compareProduct_table_data">Item1Min</td>
+                                <td class="compareProduct_table_smallerData">Item1Min</td>
                                 <td class="compareProduct_table_smallerLabel">Max</td>
-                                <td class="compareProduct_table_data">Item1Max</td>
+                                <td class="compareProduct_table_smallerData">Item1Max</td>
                             </tr>
                         </table>
                     </td>
-                    <td>
+                    <td class="compareProduct_smallRow">
                         <table class="compareProduct_smallerTable">
                             <tr>
                                 <td class="compareProduct_table_smallerLabel">Min</td>
-                                <td class="compareProduct_table_data">Item2Min</td>
+                                <td class="compareProduct_table_smallerData">Item2Min</td>
                                 <td class="compareProduct_table_smallerLabel">Max</td>
-                                <td class="compareProduct_table_data">Item2Max</td>
+                                <td class="compareProduct_table_smallerData">Item2Max</td>
                             </tr>
                         </table>
                     </td>
                 </tr>
                 <tr>
                     <td class="compareProduct_table_smallLabel">Fan Speed (RPM)</td>
-                    <td>
+                    <td class="compareProduct_smallRow">
                         <table class="compareProduct_smallerTable">
                             <tr>
                                 <td class="compareProduct_table_smallerLabel">Min</td>
-                                <td class="compareProduct_table_data">Item1Min</td>
+                                <td class="compareProduct_table_smallerData">Item1Min</td>
                                 <td class="compareProduct_table_smallerLabel">Max</td>
-                                <td class="compareProduct_table_data">Item1Max</td>
+                                <td class="compareProduct_table_smallerData">Item1Max</td>
                             </tr>
                         </table>
                     </td>
-                    <td>
+                    <td class="compareProduct_smallRow">
                         <table class="compareProduct_smallerTable">
                             <tr>
                                 <td class="compareProduct_table_smallerLabel">Min</td>
-                                <td class="compareProduct_table_data">Item2Min</td>
+                                <td class="compareProduct_table_smallerData">Item2Min</td>
                                 <td class="compareProduct_table_smallerLabel">Max</td>
-                                <td class="compareProduct_table_data">Item2Max</td>
+                                <td class="compareProduct_table_smallerData">Item2Max</td>
                             </tr>
                         </table>
                     </td>
@@ -161,23 +168,23 @@
                 </tr>
                 <tr>
                     <td class="compareProduct_table_smallLabel">Height (in)</td>
-                    <td>
+                    <td class="compareProduct_smallRow">
                         <table class="compareProduct_smallerTable">
                             <tr>
                                 <td class="compareProduct_table_smallerLabel">Min</td>
-                                <td class="compareProduct_table_data">Item1Min</td>
+                                <td class="compareProduct_table_smallerData">Item1Min</td>
                                 <td class="compareProduct_table_smallerLabel">Max</td>
-                                <td class="compareProduct_table_data">Item1Max</td>
+                                <td class="compareProduct_table_smallerData">Item1Max</td>
                             </tr>
                         </table>
                     </td>
-                    <td>
+                    <td class="compareProduct_smallRow">
                         <table class="compareProduct_smallerTable">
                             <tr>
                                 <td class="compareProduct_table_smallerLabel">Min</td>
-                                <td class="compareProduct_table_data">Item2Min</td>
+                                <td class="compareProduct_table_smallerData">Item2Min</td>
                                 <td class="compareProduct_table_smallerLabel">Max</td>
-                                <td class="compareProduct_table_data">Item2Max</td>
+                                <td class="compareProduct_table_smallerData">Item2Max</td>
                             </tr>
                         </table>
                     </td>

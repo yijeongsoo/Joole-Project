@@ -8,7 +8,7 @@ namespace JooleStore_Repository
 {
     public interface IProductRepo : IRepository<Product>
     {
-        List<string> FindProduct(string ProductName);
+        List<string> FindProduct(int ProductId);
     }
     public class ProductRepo : Repository<Product>, IProductRepo
     {
@@ -17,13 +17,13 @@ namespace JooleStore_Repository
         {
             db = context;
         }
-        public List<string> FindProduct(string ProductName)
+        public List<string> FindProduct(int ProductId)
         {
             List<string> ProductList = new List<string>();
             var dbList = db.Products.ToList();
             foreach (Product element in dbList)
             {
-                if (element.ProductName.ToString() == ProductName)
+                if (element.ProductId == ProductId)
                 {
                     ProductList.Add("Yes");
                     ProductList.Add(element.ProductId.ToString());
@@ -35,7 +35,9 @@ namespace JooleStore_Repository
                     ProductList.Add(element.ModelYear.ToString());
                     ProductList.Add(element.Model);
                 }
-                
+                else {
+                    ProductList.Add("No");
+                }
             }
                 return ProductList;
         }
