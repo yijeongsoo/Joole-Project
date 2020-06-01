@@ -41,11 +41,16 @@ namespace JooleStoreApp.Controllers
         [HttpPost]
         public ActionResult SignUp(HttpPostedFileBase signupImage)
         {
-            string username = Request.Form["signup-username"];
-            string email = Request.Form["signup-email"];
-            string password = Request.Form["signup-password"];
-            string confirm = Request.Form["signup-confirm"];
-            string filename = username + "-profile" + Path.GetExtension(signupImage.FileName);
+            string username = Request.Form["UserName"];
+            string email = Request.Form["UserEmail"];
+            string password = Request.Form["UserPassword"];
+            string confirm = Request.Form["ConfirmPassword"];
+            string filename = "";
+
+            if (signupImage != null)
+            {
+                filename = username + "-profile" + Path.GetExtension(signupImage.FileName);
+            }
 
             if(password != confirm)
             {
@@ -60,7 +65,11 @@ namespace JooleStoreApp.Controllers
             if(registered)
             {
                 // Save the image file to images folder
-                signupImage.SaveAs(Server.MapPath("~/Images/") + filename);
+                if(signupImage != null)
+                {
+                    signupImage.SaveAs(Server.MapPath("~/Images/") + filename);
+                }
+                
                 return View("Login", new Consumer());
             }
             // If user already exist in db or error during connecting to db

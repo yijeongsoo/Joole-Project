@@ -52,14 +52,13 @@
                                     <div class="modal__text">Email Address: </div>
                                     @Html.Editor("UserEmail", new { htmlAttributes = new { @class = "modal__textinput", placeholder = "Email Id" } })
                                 </div>
-
                                 <div class="modal__input">
                                     <div class="modal__text">Password: </div>
-                                    @Html.Editor("UserPassword", new { htmlAttributes = new { @class = "modal__textinput", placeholder = "Password" } })
+                                    @Html.PasswordFor(m => m.UserPassword, new { @class = "modal__textinput", placeholder = "Password" })
                                 </div>
                                 <div class="modal__input">
                                     <div class="modal__text">Confirm Password: </div>
-                                    @Html.Editor("UserPassword", new { htmlAttributes = new { @class = "modal__textinput", placeholder = "Password" } })
+                                    <input class="modal__textinput" data-val="true" data-val-required="Required" name="ConfirmPassword" placeholder="Password" type="password">
                                 </div>
                             </div>
                             <div class="modal__error-container">
