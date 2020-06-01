@@ -3,17 +3,39 @@ html {
     overflow-y: hidden;
 }
 
+.login__error-box {
+    display: flex;
+    justify-content: center;
+    top: 33px;
+    position: absolute;
+    width: 100%;
+}
+
+.login__error-msg {
+    text-align: center;
+    padding: 5px 15px;
+    border-radius: 5px;
+    background-color: #d9534f;
+    color: white;
+    font-weight: bold;
+}
+
+.login__error-msg:hover {
+    background-color: #b34542;
+}
+
 .login {
     width: 100vw;
     height: 100vh;
     background: linear-gradient(360deg, rgba(2,0,36,1), 0%, rgba(255,255,255,1) 0%, rgba(0,73,134,1) 100%);
 }
 
-.login__signup{
+.login__signup {
     width: 100%;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
+    z-index: 1000;
 }
 
 .login__signup-link {
@@ -109,6 +131,7 @@ html {
     flex-direction: row;
     align-items: center;
     height: 37px;
+    color: red;
 }
 
 .modal__form{

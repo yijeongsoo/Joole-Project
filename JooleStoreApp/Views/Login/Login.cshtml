@@ -15,11 +15,19 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     <div class="login">
+        @if (@ViewBag.ErrorMsg != null)
+        {
+            <div class="login__error-box">
+                <div class="login__error-msg">
+                    @ViewBag.ErrorMsg
+                </div>
+            </div>
+        }
+
         <div class="login__signup">
             <p class="login__signup-link" data-toggle="modal" data-target="#exampleModalCenter">Sign Up</p>
         </div>
@@ -42,7 +50,7 @@
                             <input type="file" name="signupImage" onchange="loadImage(event)" form="modal-form" />
                         </div>
                         <form class="modal__form-container" method="post" action="@Url.Action("SignUp", "Login")" id="modal-form" enctype="multipart/form-data">
-                            <div class="modal__form" >
+                            <div class="modal__form">
                                 <div class="modal__input">
                                     <div class="modal__text">Username: </div>
                                     @Html.Editor("UserName", new { htmlAttributes = new { @class = "modal__textinput", placeholder = "User Name" } })
@@ -63,19 +71,15 @@
                             </div>
                             <div class="modal__error-container">
                                 <div class="modal__error-msg">
-                                    <i class="fas fa-exclamation-circle"></i>
                                     @Html.ValidationMessageFor(m => m.UserName, null)
                                 </div>
                                 <div class="modal__error-msg">
-                                    <i class="fas fa-exclamation-circle"></i>
                                     @Html.ValidationMessageFor(m => m.UserEmail, null)
                                 </div>
                                 <div class="modal__error-msg">
-                                    <i class="fas fa-exclamation-circle"></i>
                                     @Html.ValidationMessageFor(m => m.UserPassword, null)
                                 </div>
                                 <div class="modal__error-msg">
-                                    <i class="fas fa-exclamation-circle"></i>
                                     @Html.ValidationMessageFor(m => m.UserPassword, null)
                                 </div>
                             </div>

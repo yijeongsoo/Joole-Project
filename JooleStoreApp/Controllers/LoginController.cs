@@ -69,11 +69,12 @@ namespace JooleStoreApp.Controllers
                 {
                     signupImage.SaveAs(Server.MapPath("~/Images/") + filename);
                 }
-                
-                return View("Login", new Consumer());
+
+                return RedirectToAction("Index", "Search");
             }
             // If user already exist in db or error during connecting to db
             else {
+                ViewBag.ErrorMsg = "User already exist!";
                 return View("Login", new Consumer());
             }
         }
