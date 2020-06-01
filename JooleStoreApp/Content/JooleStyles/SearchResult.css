@@ -44,3 +44,26 @@
 .card img{
     padding:16px;
 }
+
+.filter-box{
+    border:solid;
+    border-color:cadetblue;
+    border-width:thick;
+    padding: 20px;
+    max-width: 30%;
+    float:left;
+    margin: 10px;
+}
+
+.filter-box button{
+    margin: 5px;
+}
+
+.filter-box label{
+    margin:5px;
+}
+
+.compare-button {
+    float: right;
+    margin-right:15%;
+}

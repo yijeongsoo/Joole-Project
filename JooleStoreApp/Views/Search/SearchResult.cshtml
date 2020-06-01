@@ -1,0 +1,64 @@
+﻿@model JooleStoreApp.Models.SearchResultViewModel
+
+@{
+    ViewBag.Title = "SearchResult";
+}
+
+<link href="~/Content/JooleStyles/SearchResult.css" rel="stylesheet" />
+<div class="filter-box">
+    <div class="filter-box-title">
+        Search: <button class="btn-primary">Search</button><button class="btn-primary">Clear</button>
+        <hr />
+    </div>
+    <h4>Product Type</h4>
+    @foreach (var item in Model.TypeRangeFilterList)
+    {
+        <label for="@Html.DisplayFor(modelItem => item.TypeName)">@Html.DisplayFor(modelItem => item.TypeName)</label>
+        <select name="@Html.DisplayFor(modelItem => item.TypeName)" id="@Html.DisplayFor(modelItem => item.TypeName)">
+            @foreach (var item2 in item.TypeOptions)
+            {
+                <option value="@item2">@item2</option>
+            }
+        </select>
+        <br />
+    }
+    <hr />
+    <h4>Technical Specifications</h4>
+    @foreach (var item in Model.TechSpecFilterList)
+    {
+        <p>
+            <label for="amount">PropertyId: @item.PropertyId</label>
+            <input type="range" min=@item.MinValue max=@item.MaxValue readonly style="border:0; color:#f6931f; font-weight:bold;">
+        </p>
+    }
+</div>
+
+<div class="row">
+    <h4>Category>Subcategory</h4>
+    <br />
+    @foreach (var item in Model.Products)
+    {
+        <div class="column">
+            <div class="card">
+                <img src="@Html.DisplayFor(modelItem => item.ProductImage)" style="width:100%" alt="...">
+                <div class="container">
+                    <p class="card-title">@Html.DisplayFor(modelItem => item.ProductName)</p>
+                    <p class="card-title">@Html.DisplayFor(modelItem => item.Series)</p>
+                    <p class="card-title">@Html.DisplayFor(modelItem => item.Model)</p>
+                    <p class="card-text"> 35 DBA At max speed</p>
+                    <p class="card-text"> 60" fan sweep diamter</p>
+                    <p class="card-text"> 120W Power Rating</p>
+                    <input type="checkbox" id=@Html.DisplayFor(modelItem => item.ProductId) name=@Html.DisplayFor(modelItem => item.ProductId) value=@Html.DisplayFor(modelItem => item.ProductName)>
+                    <label for=@Html.DisplayFor(modelItem => item.ProductId)> Compare</label><br>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<br />
+<div class="compare-button">
+    <button class="btn-primary">Compare</button>
+</div>
+
+
+

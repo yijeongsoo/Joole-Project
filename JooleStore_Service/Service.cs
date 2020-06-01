@@ -30,5 +30,10 @@ namespace JooleStore_Service
         public List<tblTypeRange> getFilterType(int subcategoryId) {
             return unit.typeRangeRepo.getFilterType(subcategoryId);
         }
+
+        public List<tblTechSpecRange> getFilterTechSpec(int subcategoryId) 
+        {
+            return unit.techSpecRange.getTechSpecFilter(subcategoryId);
+        }
     }
 }

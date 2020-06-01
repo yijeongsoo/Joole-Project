@@ -5,11 +5,11 @@ using System.Web;
 
 namespace JooleStoreApp.Models
 {
-    public class tblTechSpecRange
+    public class tblTypeRangeM
     {
         public int PropertyId { get; set; }
         public int SubcategoryId { get; set; }
-        public int MinValue { get; set; }
-        public int MaxValue { get; set; }
+        public string TypeName { get; set; }
+        public string[] TypeOptions { get; set; }
     }
 }
