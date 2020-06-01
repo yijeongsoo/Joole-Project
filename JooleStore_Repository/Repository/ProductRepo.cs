@@ -10,6 +10,7 @@ namespace JooleStore_Repository
     {
         // TODO: Define Methods
         List<string> GetProductDescription(string id);
+        void GetProductTypeRange(string prodId);
     }
     public class ProductRepo : Repository<Product>, IProductRepo
     {
@@ -42,6 +43,25 @@ namespace JooleStore_Repository
             // TODO: return descriptionElements
             return descriptionElements;
         }
+
+        public void GetProductTypeRange(string id)
+        {
+            int parsedId = int.Parse(id);
+            List<string> typeRangeElements = new List<string>();
+
+            var queryResult = from prop in db.Properties
+                              join propval in db.tblPropertyValues on prop.PropertyId equals propval.PropertyId
+                              where propval.ProductId == 1
+                              select new { PropertyName = prop.PropertyName, PropertyValue = propval.PropertyValue };
+
+
+            foreach(var result in queryResult)
+            {
+                System.Diagnostics.Debug.WriteLine("PV: " + result.PropertyName + " : " +
+                                                    result.PropertyValue);
+            }
+        }
+
         // TODO: Implement Methods
     }
 }

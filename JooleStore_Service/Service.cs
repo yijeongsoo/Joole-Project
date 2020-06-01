@@ -25,5 +25,11 @@ namespace JooleStore_Service
             prodId = 1.ToString();
             return unit.product.GetProductDescription(prodId);
         }
+
+        public void GetProductTypeRange(string prodId)
+        {
+            prodId = 1.ToString();
+            unit.product.GetProductTypeRange(prodId);
+        }
     }
 }

@@ -15,10 +15,10 @@ namespace JooleStoreApp.Controllers
         public ActionResult Index()
         {
             GetProductSummary();
+            GetProductTypeInfo();
             return View("ProductSummary");
         }
 
-        // TODO: change attribute to be model object
         public ActionResult GetProductSummary()
         {
             System.Diagnostics.Debug.WriteLine("Called function from controller");
@@ -58,6 +58,13 @@ namespace JooleStoreApp.Controllers
             productSummaryModel.TypeRanges = typeRangeList;
 
             return View("ProductSummary", productSummaryModel);
+        }
+
+        public void GetProductTypeInfo()
+        {
+            Service service = new Service();
+
+            service.GetProductTypeRange("1");
         }
     }
 }
