@@ -19,5 +19,10 @@ namespace JooleStore_Service
         {
             return unit.consumer.CheckCredentials(email, password);
         }
+
+        public object getSubcategoryProducts(int SubcategoryId) 
+        {
+            return unit.product.getSubcategoryProducts(SubcategoryId);
+        }
     }
 }
