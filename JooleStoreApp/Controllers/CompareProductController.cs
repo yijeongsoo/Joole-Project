@@ -17,13 +17,14 @@ namespace JooleStoreApp.Controllers
         {
             return View("CompareProduct");
         }
-        public ActionResult CompareProduct(/*Product product1, Product product2*/)
+        public ActionResult CompareProduct(int product1Id = 2, int product2Id = 3)
         {
             CompareProductVM CompareVM = new CompareProductVM();
+            CompareVM.comparingProducts = new List<ProductValuesVM>();
             ProductValuesVM ProductVM1 = new ProductValuesVM();
             ProductValuesVM ProductVM2 = new ProductValuesVM();
-            Product product1 = GetProductByName(2); // Comment out after testing
-            Product product2 = GetProductByName(3); // Comment out after testing
+            Product product1 = GetProductByName(product1Id); // Comment out after testing
+            Product product2 = GetProductByName(product2Id); // Comment out after testing
             ProductVM1.product = product1;
             ProductVM2.product = product2;
             Manufacturer manufacturer1 = GetManufacturer(product1.ManufacturerId);
@@ -34,17 +35,42 @@ namespace JooleStoreApp.Controllers
             Subcategory subcategory2 = GetSubcategory(product2.SubcategoryId);
             ProductVM1.subcategory = subcategory1;
             ProductVM2.subcategory = subcategory2;
-            List<tblPropertyValue> propertyValueList1 = GetAllPropertyValueById(product1.ProductId);
-            List<tblPropertyValue> propertyValueList2 = GetAllPropertyValueById(product2.ProductId);
-            ProductVM1.propertyValues = propertyValueList1;
-            ProductVM2.propertyValues = propertyValueList2;
-            List<Property> propertyList1 = GetAllPropertyByProductId(product1.ProductId);
-            List<Property> propertyList2 = GetAllPropertyByProductId(product2.ProductId);
-            ProductVM1.properties = propertyList1;
-            ProductVM2.properties = propertyList2;
+            List<PropertyValuesVM> propertyValuesVM1 = GetAllPropertyValuePair(product1.ProductId);
+            List<PropertyValuesVM> propertyValuesVM2 = GetAllPropertyValuePair(product2.ProductId);
+            ProductVM1.propertyValuesVM = propertyValuesVM1;
+            ProductVM2.propertyValuesVM = propertyValuesVM2;
             CompareVM.comparingProducts.Add(ProductVM1);
             CompareVM.comparingProducts.Add(ProductVM2);
-            return View("CompareProduct", "CompareProduct", CompareVM);
+            return View("CompareProduct", CompareVM);
+        }
+
+        public List<PropertyValuesVM> GetAllPropertyValuePair(int productId)
+        {
+            Service service = new Service();
+            List<PropertyValuesVM> propertyValuesVM = new List<PropertyValuesVM>();
+            List<List<List<string>>> AllPropertyValuePair = service.FindAllPropertyAndValuePair(productId);
+            foreach (List<List<string>> PropertyValuePair in AllPropertyValuePair)
+            {
+                PropertyValuesVM PVPair = new PropertyValuesVM();
+                Property property = new Property
+                {
+                    PropertyId = Int32.Parse(PropertyValuePair[0][1]),
+                    PropertyName = PropertyValuePair[0][2],
+                    isTechSpec = Boolean.Parse(PropertyValuePair[0][3]),
+                    isType = Boolean.Parse(PropertyValuePair[0][4])
+                };
+                tblPropertyValue propertyValue = new tblPropertyValue
+                {
+                    PropertyId = Int32.Parse(PropertyValuePair[1][1]),
+                    ProductId = Int32.Parse(PropertyValuePair[1][2]),
+                    PropertyValue = PropertyValuePair[1][3]
+                };
+                PVPair.property = property;
+                PVPair.propertyValue = propertyValue;
+                propertyValuesVM.Add(PVPair);
+            }
+            return propertyValuesVM;
+
         }
         public Product GetProductByName(int productId)
         {

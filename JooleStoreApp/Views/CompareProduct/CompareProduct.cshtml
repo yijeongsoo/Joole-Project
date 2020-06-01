@@ -19,187 +19,67 @@
                 <a class="compareProduct_directory">Mechanical > HVAC FANS > Compare</a>
             </div>
             <table class="compareProduct_table" style="overflow-y:scroll">
-                @{ 
-                    var comparingProductList = Model.comparingProducts;
-                }
                 <tr>
-                    <th class="compareProduct_table_image"></th>
-                    <td class="compareProduct_table_image">@Model.comparingProducts[0].product.ProductImage</td>
-                    <td class="compareProduct_table_image">@Model.comparingProducts[1].product.ProductImage</td>
+                    <td class="compareProduct_table_image"></td>
+                    <td class="compareProduct_table_image"><img src=@Model.comparingProducts[0].product.ProductImage></td>
+                    <td class="compareProduct_table_image"><img src=@Model.comparingProducts[1].product.ProductImage></td>
                 </tr>
                 <tr>
-                    <th class="compareProduct_table_big Label" colspan="3">DESCRIPTION</th>
+                    <td class="compareProduct_table_bigLabel" colspan="3">DESCRIPTION</td>
                 </tr>
                 <tr>
-                    <th class="compareProduct_table_smallLabel">Manufacturer</th>
+                    <td class="compareProduct_table_smallLabel">Manufacturer</td>
                     <td class="compareProduct_table_data">@Model.comparingProducts[0].manufacturer.ManufacturerName</td>
                     <td class="compareProduct_table_data">@Model.comparingProducts[1].manufacturer.ManufacturerName</td>
                 </tr>
                 <tr>
-                    <th class="compareProduct_table_smallLabel">Series</th>
+                    <td class="compareProduct_table_smallLabel">Series</td>
                     <td class="compareProduct_table_data">@Model.comparingProducts[0].product.Series</td>
                     <td class="compareProduct_table_data">@Model.comparingProducts[1].product.Series</td>
                 </tr>
                 <tr>
-                    <th class="compareProduct_table_smallLabel">Model</th>
+                    <td class="compareProduct_table_smallLabel">Model</td>
                     <td class="compareProduct_table_data">@Model.comparingProducts[0].product.Model</td>
                     <td class="compareProduct_table_data">@Model.comparingProducts[1].product.Model</td>
                 </tr>
                 <tr>
-                    <th class="compareProduct_table_smallLabel">Model Year</th>
+                    <td class="compareProduct_table_smallLabel">Model Year</td>
                     <td class="compareProduct_table_data">@Model.comparingProducts[0].product.ModelYear</td>
                     <td class="compareProduct_table_data">@Model.comparingProducts[1].product.ModelYear</td>
                 </tr>
                 <tr>
-                    <th class="compareProduct_table_bigLabel" colspan="3">TYPE</th>
+                    <td class="compareProduct_table_bigLabel" colspan="3">TYPE</td>
                 </tr>
-                <tr>
-                    <td class="compareProduct_table_smallLabel">Use Type</td>
-                    <td class="compareProduct_table_data">@Model.comparingProducts[0].propertyValues[0].PropertyValue</td>
-                    <td class="compareProduct_table_data">Item2 Use Type</td>
-                </tr>
-                @{ 
-                    for (int i = 0; i < Model.comparingProducts.Count(); i++) { 
-                        
+
+                @{
+                    for (int i = 0; i < Model.comparingProducts[0].propertyValuesVM.Count(); i++)
+                    {
+                        if (Model.comparingProducts[0].propertyValuesVM[i].property.isType == true)
+                        {
+                            <tr>
+                                <td class="compareProduct_table_smallLabel">@Model.comparingProducts[0].propertyValuesVM[i].property.PropertyName</td>
+                                <td class="compareProduct_table_data">@Model.comparingProducts[0].propertyValuesVM[i].propertyValue.PropertyValue</td>
+                                <td class="compareProduct_table_data">@Model.comparingProducts[1].propertyValuesVM[i].propertyValue.PropertyValue</td>
+                            </tr>
+                        }
                     }
                 }
-
-                <tr>
-                    <td class="compareProduct_table_smallLabel">Application</td>
-                    <td class="compareProduct_table_data">Item1 Application</td>
-                    <td class="compareProduct_table_data">Item2 Application</td>
-                </tr>
-                <tr>
-                    <td class="compareProduct_table_smallLabel">Mounting Location</td>
-                    <td class="compareProduct_table_data">Item1 Mounting Location</td>
-                    <td class="compareProduct_table_data">Item2 Mounting Location</td>
-                </tr>
-                <tr>
-                    <td class="compareProduct_table_smallLabel">Accessories</td>
-                    <td class="compareProduct_table_data">Item1 Accessories</td>
-                    <td class="compareProduct_table_data">Item2 Accessories</td>
-                </tr>
-
                 <tr>
                     <td class="compareProduct_table_bigLabel" colspan="3">TECHNICAL SPECIFICATIONS</td>
                 </tr>
-                <tr>
-                    <td class="compareProduct_table_smallLabel">Air Flow (CFM)</td>
-                    <td class="compareProduct_table_data">Item1 Air Flow</td>
-                    <td class="compareProduct_table_data">Item2 Air Flow</td>
-                </tr>
-                <tr>
-                    <td class="compareProduct_table_smallLabel">Power (W)</td>
-                    <td class="compareProduct_smallRow">
-                        <table class="compareProduct_smallerTable">
+                @{
+                    for (int i = 0; i < Model.comparingProducts[0].propertyValuesVM.Count(); i++)
+                    {
+                        if (Model.comparingProducts[0].propertyValuesVM[i].property.isTechSpec == true)
+                        {
                             <tr>
-                                <td class="compareProduct_table_smallerLabel">Min</td>
-                                <td class="compareProduct_table_smallerData">Item1Min</td>
-                                <td class="compareProduct_table_smallerLabel">Max</td>
-                                <td class="compareProduct_table_smallerData">Item1Max</td>
+                                <td class="compareProduct_table_smallLabel">@Model.comparingProducts[0].propertyValuesVM[i].property.PropertyName</td>
+                                <td class="compareProduct_table_data">@Model.comparingProducts[0].propertyValuesVM[i].propertyValue.PropertyValue</td>
+                                <td class="compareProduct_table_data">@Model.comparingProducts[1].propertyValuesVM[i].propertyValue.PropertyValue</td>
                             </tr>
-                        </table>
-                    </td>
-                    <td class="compareProduct_smallRow">
-                        <table class="compareProduct_smallerTable">
-                            <tr>
-                                <td class="compareProduct_table_smallerLabel">Min</td>
-                                <td class="compareProduct_table_smallerData">Item2Min</td>
-                                <td class="compareProduct_table_smallerLabel">Max</td>
-                                <td class="compareProduct_table_smallerData">Item2Max</td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="compareProduct_table_smallLabel">Operating Voltage (VAC)</td>
-                    <td class="compareProduct_smallRow">
-                        <table class="compareProduct_smallerTable">
-                            <tr>
-                                <td class="compareProduct_table_smallerLabel">Min</td>
-                                <td class="compareProduct_table_smallerData">Item1Min</td>
-                                <td class="compareProduct_table_smallerLabel">Max</td>
-                                <td class="compareProduct_table_smallerData">Item1Max</td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td class="compareProduct_smallRow">
-                        <table class="compareProduct_smallerTable">
-                            <tr>
-                                <td class="compareProduct_table_smallerLabel">Min</td>
-                                <td class="compareProduct_table_smallerData">Item2Min</td>
-                                <td class="compareProduct_table_smallerLabel">Max</td>
-                                <td class="compareProduct_table_smallerData">Item2Max</td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="compareProduct_table_smallLabel">Fan Speed (RPM)</td>
-                    <td class="compareProduct_smallRow">
-                        <table class="compareProduct_smallerTable">
-                            <tr>
-                                <td class="compareProduct_table_smallerLabel">Min</td>
-                                <td class="compareProduct_table_smallerData">Item1Min</td>
-                                <td class="compareProduct_table_smallerLabel">Max</td>
-                                <td class="compareProduct_table_smallerData">Item1Max</td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td class="compareProduct_smallRow">
-                        <table class="compareProduct_smallerTable">
-                            <tr>
-                                <td class="compareProduct_table_smallerLabel">Min</td>
-                                <td class="compareProduct_table_smallerData">Item2Min</td>
-                                <td class="compareProduct_table_smallerLabel">Max</td>
-                                <td class="compareProduct_table_smallerData">Item2Max</td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="compareProduct_table_smallLabel">Number of fan speeds</td>
-                    <td class="compareProduct_table_data">Item1 Number of fan speeds</td>
-                    <td class="compareProduct_table_data">Item2 Number of fan speeds</td>
-                </tr>
-                <tr>
-                    <td class="compareProduct_table_smallLabel">Sound at max speed (dBA)</td>
-                    <td class="compareProduct_table_data">Item1 Sound at max speed</td>
-                    <td class="compareProduct_table_data">Item2 Sound at max speed</td>
-                </tr>
-                <tr>
-                    <td class="compareProduct_table_smallLabel">Fan sweep diameter (in)</td>
-                    <td class="compareProduct_table_data">Item1 Fan sweep diameter</td>
-                    <td class="compareProduct_table_data">Item2 Fan sweep diameter</td>
-                </tr>
-                <tr>
-                    <td class="compareProduct_table_smallLabel">Height (in)</td>
-                    <td class="compareProduct_smallRow">
-                        <table class="compareProduct_smallerTable">
-                            <tr>
-                                <td class="compareProduct_table_smallerLabel">Min</td>
-                                <td class="compareProduct_table_smallerData">Item1Min</td>
-                                <td class="compareProduct_table_smallerLabel">Max</td>
-                                <td class="compareProduct_table_smallerData">Item1Max</td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td class="compareProduct_smallRow">
-                        <table class="compareProduct_smallerTable">
-                            <tr>
-                                <td class="compareProduct_table_smallerLabel">Min</td>
-                                <td class="compareProduct_table_smallerData">Item2Min</td>
-                                <td class="compareProduct_table_smallerLabel">Max</td>
-                                <td class="compareProduct_table_smallerData">Item2Max</td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="compareProduct_table_smallLabel">Weight (lbs)</td>
-                    <td class="compareProduct_table_data">Item1 Weight</td>
-                    <td class="compareProduct_table_data">Item2 Weight</td>
-                </tr>
+                        }
+                    }
+                }
             </table>
         </div>
     </div>

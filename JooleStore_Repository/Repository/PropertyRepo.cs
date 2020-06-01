@@ -36,10 +36,6 @@ namespace JooleStore_Repository
                     PropertyList.Add(element.isTechSpec.ToString());
                     PropertyList.Add(element.isType.ToString());
                 }
-                else
-                {
-                    PropertyList.Add("No");
-                }
             }
             return PropertyList;
         }

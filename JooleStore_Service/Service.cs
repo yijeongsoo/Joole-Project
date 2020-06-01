@@ -43,6 +43,22 @@ namespace JooleStore_Service
             List<string> PropertyList = unit.property.FindProperty(PropertyId);
             return PropertyList;
         }
+
+        public List<List<List<string>>> FindAllPropertyAndValuePair(int productId)
+        {
+            List<List<List<string>>> AllValuePropertyPair = new List<List<List<string>>>();
+            List<List<string>> ValueLists = unit.propertyValue.FindAllPropertyValueByProduct(productId);
+            foreach (List<string> ValueList in ValueLists)
+            {
+                List<List<string>> ValuePropertyPair = new List<List<string>>();
+                List<string> PropertyList = unit.property.FindProperty(Int32.Parse(ValueList[1]));
+                ValuePropertyPair.Add(PropertyList);
+                ValuePropertyPair.Add(ValueList);
+                AllValuePropertyPair.Add(ValuePropertyPair);
+            }
+            return AllValuePropertyPair;
+        }
+
         public List<List<string>> GetAllPropertyByProductId(int productId)
         {
             List<List<string>> PropertyList = unit.property.GetAllPropertyByProductId(productId);
@@ -50,7 +66,7 @@ namespace JooleStore_Service
         }
         public List<List<string>> GetAllPropertyValueById(int productId)
         {
-            List<List<string>> PropertyValueList = unit.propertyValue.FindPropertyValueByProduct(productId);
+            List<List<string>> PropertyValueList = unit.propertyValue.FindAllPropertyValueByProduct(productId);
             return PropertyValueList;
         }
     }

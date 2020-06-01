@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model JooleStoreApp.ViewModels.CompareProductVM
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -20,7 +21,7 @@
                 <option class="search__dropdown-list" value="temp">Stationary</option>
                 <option class="search__dropdown-list" value="temp">Furniture</option>
             </select>
-            <input id="search-textinput" type="text" placeholder="Search..."/>
+            <input id="search-textinput" type="text" placeholder="Search..." />
             <button id="search-submit" type="submit">
                 <i class="fas fa-search"></i>
             </button>
@@ -32,7 +33,7 @@
             @RenderBody()
         </div>
     </div>
-    
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

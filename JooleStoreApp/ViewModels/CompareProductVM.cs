@@ -6,17 +6,20 @@ using System.Web;
 
 namespace JooleStoreApp.ViewModels
 {
+    public class PropertyValuesVM
+    {
+        public Property property { get; set; }
+        public tblPropertyValue propertyValue { get; set; }
+    }
     public class ProductValuesVM
     { 
         public Product product { get; set; }
         public Manufacturer manufacturer { get; set; }
         public Subcategory subcategory { get; set; }
-        public List<Property> properties { get; set; }
-        public List<tblPropertyValue> propertyValues { get; set; }
+        public List<PropertyValuesVM> propertyValuesVM { get; set; }
     }
     public class CompareProductVM
     {
-        public ProductValuesVM productValue { get; set; }
         public List<ProductValuesVM> comparingProducts { get; set; }
     }
 }

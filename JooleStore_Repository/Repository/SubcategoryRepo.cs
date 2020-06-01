@@ -32,10 +32,6 @@ namespace JooleStore_Repository
                     SubcategoryList.Add(element.CategoryId.ToString());
                     SubcategoryList.Add(element.SubcategoryName);
                 }
-                else
-                {
-                    SubcategoryList.Add("No");
-                }
             }
             return SubcategoryList;
         }

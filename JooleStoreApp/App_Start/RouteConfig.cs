@@ -75,13 +75,13 @@ namespace JooleStoreApp
             routes.MapRoute(
                 name: "Compare Product1",
                 url: "CompareProduct",
-                defaults: new { controller = "CompareProduct", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "CompareProduct", action = "CompareProduct", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
                 name: "Compare Product2",
                 url: "CompareProduct/{id}",
-                defaults: new { controller = "CompareProduct", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "CompareProduct", action = "CompareProduct", id = UrlParameter.Optional }
             );
 
             // Default

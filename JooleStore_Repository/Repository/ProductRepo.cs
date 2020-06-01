@@ -35,9 +35,6 @@ namespace JooleStore_Repository
                     ProductList.Add(element.ModelYear.ToString());
                     ProductList.Add(element.Model);
                 }
-                else {
-                    ProductList.Add("No");
-                }
             }
                 return ProductList;
         }

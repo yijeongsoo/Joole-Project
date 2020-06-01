@@ -35,10 +35,6 @@ namespace JooleStore_Repository
                     ManufacturerList.Add(element.ManufacturerDepartment.ToString());
                     ManufacturerList.Add(element.ManufacturerWeb.ToString());
                 }
-                else
-                {
-                    ManufacturerList.Add("No");
-                }
             }
             return ManufacturerList;
         }

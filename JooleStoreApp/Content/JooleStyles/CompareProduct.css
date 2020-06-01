@@ -25,11 +25,15 @@ td {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: start;
+    height: 30px;
 }
 
 .compareProduct_directory {
-    align-content:flex-start;
+    align-content: flex-start;
+    left: 100px;
+    position: absolute;
+    color: darkblue;
 }
 .compareProduct_table {
     display: flex;
@@ -44,10 +48,12 @@ td {
     height: 200px;
     border: solid 1px;
     border-color: lightgrey;
+    text-align: center;
+    width: 300px;
 }
 .compareProduct_table_bigLabel {
     background-color: lightgrey;
-    width: 200px;
+    width: 300px;
     border: solid 1px;
     border-color: lightgrey;
     font-weight: bold;
@@ -55,7 +61,7 @@ td {
 
 .compareProduct_table_smallLabel {
     background-color: lightgrey;
-    width: 200px;
+    width: 300px;
     border: solid 1px;
     border-color: lightgrey;
     font-weight: bold;
@@ -69,8 +75,10 @@ td {
 
 .compareProduct_table_data {
     background-color: white;
+    width: 300px;
     border: solid 1px;
     border-color: lightgrey;
+    text-align: center;
 }
 
 .compareProduct_smallerTable {
@@ -87,5 +95,5 @@ td {
 
 .compareProduct_table_smallerData {
     background-color: white;
-
+    text-align: center;
 }
