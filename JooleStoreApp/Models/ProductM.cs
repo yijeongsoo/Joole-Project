@@ -5,7 +5,7 @@ using System.Web;
 
 namespace JooleStoreApp.Models
 {
-    public class Product
+    public class ProductM
     {
         public int ProductId { get; set; }
         public int ManufacturerId { get; set; }

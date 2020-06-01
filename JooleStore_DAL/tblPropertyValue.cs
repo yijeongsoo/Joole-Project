@@ -16,7 +16,7 @@ namespace JooleStore_DAL
     {
         public int PropertyId { get; set; }
         public int ProductId { get; set; }
-        public int PropertyValue { get; set; }
+        public string PropertyValue { get; set; }
     
         public virtual Product Product { get; set; }
         public virtual Property Property { get; set; }

@@ -55,6 +55,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JooleStore_DAL\JooleStore_DAL.csproj">
+      <Project>{864C027D-112C-4170-9E98-5673B8A49C2D}</Project>
+      <Name>JooleStore_DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JooleStore_Repository\JooleStore_Repository.csproj">
       <Project>{88acd694-e30f-421a-a6dc-ed3e6f29385c}</Project>
       <Name>JooleStore_Repository</Name>

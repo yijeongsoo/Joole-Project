@@ -141,7 +141,7 @@
     <Compile Include="Models\Consumer.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Manufacturer.cs" />
-    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductM.cs" />
     <Compile Include="Models\Property.cs" />
     <Compile Include="Models\tblPropertyValue.cs" />
     <Compile Include="Models\Subcategory.cs" />
@@ -213,6 +213,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\JooleStore_DAL\JooleStore_DAL.csproj">
+      <Project>{864C027D-112C-4170-9E98-5673B8A49C2D}</Project>
+      <Name>JooleStore_DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\JooleStore_Repository\JooleStore_Repository.csproj">
       <Project>{88ACD694-E30F-421A-A6DC-ED3E6F29385C}</Project>
       <Name>JooleStore_Repository</Name>

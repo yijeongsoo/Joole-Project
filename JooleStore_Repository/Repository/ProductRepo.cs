@@ -9,7 +9,7 @@ namespace JooleStore_Repository
     public interface IProductRepo : IRepository<Product>
     {
         // TODO: Define Methods
-        object getSubcategoryProducts(int SubcategoryId);
+        List<Product> getSubcategoryProducts(int SubcategoryId);
     }
     public class ProductRepo : Repository<Product>, IProductRepo
     {
@@ -19,7 +19,7 @@ namespace JooleStore_Repository
             db = context;
         }
 
-        public object getSubcategoryProducts(int SubcategoryId)
+        public List<Product> getSubcategoryProducts(int SubcategoryId)
         {
             List<Product> orders = db.Products.Where(product => product.SubcategoryId == SubcategoryId).ToList();
             return orders;
