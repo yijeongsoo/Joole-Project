@@ -1,5 +1,7 @@
-﻿@using JooleStoreApp.Models
-@model Product
+﻿@using JooleStoreApp.Models;
+@*@model Product*@
+
+@model dynamic
 
 @{
     ViewBag.Title = "View";
@@ -31,22 +33,55 @@ th {
 <!-- TODO: move styles to separate stylesheet -->
 <div style="width: 500px">
     <h4> Product Description </h4>
-    <table>
+    <!-- table>
         <tr>
             <th>Product Name</th>
-            <td>@Html.DisplayFor(Product => Product.ProductName)</td>
+            <td>@*Html.DisplayFor(Product => Product.ProductName)*@</td>
         </tr>
         <tr>
             <th>Product Series</th>
-            <td>@Html.DisplayFor(Product => Product.Series)</td>
+            <td>@*Html.DisplayFor(Product => Product.Series)*@</td>
         </tr>
         <tr>
             <th>Product Model</th>
-            <td>@Html.DisplayFor(Product => Product.Model)</td>
+            <td>@*Html.DisplayFor(Product => Product.Model)*@</td>
         </tr>
         <tr>
             <th>Model Year</th>
-            <td>@Html.DisplayFor(Product => Product.ModelYear)</td>
+            <td>@*Html.DisplayFor(Product => Product.ModelYear)*@</td>
         </tr>
+    </table> -->
+    <table>
+        @foreach(Product prod in Model.Products)
+        {
+            <tr>
+                <th>Product Name</th>
+                <td>@prod.ProductName</td>
+            </tr>
+            <tr>
+                <th>Product Series</th>
+                <td>@prod.Series</td>
+            </tr>
+            <tr>
+                <th>Product Model</th>
+                <td>@prod.Model</td>
+            </tr>
+            <tr>
+                <th>Model Year</th>
+                <td>@prod.ModelYear</td>
+            </tr>
+        }
+    </table> <br />
+
+    <h4> Product Type </h4>
+    <table>
+        @foreach(tblTypeRange typeRange in Model.TypeRanges)
+        {
+            <tr>
+                <th>@typeRange.TypeName</th>
+                <td>@typeRange.TypeOptions</td>
+            </tr>
+        }
     </table>
+
 </div>

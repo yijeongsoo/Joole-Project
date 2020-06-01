@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -34,7 +35,29 @@ namespace JooleStoreApp.Controllers
             prod.Model = descriptionElements[2];
             prod.ModelYear = int.Parse(descriptionElements[3]);
 
-            return View("ProductSummary", prod);
+            // test: hardcode a tblTypeRange object
+            tblTypeRange typeRange = new tblTypeRange();
+            typeRange.TypeName = "Resolution (Hardcoded)";
+            typeRange.TypeOptions = "1080 (Hardcoded)";
+            tblTypeRange typeRange2 = new tblTypeRange();
+            typeRange2.TypeName = "Screen Size (Hardcoded)";
+            typeRange2.TypeOptions = "24'' (Hardcoded)";
+
+            /* create lists for Product and tblTypeRange
+               depiste having one object only, we need to create a list in order for the dynamic model
+               and table rendering to work properly */
+            List<Product> prodList = new List<Product>();
+            prodList.Add(prod);
+            List<tblTypeRange> typeRangeList = new List<tblTypeRange>();
+            typeRangeList.Add(typeRange);
+            typeRangeList.Add(typeRange2);
+
+            // add both models to a dynamic model
+            dynamic productSummaryModel = new ExpandoObject();
+            productSummaryModel.Products = prodList;
+            productSummaryModel.TypeRanges = typeRangeList;
+
+            return View("ProductSummary", productSummaryModel);
         }
     }
 }
