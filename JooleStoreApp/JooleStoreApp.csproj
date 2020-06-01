@@ -157,6 +157,7 @@
     <Content Include="Content\JooleStyles\CompareProduct.css" />
     <Content Include="Content\JooleStyles\Layout.css" />
     <Content Include="Content\JooleStyles\Login.css" />
+    <Content Include="Content\JooleStyles\SearchResult.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -188,9 +189,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\ProductDetail\ProductDetail.cshtml" />
-    <Content Include="Views\ProductSummary\ProductSummary.cshtml" />
     <Content Include="Views\Search\Search.cshtml" />
     <Content Include="Views\CompareProduct\CompareProduct.cshtml" />
+    <Content Include="Views\ProductSummary\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
