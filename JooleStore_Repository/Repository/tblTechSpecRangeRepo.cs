@@ -11,13 +11,21 @@ namespace JooleStore_Repository
     public interface ITechSpecRangeRepo : IRepository<tblTechSpecRange>
     {
         // TODO: Define Methods
+        List<tblTechSpecRange> getTechSpecFilter(int subcategoryId);
     }
     public class TechSpecRangeRepo : Repository<tblTechSpecRange>, ITechSpecRangeRepo
     {
-        public TechSpecRangeRepo(DbContext context) : base(context)
+        JooleDataEntities db;
+        public TechSpecRangeRepo(JooleDataEntities context) : base(context)
         {
-
+            db = context;
         }
-        // TODO: Implement Methods
+
+        public List<tblTechSpecRange> getTechSpecFilter(int subcategoryId)
+        {
+            List<tblTechSpecRange> queryResult = db.tblTechSpecRanges.Where(specRange => specRange.SubcategoryId == subcategoryId).ToList();
+            return queryResult;
+        }
+        
     }
 }

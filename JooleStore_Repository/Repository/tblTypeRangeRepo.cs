@@ -1,18 +1,26 @@
 ﻿using JooleStore_DAL;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 
 namespace JooleStore_Repository
 {
     public interface ITypeRangeRepo : IRepository<tblTypeRange>
     {
-        // TODO: Define Methods
+        List<tblTypeRange> getFilterType(int subcategoryId);
     }
     public class TypeRangeRepo : Repository<tblTypeRange>, ITypeRangeRepo
     {
-        public TypeRangeRepo(DbContext context) : base(context)
-        { 
-        
+        JooleDataEntities db;
+        public TypeRangeRepo(JooleDataEntities context) : base(context)
+        {
+            db = context;
         }
-        // TODO: Implement Methods 
+
+        public List<tblTypeRange> getFilterType(int subcategoryId)
+        {
+            List<tblTypeRange> filterTypes = db.tblTypeRanges.Where(filterType => filterType.SubcategoryId == subcategoryId).ToList();
+            return filterTypes;
+        }
     }
 }

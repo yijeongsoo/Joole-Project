@@ -9,17 +9,20 @@
     <script src="https://kit.fontawesome.com/5d6d6a5d19.js" crossorigin="anonymous"></script>
     @RenderSection("CSSFilename", required: false)
     @Scripts.Render("~/bundles/modernizr")
+    
 </head>
 <body>
     <div class="header">
         <img src="~/Images/joole Logo.png" class="header__logo">
         <!-- For this form to refer to specific pages, I think we need to refer to current url -->
-        <form class="header__search">
+        <form class="header__search" action="/Search/OnSearch">
             <select id="search-dropdown" name="search-dropdown">
-                <option class="search__dropdown-list" value="temp">Mechanical</option>
-                <option class="search__dropdown-list" value="temp">Electrical</option>
-                <option class="search__dropdown-list" value="temp">Stationary</option>
-                <option class="search__dropdown-list" value="temp">Furniture</option>
+                <option class="search__dropdown-list" value="Mechanical">Mechanical</option>
+                <option class="search__dropdown-list" value="Electrical">Electrical</option>
+                <option class="search__dropdown-list" value="Stationary">Stationary</option>
+                <option class="search__dropdown-list" value="Furniture">Furniture</option>
+            </select>
+            <select id="subcategory" name="subcategory" style="width: 150px; height: 35px; color: black; background-color: white; border: none; border-radius: 5px;">
             </select>
             <input id="search-textinput" type="text" placeholder="Search..." />
             <button id="search-submit" type="submit">
@@ -36,6 +39,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/search.js")
     @RenderSection("scripts", required: false)
 </body>
 </html>

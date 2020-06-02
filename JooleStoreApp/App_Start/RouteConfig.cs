@@ -47,8 +47,8 @@ namespace JooleStoreApp
 
             routes.MapRoute(
                 name: "Search2",
-                url: "Search/{id}",
-                defaults: new { controller = "Search", action = "Index", id = UrlParameter.Optional }
+                url: "Search/OnSearch",
+                defaults: new { controller = "Search", action = "OnSearch", id = UrlParameter.Optional }
             );
 
             // Product Detail

@@ -8,7 +8,11 @@ namespace JooleStore_Repository
 {
     public interface IProductRepo : IRepository<Product>
     {
+
+        // TODO: Define Methods
+        List<Product> getSubcategoryProducts(int SubcategoryId);
         List<string> FindProduct(int ProductId);
+
     }
     public class ProductRepo : Repository<Product>, IProductRepo
     {
@@ -17,6 +21,14 @@ namespace JooleStore_Repository
         {
             db = context;
         }
+
+
+        public List<Product> getSubcategoryProducts(int SubcategoryId)
+        {
+            List<Product> orders = db.Products.Where(product => product.SubcategoryId == SubcategoryId).ToList();
+            return orders;
+        }
+        
         public List<string> FindProduct(int ProductId)
         {
             List<string> ProductList = new List<string>();
@@ -38,6 +50,6 @@ namespace JooleStore_Repository
             }
                 return ProductList;
         }
-        // TODO: Implement Methods
+       
     }
 }
