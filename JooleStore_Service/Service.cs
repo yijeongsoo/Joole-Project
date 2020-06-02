@@ -31,5 +31,10 @@ namespace JooleStore_Service
             prodId = 1.ToString();
             return unit.product.GetProductTypeRange(prodId);
         }
+
+        public Dictionary<string, string> GetTechSpecs()
+        {
+            return unit.product.GetTechSpecs();
+        }
     }
 }

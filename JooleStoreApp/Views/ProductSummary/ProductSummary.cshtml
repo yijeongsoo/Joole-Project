@@ -82,6 +82,17 @@ th {
                 <td>@typeRange.TypeOptions</td>
             </tr>
         }
+    </table> <br />
+
+    <h4> Product Tech Specs </h4>
+    <table>
+        @foreach(KeyValuePair<string, string> keyValue in Model.TechSpecs)
+        {
+            <tr>
+                <th>@keyValue.Key</th>
+                <td>@keyValue.Value</td>
+            </tr>
+        }
     </table>
 
 </div>

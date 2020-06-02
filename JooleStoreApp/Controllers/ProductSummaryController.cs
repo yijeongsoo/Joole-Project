@@ -37,14 +37,6 @@ namespace JooleStoreApp.Controllers
             prod.Model = descriptionElements[2];
             prod.ModelYear = int.Parse(descriptionElements[3]);
 
-            // test: hardcode a tblTypeRange object
-            tblTypeRange typeRange = new tblTypeRange();
-            typeRange.TypeName = "Resolution (Hardcoded)";
-            typeRange.TypeOptions = "1080 (Hardcoded)";
-            tblTypeRange typeRange2 = new tblTypeRange();
-            typeRange2.TypeName = "Screen Size (Hardcoded)";
-            typeRange2.TypeOptions = "24'' (Hardcoded)";
-
             /* add product to a list
                depiste having one object only, we need to create a list in order for the dynamic model
                and table rendering to work properly */
@@ -56,6 +48,9 @@ namespace JooleStoreApp.Controllers
 
             // get product type info
             GetProductTypeInfo();
+
+            // get tech specs
+            GetTechSpecs();
 
             return View("ProductSummary", productSummaryModel);
         }
@@ -79,6 +74,15 @@ namespace JooleStoreApp.Controllers
 
             // add typeRangeObj to the dynamic model
             productSummaryModel.TypeRanges = typeRanges;
+        }
+
+        public void GetTechSpecs()
+        {
+            Service service = new Service();
+            Dictionary<string, string> techSpecs = service.GetTechSpecs();
+
+            // add to dynamic model
+            productSummaryModel.TechSpecs = techSpecs;
         }
     }
 }

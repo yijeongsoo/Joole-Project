@@ -11,10 +11,18 @@ namespace JooleStore_Repository
         // TODO: Define Methods
         List<string> GetProductDescription(string id);
         Dictionary<string, string> GetProductTypeRange(string prodId);
+        Dictionary<string, string> GetTechSpecs();
     }
     public class ProductRepo : Repository<Product>, IProductRepo
     {
         JooleDataEntities db;
+
+        /* TODO: might need to refactor this. For right now, we are keeping a list of the tech specs
+           (populated when GetProductTypeRange finds a tech spech). This can be retrieved after getting
+           the product type ranges
+        */
+        Dictionary<string, string> techSpecs = new Dictionary<string, string>();
+
         public ProductRepo(JooleDataEntities context) : base(context)
         {
             db = context;
@@ -52,7 +60,8 @@ namespace JooleStore_Repository
             var queryResult = from prop in db.Properties
                               join propval in db.tblPropertyValues on prop.PropertyId equals propval.PropertyId
                               where propval.ProductId == 1
-                              select new { PropertyName = prop.PropertyName, PropertyValue = propval.PropertyValue };
+                              select new { PropertyName = prop.PropertyName, PropertyValue = propval.PropertyValue,
+                                           IsTechSpech = prop.isTechSpec };
 
 
             foreach(var result in queryResult)
@@ -60,10 +69,19 @@ namespace JooleStore_Repository
                 System.Diagnostics.Debug.WriteLine("PV: " + result.PropertyName + " : " +
                                                     result.PropertyValue);
 
-                typeRangeElements.Add(result.PropertyName, result.PropertyValue);
+                // add to tech spec list if needed
+                if(result.IsTechSpech)
+                    techSpecs.Add(result.PropertyName, result.PropertyValue);
+                else
+                    typeRangeElements.Add(result.PropertyName, result.PropertyValue);
             }
 
             return typeRangeElements;
+        }
+
+        public Dictionary<string, string> GetTechSpecs()
+        {
+            return techSpecs;
         }
 
         // TODO: Implement Methods
