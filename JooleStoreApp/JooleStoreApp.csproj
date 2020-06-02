@@ -148,6 +148,7 @@
     <Compile Include="Models\tblTechSpecRange.cs" />
     <Compile Include="Models\tblTypeRange.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\CompareProductVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -161,7 +162,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\BriteLite.jpg" />
     <Content Include="Images\joole Logo.png" />
+    <Content Include="Images\StandLight.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -212,10 +215,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JooleStore_Repository\JooleStore_Repository.csproj">
-      <Project>{88ACD694-E30F-421A-A6DC-ED3E6F29385C}</Project>
-      <Name>JooleStore_Repository</Name>
-    </ProjectReference>
     <ProjectReference Include="..\JooleStore_Service\JooleStore_Service.csproj">
       <Project>{cebf97e9-dd1e-4375-8121-c929f33c16a2}</Project>
       <Name>JooleStore_Service</Name>

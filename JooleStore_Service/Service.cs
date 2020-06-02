@@ -23,5 +23,55 @@ namespace JooleStore_Service
         {
             return unit.consumer.CheckCredentials(email, password);
         }
+
+        public List<string> FindProduct(int ProductId)
+        {
+            List<string> ProductList = unit.product.FindProduct(ProductId);
+            return ProductList;
+        }
+
+        public List<string> FindManufacturer(int ManufacturerId)
+        {
+            List<string> ManufacturerList = unit.manufacturer.FindManufacturer(ManufacturerId);
+            return ManufacturerList;
+        }
+
+        public List<string> FindSubcategory(int SubcategoryId)
+        {
+            List<string> SubcategoryList = unit.subcategory.FindSubcategory(SubcategoryId);
+            return SubcategoryList;
+        }
+
+        public List<string> FindProperty(int PropertyId)
+        {
+            List<string> PropertyList = unit.property.FindProperty(PropertyId);
+            return PropertyList;
+        }
+
+        public List<List<List<string>>> FindAllPropertyAndValuePair(int productId)
+        {
+            List<List<List<string>>> AllValuePropertyPair = new List<List<List<string>>>();
+            List<List<string>> ValueLists = unit.propertyValue.FindAllPropertyValueByProduct(productId);
+            foreach (List<string> ValueList in ValueLists)
+            {
+                List<List<string>> ValuePropertyPair = new List<List<string>>();
+                List<string> PropertyList = unit.property.FindProperty(Int32.Parse(ValueList[1]));
+                ValuePropertyPair.Add(PropertyList);
+                ValuePropertyPair.Add(ValueList);
+                AllValuePropertyPair.Add(ValuePropertyPair);
+            }
+            return AllValuePropertyPair;
+        }
+
+        public List<List<string>> GetAllPropertyByProductId(int productId)
+        {
+            List<List<string>> PropertyList = unit.property.GetAllPropertyByProductId(productId);
+            return PropertyList;
+        }
+        public List<List<string>> GetAllPropertyValueById(int productId)
+        {
+            List<List<string>> PropertyValueList = unit.propertyValue.FindAllPropertyValueByProduct(productId);
+            return PropertyValueList;
+        }
     }
 }

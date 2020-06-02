@@ -1,8 +1,86 @@
-﻿
+﻿@model JooleStoreApp.ViewModels.CompareProductVM
+
 @{
     ViewBag.Title = "View";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Compare Product</h2>
+@section CSSFilename
+{
+    <link href="~/Content/JooleStyles/Layout.css" rel="stylesheet" />
+    <link href="~/Content/JooleStyles/CompareProduct.css" rel="stylesheet" />
+}
 
+
+<body>
+    <div class="compareProduct">
+        <div class="compareProduct_container">
+            <div class="compareProduct_dirContainer">
+                <a class="compareProduct_directory">Mechanical > HVAC FANS > Compare</a>
+            </div>
+            <table class="compareProduct_table">
+                <tr>
+                    <td class="compareProduct_table_image"></td>
+                    <td class="compareProduct_table_image"><img src=@Model.comparingProducts[0].product.ProductImage></td>
+                    <td class="compareProduct_table_image"><img src=@Model.comparingProducts[1].product.ProductImage></td>
+                </tr>
+                <tr>
+                    <td class="compareProduct_table_bigLabel" colspan="3">DESCRIPTION</td>
+                </tr>
+                <tr>
+                    <td class="compareProduct_table_smallLabel">Manufacturer</td>
+                    <td class="compareProduct_table_data">@Model.comparingProducts[0].manufacturer.ManufacturerName</td>
+                    <td class="compareProduct_table_data">@Model.comparingProducts[1].manufacturer.ManufacturerName</td>
+                </tr>
+                <tr>
+                    <td class="compareProduct_table_smallLabel">Series</td>
+                    <td class="compareProduct_table_data">@Model.comparingProducts[0].product.Series</td>
+                    <td class="compareProduct_table_data">@Model.comparingProducts[1].product.Series</td>
+                </tr>
+                <tr>
+                    <td class="compareProduct_table_smallLabel">Model</td>
+                    <td class="compareProduct_table_data">@Model.comparingProducts[0].product.Model</td>
+                    <td class="compareProduct_table_data">@Model.comparingProducts[1].product.Model</td>
+                </tr>
+                <tr>
+                    <td class="compareProduct_table_smallLabel">Model Year</td>
+                    <td class="compareProduct_table_data">@Model.comparingProducts[0].product.ModelYear</td>
+                    <td class="compareProduct_table_data">@Model.comparingProducts[1].product.ModelYear</td>
+                </tr>
+                <tr>
+                    <td class="compareProduct_table_bigLabel" colspan="3">TYPE</td>
+                </tr>
+
+                @{
+                    for (int i = 0; i < Model.comparingProducts[0].propertyValuesVM.Count(); i++)
+                    {
+                        if (Model.comparingProducts[0].propertyValuesVM[i].property.isType == true)
+                        {
+                            <tr>
+                                <td class="compareProduct_table_smallLabel">@Model.comparingProducts[0].propertyValuesVM[i].property.PropertyName</td>
+                                <td class="compareProduct_table_data">@Model.comparingProducts[0].propertyValuesVM[i].propertyValue.PropertyValue</td>
+                                <td class="compareProduct_table_data">@Model.comparingProducts[1].propertyValuesVM[i].propertyValue.PropertyValue</td>
+                            </tr>
+                        }
+                    }
+                }
+                <tr>
+                    <td class="compareProduct_table_bigLabel" colspan="3">TECHNICAL SPECIFICATIONS</td>
+                </tr>
+                @{
+                    for (int i = 0; i < Model.comparingProducts[0].propertyValuesVM.Count(); i++)
+                    {
+                        if (Model.comparingProducts[0].propertyValuesVM[i].property.isTechSpec == true)
+                        {
+                            <tr>
+                                <td class="compareProduct_table_smallLabel">@Model.comparingProducts[0].propertyValuesVM[i].property.PropertyName</td>
+                                <td class="compareProduct_table_data">@Model.comparingProducts[0].propertyValuesVM[i].propertyValue.PropertyValue</td>
+                                <td class="compareProduct_table_data">@Model.comparingProducts[1].propertyValuesVM[i].propertyValue.PropertyValue</td>
+                            </tr>
+                        }
+                    }
+                }
+            </table>
+        </div>
+    </div>
+</body>
