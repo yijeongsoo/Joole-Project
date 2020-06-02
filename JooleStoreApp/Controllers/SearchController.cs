@@ -23,11 +23,11 @@ namespace JooleStoreApp.Controllers
             //getting subcategoryid from search page
             int subcategoryId = subcategory;
             Service service = new Service();
-            List<Product> list = service.getSubcategoryProducts(subcategoryId);
-            List<ProductM> prodList = new List<ProductM>();
-            foreach (Product prod in list)
+            List<JooleStore_DAL.Product> list = service.getSubcategoryProducts(subcategoryId);
+            List<Models.ProductM> prodList = new List<Models.ProductM>();
+            foreach (JooleStore_DAL.Product prod in list)
             {
-                ProductM newProd = new ProductM
+                Models.ProductM newProd = new Models.ProductM
                 {
                     ManufacturerId = prod.ManufacturerId,
                     ProductId = prod.ProductId,

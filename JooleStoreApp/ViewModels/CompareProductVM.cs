@@ -13,7 +13,7 @@ namespace JooleStoreApp.ViewModels
     }
     public class ProductValuesVM
     { 
-        public Product product { get; set; }
+        public ProductM product { get; set; }
         public Manufacturer manufacturer { get; set; }
         public Subcategory subcategory { get; set; }
         public List<PropertyValuesVM> propertyValuesVM { get; set; }

@@ -23,8 +23,8 @@ namespace JooleStoreApp.Controllers
             CompareVM.comparingProducts = new List<ProductValuesVM>();
             ProductValuesVM ProductVM1 = new ProductValuesVM();
             ProductValuesVM ProductVM2 = new ProductValuesVM();
-            Product product1 = GetProductByName(product1Id); // Comment out after testing
-            Product product2 = GetProductByName(product2Id); // Comment out after testing
+            ProductM product1 = GetProductByName(product1Id); // Comment out after testing
+            ProductM product2 = GetProductByName(product2Id); // Comment out after testing
             ProductVM1.product = product1;
             ProductVM2.product = product2;
             Manufacturer manufacturer1 = GetManufacturer(product1.ManufacturerId);
@@ -72,11 +72,11 @@ namespace JooleStoreApp.Controllers
             return propertyValuesVM;
 
         }
-        public Product GetProductByName(int productId)
+        public ProductM GetProductByName(int productId)
         {
             Service service = new Service();
             List<String> strList = service.FindProduct(productId);
-            Product product = new Product
+            ProductM product = new ProductM
             {
                 ProductId = Int32.Parse(strList[1]),
                 ManufacturerId = Int32.Parse(strList[2]),
