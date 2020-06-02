@@ -1,4 +1,4 @@
-﻿@model JooleStoreApp.ViewModels.CompareProductVM
+﻿
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,9 +7,9 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
 
     <script src="https://kit.fontawesome.com/5d6d6a5d19.js" crossorigin="anonymous"></script>
-    @RenderSection("CSSFilename", required: false)
+    @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    
+
 </head>
 <body>
     <div class="header">
@@ -24,7 +24,6 @@
             </select>
             <select id="subcategory" name="subcategory" style="width: 150px; height: 35px; color: black; background-color: white; border: none; border-radius: 5px;">
             </select>
-            <input id="search-textinput" type="text" placeholder="Search..." />
             <button id="search-submit" type="submit">
                 <i class="fas fa-search"></i>
             </button>
@@ -40,6 +39,5 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/Scripts/search.js")
-    @RenderSection("scripts", required: false)
 </body>
 </html>
