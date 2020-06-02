@@ -18,6 +18,12 @@ namespace JooleStoreApp.Controllers
         {
             return View("Login", new Consumer());
         }
+
+        public void setSession(string email)
+        {
+            Service service = new Service();
+            
+        }
         public ActionResult Login()
         {
             Consumer consumer = new Consumer
@@ -32,9 +38,10 @@ namespace JooleStoreApp.Controllers
 
             if (login)
             {
-                FormsAuthentication.SetAuthCookie(consumer.UserEmail, true);
+                Session["ProfileImage"] = service.GetUser(consumer.UserEmail)["UserImage"];
                 return RedirectToAction("Index", "Search");
             }
+            ViewBag.ErrorMsg = "Wrong Username and Password!";
             return View("Login", new Consumer());
         }
 
@@ -70,6 +77,7 @@ namespace JooleStoreApp.Controllers
                     signupImage.SaveAs(Server.MapPath("~/Images/") + filename);
                 }
 
+                Session["ProfileImage"] = filename;
                 return RedirectToAction("Index", "Search");
             }
 
