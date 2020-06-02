@@ -3,17 +3,39 @@ html {
     overflow-y: hidden;
 }
 
+.login__error-box {
+    display: flex;
+    justify-content: center;
+    top: 33px;
+    position: absolute;
+    width: 100%;
+}
+
+.login__error-msg {
+    text-align: center;
+    padding: 5px 15px;
+    border-radius: 5px;
+    background-color: #d9534f;
+    color: white;
+    font-weight: bold;
+}
+
+.login__error-msg:hover {
+    background-color: #b34542;
+}
+
 .login {
     width: 100vw;
     height: 100vh;
     background: linear-gradient(360deg, rgba(2,0,36,1), 0%, rgba(255,255,255,1) 0%, rgba(0,73,134,1) 100%);
 }
 
-.login__signup{
+.login__signup {
     width: 100%;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
+    z-index: 1000;
 }
 
 .login__signup-link {
@@ -24,6 +46,7 @@ html {
 
 .login__signup-link:hover {
     color: grey;
+    cursor: pointer;
 }
 
 .login__container {
@@ -81,4 +104,62 @@ html {
 
 .login__submit:hover {
     background-color: #0d5582;
+}
+
+.modal__image-container{
+    margin-left: 222px;
+    padding-bottom: 20px;
+}
+
+.modal__profile-image{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+
+.modal__form-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.modal__error-container {
+    margin-left: 10px;
+}
+
+.modal__error-msg{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 37px;
+    color: red;
+}
+
+.modal__form{
+    display: flex;
+    flex-direction: column;
+    width: 420px;
+}
+
+.modal__input{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal__textinput {
+    margin: 1px 0px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+    padding: 5px 10px;
+    height: 35px;
+}
+
+.modal__title{
+    font-size: 20px;
+}
+
+.modal__text {
+    margin-top: 0px;
+    font-size: 16px;
+    font-weight: bold;
 }

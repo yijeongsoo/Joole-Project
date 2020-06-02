@@ -9,6 +9,7 @@ namespace JooleStore_Repository
     {
         // TODO: Define the methods
         bool CheckCredentials(string email, string password);
+        bool RegisterUser(string username, string password, string email, string imageName);
     }
     public class ConsumerRepo : Repository<User>, IConsumerRepo
     {
@@ -31,6 +32,23 @@ namespace JooleStore_Repository
             }
             return confirmLogin;
         }
-        
+
+        public bool RegisterUser(string username, string password, string email, string imageName)
+        {
+            var dbList = db.Users.ToList();
+
+            foreach (User element in dbList)
+            {
+                if (element.UserEmail.ToString() == email && element.UserPassword.ToString() == password)
+                {
+                    return false;
+                }
+            }
+
+            db.Users.Add(new User { UserName = username, UserPassword = password, UserEmail = email, UserImage = imageName });
+            db.SaveChanges();
+
+            return true;
+        }
     }
 }
