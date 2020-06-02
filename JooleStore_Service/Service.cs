@@ -15,6 +15,10 @@ namespace JooleStore_Service
             unit = UnitOfWork.GetInstance();
         }
 
+        public bool SignUpCustomer(string username, string password, string email, string imageName)
+        {
+            return unit.consumer.RegisterUser(username, password, email, imageName);
+        }
         public bool LoginCustomer(string email, string password)
         {
             return unit.consumer.CheckCredentials(email, password);

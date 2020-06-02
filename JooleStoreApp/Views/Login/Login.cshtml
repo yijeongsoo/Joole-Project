@@ -1,4 +1,5 @@
-﻿
+﻿@model JooleStoreApp.Models.Consumer
+
 @{
     Layout = null;
 }
@@ -9,15 +10,88 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Joole Store</title>
-    <link href="~/Content/JooleStyles/Login.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/5d6d6a5d19.js" crossorigin="anonymous"></script>
+
     @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     <div class="login">
+        @if (@ViewBag.ErrorMsg != null)
+        {
+            <div class="login__error-box">
+                <div class="login__error-msg">
+                    @ViewBag.ErrorMsg
+                </div>
+            </div>
+        }
+
         <div class="login__signup">
-            <a link="" class="login__signup-link">Sign Up</a>
+            <p class="login__signup-link" data-toggle="modal" data-target="#exampleModalCenter">Sign Up</p>
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-content modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <div class="modal__title" id="exampleModalLongTitle">Register as User</div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal__image-container">
+                            <p><b>Image Preview</b></p>
+                            <img id="modal-profile-image" class="modal__profile-image" />
+                            <p><b>Your Profile Pic</b></p>
+                            <input type="file" name="signupImage" onchange="loadImage(event)" form="modal-form" />
+                        </div>
+                        <form class="modal__form-container" method="post" action="@Url.Action("SignUp", "Login")" id="modal-form" enctype="multipart/form-data">
+                            <div class="modal__form">
+                                <div class="modal__input">
+                                    <div class="modal__text">Username: </div>
+                                    @Html.Editor("UserName", new { htmlAttributes = new { @class = "modal__textinput", placeholder = "User Name" } })
+                                </div>
+
+                                <div class="modal__input">
+                                    <div class="modal__text">Email Address: </div>
+                                    @Html.Editor("UserEmail", new { htmlAttributes = new { @class = "modal__textinput", placeholder = "Email Id" } })
+                                </div>
+                                <div class="modal__input">
+                                    <div class="modal__text">Password: </div>
+                                    @Html.PasswordFor(m => m.UserPassword, new { @class = "modal__textinput", placeholder = "Password" })
+                                </div>
+                                <div class="modal__input">
+                                    <div class="modal__text">Confirm Password: </div>
+                                    <input class="modal__textinput" data-val="true" data-val-required="Required" name="ConfirmPassword" placeholder="Password" type="password">
+                                </div>
+                            </div>
+                            <div class="modal__error-container">
+                                <div class="modal__error-msg">
+                                    @Html.ValidationMessageFor(m => m.UserName, null)
+                                </div>
+                                <div class="modal__error-msg">
+                                    @Html.ValidationMessageFor(m => m.UserEmail, null)
+                                </div>
+                                <div class="modal__error-msg">
+                                    @Html.ValidationMessageFor(m => m.UserPassword, null)
+                                </div>
+                                <div class="modal__error-msg">
+                                    @Html.ValidationMessageFor(m => m.UserPassword, null)
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-primary" form="modal-form" value="Sign Up" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="login__container">
             <img src="~/Images/joole Logo.png" />
             <h4 class="login__subtitle">Building Product Selection Platform</h4>
@@ -25,6 +99,8 @@
                 <div class="login__input-container">
                     <input class="login__textinput" name="LoginID" type="text" placeholder="Username or Email" />
                     <i class="fas fa-user login__icon"></i>
+                    @Html.ValidationMessageFor(m => m.UserName)
+                    @Html.ValidationMessage("LoginID")
                 </div>
                 <div class="login__input-container">
                     <input class="login__textinput" name="LoginPW" type="text" placeholder="Password" />
@@ -34,5 +110,15 @@
             </form>
         </div>
     </div>
+
+    <script>
+        var loadImage = function (event) {
+            var image = document.getElementById('modal-profile-image');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+    </script>
+
+    
+    @Scripts.Render("~/bundles/bootstrap")
 </body>
 </html>
