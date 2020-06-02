@@ -3,7 +3,9 @@
 
 table {
 }
-
+body { 
+    margin: 0px; 
+}
 tr {
     height: 30px;
 }
