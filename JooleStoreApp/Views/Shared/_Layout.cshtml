@@ -8,11 +8,13 @@
 
     <script src="https://kit.fontawesome.com/5d6d6a5d19.js" crossorigin="anonymous"></script>
     @RenderSection("CSSFilename", required: false)
+    @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     <div class="header">
-        <img src="~/Images/joole Logo.png" class="header__logo">
+        <a href="@Url.Action("Index", "Search")"><img src="~/Images/joole Logo.png" class="header__logo"></a>
+        
         <!-- For this form to refer to specific pages, I think we need to refer to current url -->
         <form class="header__search">
             <select id="search-dropdown" name="search-dropdown">
