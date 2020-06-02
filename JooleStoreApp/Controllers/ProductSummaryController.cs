@@ -11,11 +11,13 @@ namespace JooleStoreApp.Controllers
 {
     public class ProductSummaryController : Controller
     {
+        // use a dynamic model to display multiple models in the view
+        public dynamic productSummaryModel = new ExpandoObject();
+
         // GET: ProductSummary
         public ActionResult Index()
         {
             GetProductSummary();
-            GetProductTypeInfo();
             return View("ProductSummary");
         }
 
@@ -43,19 +45,17 @@ namespace JooleStoreApp.Controllers
             typeRange2.TypeName = "Screen Size (Hardcoded)";
             typeRange2.TypeOptions = "24'' (Hardcoded)";
 
-            /* create lists for Product and tblTypeRange
+            /* add product to a list
                depiste having one object only, we need to create a list in order for the dynamic model
                and table rendering to work properly */
             List<Product> prodList = new List<Product>();
             prodList.Add(prod);
-            List<tblTypeRange> typeRangeList = new List<tblTypeRange>();
-            typeRangeList.Add(typeRange);
-            typeRangeList.Add(typeRange2);
 
-            // add both models to a dynamic model
-            dynamic productSummaryModel = new ExpandoObject();
+            // add add the above list to the dynamic model
             productSummaryModel.Products = prodList;
-            productSummaryModel.TypeRanges = typeRangeList;
+
+            // get product type info
+            GetProductTypeInfo();
 
             return View("ProductSummary", productSummaryModel);
         }
@@ -63,8 +63,22 @@ namespace JooleStoreApp.Controllers
         public void GetProductTypeInfo()
         {
             Service service = new Service();
+            List<tblTypeRange> typeRanges = new List<tblTypeRange>();
+            Dictionary<string, string> dict = service.GetProductTypeRange("1");
 
-            service.GetProductTypeRange("1");
+            // populate tblTypeRange object with dictionary values
+            foreach(KeyValuePair<string, string> keyVals in dict)
+            {
+                tblTypeRange currentTypeRange = new tblTypeRange();
+                currentTypeRange.TypeName = keyVals.Key;
+                currentTypeRange.TypeOptions = keyVals.Value;
+
+                // add current typeRange to list
+                typeRanges.Add(currentTypeRange);
+            }
+
+            // add typeRangeObj to the dynamic model
+            productSummaryModel.TypeRanges = typeRanges;
         }
     }
 }
