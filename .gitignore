@@ -339,5 +339,3 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 
-# Don't include App.config
-JooleStore_DAL/App.config

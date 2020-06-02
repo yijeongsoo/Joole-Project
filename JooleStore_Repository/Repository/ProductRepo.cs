@@ -8,8 +8,11 @@ namespace JooleStore_Repository
 {
     public interface IProductRepo : IRepository<Product>
     {
+
         // TODO: Define Methods
         List<Product> getSubcategoryProducts(int SubcategoryId);
+        List<string> FindProduct(int ProductId);
+
     }
     public class ProductRepo : Repository<Product>, IProductRepo
     {
@@ -19,10 +22,33 @@ namespace JooleStore_Repository
             db = context;
         }
 
+
         public List<Product> getSubcategoryProducts(int SubcategoryId)
         {
             List<Product> orders = db.Products.Where(product => product.SubcategoryId == SubcategoryId).ToList();
             return orders;
+        }
+        
+        public List<string> FindProduct(int ProductId)
+        {
+            List<string> ProductList = new List<string>();
+            var dbList = db.Products.ToList();
+            foreach (Product element in dbList)
+            {
+                if (element.ProductId == ProductId)
+                {
+                    ProductList.Add("Yes");
+                    ProductList.Add(element.ProductId.ToString());
+                    ProductList.Add(element.ManufacturerId.ToString());
+                    ProductList.Add(element.SubcategoryId.ToString());
+                    ProductList.Add(element.ProductName);
+                    ProductList.Add(element.ProductImage);
+                    ProductList.Add(element.Series);
+                    ProductList.Add(element.ModelYear.ToString());
+                    ProductList.Add(element.Model);
+                }
+            }
+                return ProductList;
         }
        
     }

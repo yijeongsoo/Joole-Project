@@ -9,7 +9,7 @@ namespace JooleStoreApp.Models
     {
         public int PropertyId { get; set; }
         public int ProductId { get; set; }
-        public int PropertyValue { get; set; }
+        public string PropertyValue { get; set; }
 
     }
 }
