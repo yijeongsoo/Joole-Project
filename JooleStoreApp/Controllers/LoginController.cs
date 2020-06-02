@@ -72,6 +72,7 @@ namespace JooleStoreApp.Controllers
 
                 return RedirectToAction("Index", "Search");
             }
+
             // If user already exist in db or error during connecting to db
             else {
                 ViewBag.ErrorMsg = "User already exist!";
