@@ -14,8 +14,14 @@ namespace JooleStoreApp.Controllers
         // GET: Search
         public ActionResult Index()
         {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult OnSearch(int subcategoryId) 
+        {
             //get subcategoryid from search page
-            int subcategoryId = 1;
+            //int subcategoryId = 1;
             Service service = new Service();
             List<Product> list = service.getSubcategoryProducts(subcategoryId);
             List<ProductM> prodList = new List<ProductM>();

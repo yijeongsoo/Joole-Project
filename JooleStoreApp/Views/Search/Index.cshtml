@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Search</h2>
+@{int subCategoryId = 1; }
+<form action="/Search/OnSearch">
+    <input type="number" name="subcategoryId" required/>
+    <button class="btn-primary" type="submit">Search</button>
+</form>
+
