@@ -18,10 +18,10 @@ namespace JooleStoreApp.Controllers
         }
 
         [HttpGet]
-        public ActionResult OnSearch(int subcategoryId) 
+        public ActionResult OnSearch(int subcategory) 
         {
-            //get subcategoryid from search page
-            //int subcategoryId = 1;
+            //getting subcategoryid from search page
+            int subcategoryId = subcategory;
             Service service = new Service();
             List<Product> list = service.getSubcategoryProducts(subcategoryId);
             List<ProductM> prodList = new List<ProductM>();
