@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using JooleStore_Repository;
+using Microsoft.Win32;
 
 namespace JooleStore_Service
 {
@@ -13,6 +14,11 @@ namespace JooleStore_Service
         public UnitOfWork unit;
         public Service() {
             unit = UnitOfWork.GetInstance();
+        }
+
+        public Dictionary<string, string> GetUser(string email)
+        {
+            return unit.consumer.GetUser(email);
         }
 
         public bool SignUpCustomer(string username, string password, string email, string imageName)

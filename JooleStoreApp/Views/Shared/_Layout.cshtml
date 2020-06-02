@@ -28,7 +28,12 @@
                 <i class="fas fa-search"></i>
             </button>
         </form>
-        <div class="header__user-image"></div>
+        <div>
+            @if (Session["ProfileImage"] != null)
+            {
+                <img src="~/Images/@Session["ProfileImage"]" class="header__user-image">
+            }
+        </div>
     </div>
     <div class="container">
         <div class="row">
