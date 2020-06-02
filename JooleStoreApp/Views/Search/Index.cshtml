@@ -1,12 +1,35 @@
-﻿
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    Layout = null;
 }
 
-<h2>Search</h2>
-@{int subCategoryId = 1; }
-<form action="/Search/OnSearch">
-    <input type="number" name="subcategoryId" required/>
-    <button class="btn-primary" type="submit">Search</button>
-</form>
+<!DOCTYPE html>
 
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Joole Store</title>
+
+    <script src="https://kit.fontawesome.com/5d6d6a5d19.js" crossorigin="anonymous"></script>
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <div class="login">
+        <div class="login__container">
+            <img src="~/Images/joole Logo.png" />
+            <h4 class="login__subtitle">Building Product Selection Platform</h4>
+            <form class="header__search" action="/Search/OnSearch">
+                <select id="search-dropdown" name="search-dropdown">
+                    <option class="search__dropdown-list" value="temp">Mechanical</option>
+                    <option class="search__dropdown-list" value="temp">Electrical</option>
+                    <option class="search__dropdown-list" value="temp">Stationary</option>
+                    <option class="search__dropdown-list" value="temp">Furniture</option>
+                </select>
+                <input type="number" id="search-textinput" name="subcategoryId" required />
+                <button id="search-submit" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
