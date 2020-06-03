@@ -89,10 +89,6 @@ namespace JooleStore_Repository
         public Dictionary<string, string> GetTechSpecs()
         {
             return techSpecs;
-        JooleDataEntities db;
-        public ProductRepo(JooleDataEntities context) : base(context)
-        {
-            db = context;
         }
 
 
