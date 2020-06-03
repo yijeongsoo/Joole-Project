@@ -15,28 +15,38 @@
             </div>
         </div>
         <div class="filter-box__type">
-            <h4 class="filter-box__title">Product Type</h4>
-            @foreach (var item in Model.TypeRangeFilterList)
-            {
-                <label for="@Html.DisplayFor(modelItem => item.TypeName)">@Html.DisplayFor(modelItem => item.TypeName)</label>
-                <select name="@Html.DisplayFor(modelItem => item.TypeName)" id="@Html.DisplayFor(modelItem => item.TypeName)">
-                    @foreach (var item2 in item.TypeOptions)
-                    {
-                        <option value="@item2">@item2</option>
-                    }
-                </select>
-                <br/>
-            }
+            <div class="filter-box__title-container" id="product-type">
+                <h4 class="filter-box__title">Product Type</h4>
+                <i class="fas fa-caret-down"></i>
+            </div>
+            <div id="filter-box__type-content">
+                @foreach (var item in Model.TypeRangeFilterList)
+                {
+                    <label for="@Html.DisplayFor(modelItem => item.TypeName)">@Html.DisplayFor(modelItem => item.TypeName)</label>
+                    <select name="@Html.DisplayFor(modelItem => item.TypeName)" id="@Html.DisplayFor(modelItem => item.TypeName)">
+                        @foreach (var item2 in item.TypeOptions)
+                        {
+                            <option value="@item2">@item2</option>
+                        }
+                    </select>
+                    <br />
+                }
+            </div>
         </div>
         <div class="filter-box__tech">
-            <h4 class="filter-box__title">Technical Specifications</h4>
-            @foreach (var item in Model.TechSpecFilterList)
-            {
-                <p>
-                    <label for="amount">PropertyId: @item.PropertyId</label>
-                    <input type="range" min=@item.MinValue max=@item.MaxValue readonly style="border:0; color:#f6931f; font-weight:bold;">
-                </p>
-            }
+            <div class="filter-box__title-container" id="tech-spec">
+                <h4 class="filter-box__title">Technical Specifications</h4>
+                <i class="fas fa-caret-down"></i>
+            </div>
+            <div id="filter-box__tech-content">
+                @foreach (var item in Model.TechSpecFilterList)
+                {
+                    <p>
+                        <label for="amount">PropertyId: @item.PropertyId</label>
+                        <input type="range" min=@item.MinValue max=@item.MaxValue readonly style="border:0; color:#f6931f; font-weight:bold;">
+                    </p>
+                }
+            </div>
         </div>
     </div>
 
@@ -74,6 +84,19 @@
 </div>
 
 <script>
+    $(document).ready(function () {
+        $("#product-type").click();
+        $("#tech-spec").click();
+    })
+
+    $("#product-type").click(function () {
+        $("#filter-box__type-content").slideToggle("fast");
+    });
+
+    $("#tech-spec").click(function () {
+        $("#filter-box__tech-content").slideToggle("fast");
+    });
+
     $("#compare-submit").on("click", function () {
         let url = "";
         let count = 1;

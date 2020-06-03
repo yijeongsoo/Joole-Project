@@ -37,8 +37,20 @@
     padding: 5px 20px;
 }
 
+.filter-box__title-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filter-box__title-container:hover {
+    cursor: pointer;
+}
+
 .filter-box__title {
     font-size: 17px;
+    margin: 0px;
+    padding: 10px 0px;
 }
 
 .filter-box__button {

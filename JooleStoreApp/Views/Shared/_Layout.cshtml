@@ -31,7 +31,7 @@
             </button>
         </form>
         <div>
-            @if (Session["ProfileImage"] != null)
+            @if (@Session["ProfileImage"] != null)
             {
                 <img src="~/Images/@Session["ProfileImage"]" class="header__user-image">
             }
