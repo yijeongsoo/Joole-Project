@@ -58,7 +58,9 @@
 </div>
 <br />
 <div class="compare-button">
-    <button class="btn-primary">Compare</button>
+    <form class="login__form" method="post" action="@Url.Action("Compare")">
+        <button class="btn-primary" type="submit" onclick="submit">Compare</button>
+    </form>
 </div>
 
 

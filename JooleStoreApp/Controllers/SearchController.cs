@@ -18,7 +18,7 @@ namespace JooleStoreApp.Controllers
         }
 
         [HttpGet]
-        public ActionResult OnSearch(int subcategory) 
+        public ActionResult OnSearch(int subcategory)
         {
             //getting subcategoryid from search page
             int subcategoryId = subcategory;
@@ -75,5 +75,9 @@ namespace JooleStoreApp.Controllers
             return View("SearchResult", viewModel);
         }
 
+        public ActionResult Compare(int product1Id = 2, int product2Id = 3)
+        {
+            return RedirectToAction("CompareProduct", "CompareProduct", new { product1Id, product2Id });
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace JooleStoreApp.Controllers
         {
             return View("CompareProduct");
         }
-        public ActionResult CompareProduct(int product1Id = 2, int product2Id = 3)
+        public ActionResult CompareProduct(int product1Id, int product2Id)
         {
             CompareProductVM CompareVM = new CompareProductVM();
             CompareVM.comparingProducts = new List<ProductValuesVM>();

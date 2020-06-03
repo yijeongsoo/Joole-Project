@@ -1,6 +1,10 @@
 ﻿html {
+    overflow-y:scroll;
 }
-
+img {
+    vertical-align: middle;
+    max-width: 200px;
+}
 table {
 }
 body { 
@@ -47,11 +51,11 @@ td {
     border-collapse: collapse;
 }
 .compareProduct_table_image {
-    height: 200px;
     border: solid 1px;
     border-color: lightgrey;
     text-align: center;
     width: 300px;
+    height: 200px;
 }
 .compareProduct_table_bigLabel {
     background-color: lightgrey;
