@@ -16,7 +16,7 @@
         <a href="@Url.Action("Index", "Search")"><img src="~/Images/joole Logo.png" class="header__logo"></a>
         
         <!-- For this form to refer to specific pages, I think we need to refer to current url -->
-        <form class="header__search" action="/Search/OnSearch">
+        <form class="header__search" action="/Search/OnSearch" method="post">
             <select id="search-dropdown" name="search-dropdown">
                 <option class="search__dropdown-list" value="Mechanical">Mechanical</option>
                 <option class="search__dropdown-list" value="Electrical">Electrical</option>
