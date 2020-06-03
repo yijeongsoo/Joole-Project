@@ -4,63 +4,99 @@
     ViewBag.Title = "SearchResult";
 }
 
-
 <link href="~/Content/JooleStyles/SearchResult.css" rel="stylesheet" />
-<div class="filter-box">
-    <div class="filter-box-title">
-        Search: <button class="btn-primary">Search</button><button class="btn-primary">Clear</button>
-        <hr />
-    </div>
-    <h4>Product Type</h4>
-    @foreach (var item in Model.TypeRangeFilterList)
-    {
-        <label for="@Html.DisplayFor(modelItem => item.TypeName)">@Html.DisplayFor(modelItem => item.TypeName)</label>
-        <select name="@Html.DisplayFor(modelItem => item.TypeName)" id="@Html.DisplayFor(modelItem => item.TypeName)">
-            @foreach (var item2 in item.TypeOptions)
-            {
-                <option value="@item2">@item2</option>
-            }
-        </select>
-        <br />
-    }
-    <hr />
-    <h4>Technical Specifications</h4>
-    @foreach (var item in Model.TechSpecFilterList)
-    {
-        <p>
-            <label for="amount">PropertyId: @item.PropertyId</label>
-            <input type="range" min=@item.MinValue max=@item.MaxValue readonly style="border:0; color:#f6931f; font-weight:bold;">
-        </p>
-    }
-</div>
-
-<div class="row">
-    <h4>Category>Subcategory</h4>
-    <br />
-    @foreach (var item in Model.Products)
-    {
-        <div class="column">
-            <div class="card">
-                <img src="@Html.DisplayFor(modelItem => item.ProductImage)" style="width:100%" alt="..." onclick="window.location='@Url.Action("Index", "ProductDetail")' + '/id=@item.ProductId'">
-                <div class="container">
-                    <a class="card-title" onclick="window.location='@Url.Action("Index", "ProductDetail")' + '/id=@item.ProductId'">@Html.DisplayFor(modelItem => item.ProductName)</a><br />
-                    <a class="card-title">@Html.DisplayFor(modelItem => item.Series)</a><br />
-                    <a class="card-title">@Html.DisplayFor(modelItem => item.Model)</a><br />
-                    <p class="card-text"> 35 DBA At max speed</p>
-                    <p class="card-text"> 60" fan sweep diamter</p>
-                    <p class="card-text"> 120W Power Rating</p>
-                    <input type="checkbox" id=@Html.DisplayFor(modelItem => item.ProductId) name=@Html.DisplayFor(modelItem => item.ProductId) value=@Html.DisplayFor(modelItem => item.ProductName)>
-                    <label for=@Html.DisplayFor(modelItem => item.ProductId)> Compare</label><br>
-                </div>
+<div class="search">
+    <div class="search__filter">
+        <div class="filter-box__search">
+            <h4 class="filter-box__title">Search: </h4>
+            <div>
+                <button class="filter-box__button">Search</button>
+                <button class="filter-box__button">Clear</button>
             </div>
         </div>
-    }
+        <div class="filter-box__type">
+            <div class="filter-box__title-container" id="product-type">
+                <h4 class="filter-box__title">Product Type</h4>
+                <i class="fas fa-caret-down"></i>
+            </div>
+            <div id="filter-box__type-content">
+                @foreach (var item in Model.TypeRangeFilterList)
+                {
+                    <label for="@Html.DisplayFor(modelItem => item.TypeName)">@Html.DisplayFor(modelItem => item.TypeName)</label>
+                    <select name="@Html.DisplayFor(modelItem => item.TypeName)" id="@Html.DisplayFor(modelItem => item.TypeName)">
+                        @foreach (var item2 in item.TypeOptions)
+                        {
+                            <option value="@item2">@item2</option>
+                        }
+                    </select>
+                    <br />
+                }
+            </div>
+        </div>
+        <div class="filter-box__tech">
+            <div class="filter-box__title-container" id="tech-spec">
+                <h4 class="filter-box__title">Technical Specifications</h4>
+                <i class="fas fa-caret-down"></i>
+            </div>
+            <div id="filter-box__tech-content">
+                @foreach (var item in Model.TechSpecFilterList)
+                {
+                    <p>
+                        <label for="amount">PropertyId: @item.PropertyId</label>
+                        <input type="range" min=@item.MinValue max=@item.MaxValue readonly style="border:0; color:#f6931f; font-weight:bold;">
+                    </p>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="search__products">
+        <h4>Category>Subcategory</h4>
+        <div class="search__products-container">
+            @foreach (var item in Model.Products)
+            {
+                <div class="card">
+                    <img src="~/Images/@Html.DisplayFor(modelItem => item.ProductImage)" class="card__image" alt="..." onclick="window.location='@Url.Action("Index", "ProductDetail")' + '/id=@item.ProductId'">
+                    <div class="card__container">
+                        <div class="card__title-box" onclick="window.location='@Url.Action("Index", "ProductDetail")' + '/id=@item.ProductId'">
+                            <p class="card__title">@Html.DisplayFor(modelItem => item.ProductName)</p>
+                            <p class="card__title">@Html.DisplayFor(modelItem => item.Series)</p>
+                            <p class="card__title">@Html.DisplayFor(modelItem => item.Model)</p>
+                        </div>
+
+                        <div class="card__text-box">
+                            <p class="card-text"> 35 DBA At max speed</p>
+                            <p class="card-text"> 60" fan sweep diamter</p>
+                            <p class="card-text"> 120W Power Rating</p>
+                        </div>
+
+                        <div class="card__check-button-container">
+                            <input type="checkbox" id=@Html.DisplayFor(modelItem => item.ProductId) name=@Html.DisplayFor(modelItem => item.ProductId) value=@Html.DisplayFor(modelItem => item.ProductName)>
+                            <label style="margin-left: 10px" for=@Html.DisplayFor(modelItem => item.ProductId)> Compare</label><br>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        
+        <button class="search__compare-button" id="compare-submit">Compare</button>
+    </div>
 </div>
-<br />
-<div class="compare-button">
-    <button class="btn-primary" id="compare-submit">Compare</button>
-</div>
+
 <script>
+    $(document).ready(function () {
+        $("#product-type").click();
+        $("#tech-spec").click();
+    })
+
+    $("#product-type").click(function () {
+        $("#filter-box__type-content").slideToggle("fast");
+    });
+
+    $("#tech-spec").click(function () {
+        $("#filter-box__tech-content").slideToggle("fast");
+    });
+
     $("#compare-submit").on("click", function () {
         let url = "";
         let count = 1;
