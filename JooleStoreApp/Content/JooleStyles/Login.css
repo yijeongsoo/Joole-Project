@@ -1,6 +1,6 @@
 ﻿/* Needed for 100vw to refer to viewport excluding scrollbar*/
 html {
-    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 .login__error-box {

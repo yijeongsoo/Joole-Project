@@ -163,7 +163,6 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Images\BriteLite.jpg" />
     <Content Include="Images\joole Logo.png" />
     <Content Include="Images\StandLight.jpg" />
