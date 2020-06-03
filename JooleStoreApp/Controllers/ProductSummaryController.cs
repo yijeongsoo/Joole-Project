@@ -38,7 +38,7 @@ namespace JooleStoreApp.Controllers
             List<string> descriptionElements = service.GetProductDescription(id);
 
             // create a product model to generate description table
-            Product prod = new Product();
+            ProductM prod = new ProductM();
 
             // list order: name, series, model, model year
             prod.ProductName = descriptionElements[0];
@@ -49,7 +49,7 @@ namespace JooleStoreApp.Controllers
             /* add product to a list
                depiste having one object only, we need to create a list in order for the dynamic model
                and table rendering to work properly */
-            List<Product> prodList = new List<Product>();
+            List<ProductM> prodList = new List<ProductM>();
             prodList.Add(prod);
 
             // add add the above list to the dynamic model
@@ -68,22 +68,27 @@ namespace JooleStoreApp.Controllers
         public void GetProductTypeInfo(string id)
         {
             Service service = new Service();
-            List<tblTypeRange> typeRanges = new List<tblTypeRange>();
-            Dictionary<string, string> dict = service.GetProductTypeRange(id);
+            //List<tblPropertyValue> typeRanges = new List<tblPropertyValue>();
+            Dictionary<string, string> dict = service.GetProductTypeInfo(id);
+
+            // create a Dictionary of tblPropertyValue and Property to populate the UI
+            Dictionary<string, string> propertyDictionary = new Dictionary<string, string>();
 
             // populate tblTypeRange object with dictionary values
             foreach(KeyValuePair<string, string> keyVals in dict)
             {
-                tblTypeRange currentTypeRange = new tblTypeRange();
-                currentTypeRange.TypeName = keyVals.Key;
-                currentTypeRange.TypeOptions = keyVals.Value;
+                PropertyM currentPropertyName = new PropertyM();
+                currentPropertyName.PropertyName = keyVals.Key;
 
-                // add current typeRange to list
-                typeRanges.Add(currentTypeRange);
+                tblPropertyValueM currentPropValue = new tblPropertyValueM();
+                currentPropValue.PropertyValue = keyVals.Value;
+
+                // add both to property dictionary
+                propertyDictionary.Add(currentPropertyName.PropertyName, currentPropValue.PropertyValue);
             }
 
-            // add typeRangeObj to the dynamic model
-            productSummaryModel.TypeRanges = typeRanges;
+            // add dictionary to the dynamic model
+            productSummaryModel.ProductTypes = propertyDictionary;
         }
 
         public void GetTechSpecs()

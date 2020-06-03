@@ -52,7 +52,7 @@ th {
         </tr>
     </table> -->
     <table>
-        @foreach(Product prod in Model.Products)
+        @foreach(ProductM prod in Model.Products)
         {
             <tr>
                 <th>Product Name</th>
@@ -75,11 +75,11 @@ th {
 
     <h4> Product Type </h4>
     <table>
-        @foreach(tblTypeRange typeRange in Model.TypeRanges)
+        @foreach(KeyValuePair<string, string> keyVal in Model.ProductTypes)
         {
             <tr>
-                <th>@typeRange.TypeName</th>
-                <td>@typeRange.TypeOptions</td>
+                <th>@keyVal.Key</th>
+                <td>@keyVal.Value</td>
             </tr>
         }
     </table> <br />

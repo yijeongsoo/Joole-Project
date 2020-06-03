@@ -8,8 +8,8 @@ namespace JooleStoreApp.ViewModels
 {
     public class PropertyValuesVM
     {
-        public Property property { get; set; }
-        public tblPropertyValue propertyValue { get; set; }
+        public PropertyM property { get; set; }
+        public tblPropertyValueM propertyValue { get; set; }
     }
     public class ProductValuesVM
     { 

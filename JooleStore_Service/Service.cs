@@ -100,7 +100,7 @@ namespace JooleStore_Service
             return unit.product.GetProductDescription(prodId);
         }
 
-        public Dictionary<string, string> GetProductTypeRange(string prodId)
+        public Dictionary<string, string> GetProductTypeInfo(string prodId)
         {
             return unit.product.GetProductTypeRange(prodId);
         }
