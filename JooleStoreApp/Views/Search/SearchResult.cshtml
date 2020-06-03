@@ -41,11 +41,11 @@
     {
         <div class="column">
             <div class="card">
-                <img src="@Html.DisplayFor(modelItem => item.ProductImage)" style="width:100%" alt="...">
+                <img src="@Html.DisplayFor(modelItem => item.ProductImage)" style="width:100%" alt="..." onclick="window.location='@Url.Action("Index", "ProductDetail")' + '/id=@item.ProductId'">
                 <div class="container">
-                    <p class="card-title">@Html.DisplayFor(modelItem => item.ProductName)</p>
-                    <p class="card-title">@Html.DisplayFor(modelItem => item.Series)</p>
-                    <p class="card-title">@Html.DisplayFor(modelItem => item.Model)</p>
+                    <a class="card-title" onclick="window.location='@Url.Action("Index", "ProductDetail")' + '/id=@item.ProductId'">@Html.DisplayFor(modelItem => item.ProductName)</a><br />
+                    <a class="card-title">@Html.DisplayFor(modelItem => item.Series)</a><br />
+                    <a class="card-title">@Html.DisplayFor(modelItem => item.Model)</a><br />
                     <p class="card-text"> 35 DBA At max speed</p>
                     <p class="card-text"> 60" fan sweep diamter</p>
                     <p class="card-text"> 120W Power Rating</p>
@@ -58,10 +58,24 @@
 </div>
 <br />
 <div class="compare-button">
-    <form class="login__form" method="post" action="@Url.Action("Compare")">
-        <button class="btn-primary" type="submit" onclick="submit">Compare</button>
-    </form>
+    <button class="btn-primary" id="compare-submit">Compare</button>
 </div>
+<script>
+    $("#compare-submit").on("click", function () {
+        let url = "";
+        let count = 1;
+        // Check which 25 checkbox id is selected
+        for (let i = 0; i < 25; i++) {
+            if ($("#" + i).prop("checked") == true) {
+                url += "product" + count + "Id=" + i + "&";
+                count++;
+            }
+        }
+        // Remove the last & character
+        url = url.substring(0, url.length - 1);
+        window.location.replace("@Url.Action("Index", "CompareProduct")/?" + url)
+    })
+</script>
 
 
 
