@@ -89,10 +89,15 @@
 
 .card__image{
     width: 100%;
+    padding: 10px;
 }
 
 .card__image:hover{
     cursor: pointer;
+}
+
+.card__title-box {
+    width: 100%;
 }
 
 .card__title-box:hover{
