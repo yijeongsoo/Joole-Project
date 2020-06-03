@@ -73,7 +73,9 @@
         }
         // Remove the last & character
         url = url.substring(0, url.length - 1);
-        window.location.replace("@Url.Action("Index", "CompareProduct")/?" + url)
+        if (url != "") {
+            window.location.replace("@Url.Action("Index", "CompareProduct")/?" + url)
+        }
     })
 </script>
 
