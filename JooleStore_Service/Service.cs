@@ -94,5 +94,10 @@ namespace JooleStore_Service
             List<List<string>> PropertyValueList = unit.propertyValue.FindAllPropertyValueByProduct(productId);
             return PropertyValueList;
         }
+
+        public Dictionary<string, List<Tuple<int, string, string>>> GetProductProperties(int productId)
+        {
+            return unit.propertyValue.GetPropertiesOfProduct(productId);
+        }
     }
 }

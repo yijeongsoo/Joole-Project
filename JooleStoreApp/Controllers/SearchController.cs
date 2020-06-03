@@ -20,14 +20,32 @@ namespace JooleStoreApp.Controllers
         [HttpGet]
         public ActionResult OnSearch(int subcategory) 
         {
+            TempData["subcategoryId"] = subcategory;
             //getting subcategoryid from search page
             int subcategoryId = subcategory;
             Service service = new Service();
-            List<JooleStore_DAL.Product> list = service.getSubcategoryProducts(subcategoryId);
-            List<Models.ProductM> prodList = new List<Models.ProductM>();
-            foreach (JooleStore_DAL.Product prod in list)
+            List<Product> list = service.getSubcategoryProducts(subcategoryId);
+            List<ProductM> prodList = new List<ProductM>();
+
+            foreach (Product prod in list)
             {
-                Models.ProductM newProd = new Models.ProductM
+                Dictionary<string, List<Tuple<int, string, string>>> properties = service.GetProductProperties(prod.ProductId);
+                
+                List<Tuple<int, string, string>> techSpec = properties["techSpec"];
+                List<Tuple<int, string, string>> typeProp = properties["type"];
+                List<PropertyViewM> techSpec1 = new List<PropertyViewM>();
+                List<PropertyViewM> typeProp1 = new List<PropertyViewM>();
+                foreach(Tuple<int, string, string> tup in techSpec) 
+                {
+                    PropertyViewM vm = new PropertyViewM {Id=tup.Item1 ,Name=tup.Item2, Value=tup.Item3};
+                    techSpec1.Add(vm);
+                }
+                foreach (Tuple<int, string, string> tup in typeProp)
+                {
+                    PropertyViewM vm = new PropertyViewM { Id = tup.Item1, Name = tup.Item2, Value = tup.Item3 };
+                    typeProp1.Add(vm);
+                }
+                ProductM newProd = new ProductM
                 {
                     ManufacturerId = prod.ManufacturerId,
                     ProductId = prod.ProductId,
@@ -37,6 +55,8 @@ namespace JooleStoreApp.Controllers
                     Model = prod.Model,
                     ModelYear = prod.ModelYear,
                     SubcategoryId = prod.SubcategoryId,
+                    techSpec = techSpec1,
+                    typeProp = typeProp1
                 };
                 prodList.Add(newProd);
             }
@@ -75,5 +95,9 @@ namespace JooleStoreApp.Controllers
             return View("SearchResult", viewModel);
         }
 
+        //public ActionResult OnFilter() 
+        //{
+        //    return RedirectToAction("OnSearch", new { subcategory = TempData["subcategoryId"] });
+        //}
     }
 }

@@ -8,11 +8,9 @@ namespace JooleStore_Repository
 {
     public interface IProductRepo : IRepository<Product>
     {
-
         // TODO: Define Methods
         List<Product> getSubcategoryProducts(int SubcategoryId);
         List<string> FindProduct(int ProductId);
-
     }
     public class ProductRepo : Repository<Product>, IProductRepo
     {
@@ -21,7 +19,6 @@ namespace JooleStore_Repository
         {
             db = context;
         }
-
 
         public List<Product> getSubcategoryProducts(int SubcategoryId)
         {
@@ -50,6 +47,5 @@ namespace JooleStore_Repository
             }
                 return ProductList;
         }
-       
     }
 }
