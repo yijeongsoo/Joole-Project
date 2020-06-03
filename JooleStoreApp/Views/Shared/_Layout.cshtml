@@ -31,9 +31,12 @@
             </button>
         </form>
         <div>
-            @if (@Session["ProfileImage"] != null)
+            @if (!string.IsNullOrEmpty(Session["ProfileImage"] as string))
             {
                 <img src="~/Images/@Session["ProfileImage"]" class="header__user-image">
+            } else
+            {
+                <div class="header__user-image"></div>
             }
         </div>
     </div>
