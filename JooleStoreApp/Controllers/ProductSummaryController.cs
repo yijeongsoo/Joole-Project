@@ -22,12 +22,13 @@ namespace JooleStoreApp.Controllers
             return View("ProductSummary");
         }
 
-        [HttpPost]
-        public ActionResult GetProductSummary()
+        [HttpGet]
+        public ActionResult GetProductSummary(int prodId)
         {
             System.Diagnostics.Debug.WriteLine("Called function from controller. ID is: ");
             //string id = prodId.ToString();
-            string id = RouteData.Values["prodId"].ToString();
+            // string id = RouteData.Values["prodId"].ToString();
+            string id = prodId.ToString();
             System.Diagnostics.Debug.WriteLine("Retrieved id: " + RouteData.Values["prodId"]);
 
             Service service = new Service();
