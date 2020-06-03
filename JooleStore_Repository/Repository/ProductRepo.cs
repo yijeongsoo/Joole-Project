@@ -54,12 +54,15 @@ namespace JooleStore_Repository
 
         public Dictionary<string, string> GetProductTypeRange(string id)
         {
+            // clear any previous results added to the techspec dictionary
+            techSpecs.Clear();
+
             int parsedId = int.Parse(id);
             Dictionary<string, string> typeRangeElements = new Dictionary<string, string>();
 
             var queryResult = from prop in db.Properties
                               join propval in db.tblPropertyValues on prop.PropertyId equals propval.PropertyId
-                              where propval.ProductId == 1
+                              where propval.ProductId == parsedId
                               select new { PropertyName = prop.PropertyName, PropertyValue = propval.PropertyValue,
                                            IsTechSpech = prop.isTechSpec };
 

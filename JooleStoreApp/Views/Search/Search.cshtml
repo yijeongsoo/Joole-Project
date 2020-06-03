@@ -6,3 +6,11 @@
 
 <h2>Search</h2>
 
+@* this works when passing "prodId = {number}" *@
+@*@using (Html.BeginForm("GetProductSummary", "ProductSummary", new { prodId = 3}, FormMethod.Post))
+    {
+        <input type="submit"
+               value="search" />
+    }*@
+
+<button onclick="window.location='@Url.Action("GetProductSummary", "ProductSummary")' + '/?prodId=3'">Search</button>

@@ -4,6 +4,7 @@ using System.Dynamic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using JooleStore_Service;
 using JooleStoreApp.Models;
 
@@ -17,16 +18,20 @@ namespace JooleStoreApp.Controllers
         // GET: ProductSummary
         public ActionResult Index()
         {
-            GetProductSummary();
+            //GetProductSummary(3);
             return View("ProductSummary");
         }
 
+        [HttpPost]
         public ActionResult GetProductSummary()
         {
-            System.Diagnostics.Debug.WriteLine("Called function from controller");
-            string prodId = 1.ToString();
+            System.Diagnostics.Debug.WriteLine("Called function from controller. ID is: ");
+            //string id = prodId.ToString();
+            string id = RouteData.Values["prodId"].ToString();
+            System.Diagnostics.Debug.WriteLine("Retrieved id: " + RouteData.Values["prodId"]);
+
             Service service = new Service();
-            List<string> descriptionElements = service.GetProductDescription(prodId);
+            List<string> descriptionElements = service.GetProductDescription(id);
 
             // create a product model to generate description table
             Product prod = new Product();
@@ -47,19 +52,20 @@ namespace JooleStoreApp.Controllers
             productSummaryModel.Products = prodList;
 
             // get product type info
-            GetProductTypeInfo();
+            GetProductTypeInfo(id);
 
             // get tech specs
             GetTechSpecs();
 
+            //return RedirectToAction("Index", "ProductSummary", productSummaryModel);
             return View("ProductSummary", productSummaryModel);
         }
 
-        public void GetProductTypeInfo()
+        public void GetProductTypeInfo(string id)
         {
             Service service = new Service();
             List<tblTypeRange> typeRanges = new List<tblTypeRange>();
-            Dictionary<string, string> dict = service.GetProductTypeRange("1");
+            Dictionary<string, string> dict = service.GetProductTypeRange(id);
 
             // populate tblTypeRange object with dictionary values
             foreach(KeyValuePair<string, string> keyVals in dict)

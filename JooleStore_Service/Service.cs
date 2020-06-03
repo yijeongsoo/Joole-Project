@@ -22,13 +22,11 @@ namespace JooleStore_Service
 
         public List<string> GetProductDescription(string prodId)
         {
-            prodId = 1.ToString();
             return unit.product.GetProductDescription(prodId);
         }
 
         public Dictionary<string, string> GetProductTypeRange(string prodId)
         {
-            prodId = 1.ToString();
             return unit.product.GetProductTypeRange(prodId);
         }
 
