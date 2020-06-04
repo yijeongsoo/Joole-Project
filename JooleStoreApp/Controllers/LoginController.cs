@@ -39,6 +39,7 @@ namespace JooleStoreApp.Controllers
             if (login)
             {
                 Session["ProfileImage"] = service.GetUser(consumer.UserEmail)["UserImage"];
+                Session["isLoggedIn"] = true;
                 return RedirectToAction("Index", "Search");
             }
             ViewBag.ErrorMsg = "Wrong Username and Password!";
