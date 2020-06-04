@@ -26,73 +26,74 @@ th {
 }
 </style>
 
-<h2>Product Summary</h2>
+<div style="margin-left: 80px">
+    <h2 style="color: darkblue">Product Summary</h2>
+    <br />
 
-<br />
-
-<!-- TODO: move styles to separate stylesheet -->
-<div style="width: 500px">
-    <h4> Product Description </h4>
-    <!-- table>
-        <tr>
-            <th>Product Name</th>
-            <td>@*Html.DisplayFor(Product => Product.ProductName)*@</td>
-        </tr>
-        <tr>
-            <th>Product Series</th>
-            <td>@*Html.DisplayFor(Product => Product.Series)*@</td>
-        </tr>
-        <tr>
-            <th>Product Model</th>
-            <td>@*Html.DisplayFor(Product => Product.Model)*@</td>
-        </tr>
-        <tr>
-            <th>Model Year</th>
-            <td>@*Html.DisplayFor(Product => Product.ModelYear)*@</td>
-        </tr>
-    </table> -->
-    <table>
-        @foreach(ProductM prod in Model.Products)
-        {
+    <!-- TODO: move styles to separate stylesheet -->
+    <div style="width: 500px">
+        <h4> Product Description </h4>
+        <!-- table>
             <tr>
                 <th>Product Name</th>
-                <td>@prod.ProductName</td>
+                <td>@*Html.DisplayFor(Product => Product.ProductName)*@</td>
             </tr>
             <tr>
                 <th>Product Series</th>
-                <td>@prod.Series</td>
+                <td>@*Html.DisplayFor(Product => Product.Series)*@</td>
             </tr>
             <tr>
                 <th>Product Model</th>
-                <td>@prod.Model</td>
+                <td>@*Html.DisplayFor(Product => Product.Model)*@</td>
             </tr>
             <tr>
                 <th>Model Year</th>
-                <td>@prod.ModelYear</td>
+                <td>@*Html.DisplayFor(Product => Product.ModelYear)*@</td>
             </tr>
-        }
-    </table> <br />
+        </table> -->
+        <table>
+            @foreach (ProductM prod in Model.Products)
+            {
+                <tr>
+                    <th>Product Name</th>
+                    <td>@prod.ProductName</td>
+                </tr>
+                <tr>
+                    <th>Product Series</th>
+                    <td>@prod.Series</td>
+                </tr>
+                <tr>
+                    <th>Product Model</th>
+                    <td>@prod.Model</td>
+                </tr>
+                <tr>
+                    <th>Model Year</th>
+                    <td>@prod.ModelYear</td>
+                </tr>
+            }
+        </table> <br />
 
-    <h4> Product Type </h4>
-    <table>
-        @foreach(KeyValuePair<string, string> keyVal in Model.ProductTypes)
-        {
-            <tr>
-                <th>@keyVal.Key</th>
-                <td>@keyVal.Value</td>
-            </tr>
-        }
-    </table> <br />
+        <h4> Product Type </h4>
+        <table>
+            @foreach (KeyValuePair<string, string> keyVal in Model.ProductTypes)
+            {
+                <tr>
+                    <th>@keyVal.Key</th>
+                    <td>@keyVal.Value</td>
+                </tr>
+            }
+        </table> <br />
 
-    <h4> Product Tech Specs </h4>
-    <table>
-        @foreach(KeyValuePair<string, string> keyValue in Model.TechSpecs)
-        {
-            <tr>
-                <th>@keyValue.Key</th>
-                <td>@keyValue.Value</td>
-            </tr>
-        }
-    </table>
+        <h4> Product Tech Specs </h4>
+        <table>
+            @foreach (KeyValuePair<string, string> keyValue in Model.TechSpecs)
+            {
+                <tr>
+                    <th>@keyValue.Key</th>
+                    <td>@keyValue.Value</td>
+                </tr>
+            }
+        </table>
 
+    </div>
 </div>
