@@ -61,3 +61,8 @@
 #search-submit:hover {
     background-color: #0d5582;
 }
+
+.layout__container{
+    padding: 0px 0px 50px 0px;
+    width: 100%;
+}

@@ -1,11 +1,12 @@
-﻿html {
+﻿img {
+    vertical-align: middle;
+    max-width: 200px;
 }
 
-table {
-}
 body { 
     margin: 0px; 
 }
+
 tr {
     height: 30px;
 }
@@ -13,14 +14,15 @@ tr {
 td {
 }
 
-.compareProduct {
+table {
 }
 
-.compareProduct_container {
+.compareProduct {
     width: 100%;
     height: 100%;
     font-size: 16px;
     font-family: Calibri;
+    padding: 0px 80px;
 }
 
 .compareProduct_dirContainer {
@@ -33,28 +35,25 @@ td {
 
 .compareProduct_directory {
     align-content: flex-start;
-    left: 100px;
-    position: absolute;
     color: darkblue;
 }
 .compareProduct_table {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     overflow-y: hidden;
     border-spacing: 0;
     border-collapse: collapse;
 }
 .compareProduct_table_image {
-    height: 200px;
     border: solid 1px;
     border-color: lightgrey;
     text-align: center;
     width: 300px;
+    height: 200px;
 }
 .compareProduct_table_bigLabel {
-    background-color: lightgrey;
+    background-color: #f0f0f0;
     width: 300px;
     border: solid 1px;
     border-color: lightgrey;
@@ -62,7 +61,7 @@ td {
 }
 
 .compareProduct_table_smallLabel {
-    background-color: lightgrey;
+    background-color: #f0f0f0;
     width: 300px;
     border: solid 1px;
     border-color: lightgrey;

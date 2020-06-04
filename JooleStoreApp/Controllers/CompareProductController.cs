@@ -17,7 +17,7 @@ namespace JooleStoreApp.Controllers
         {
             return View("CompareProduct");
         }
-        public ActionResult CompareProduct(int product1Id = 2, int product2Id = 3)
+        public ActionResult CompareProduct(int product1Id, int product2Id)
         {
             CompareProductVM CompareVM = new CompareProductVM();
             CompareVM.comparingProducts = new List<ProductValuesVM>();
@@ -52,14 +52,14 @@ namespace JooleStoreApp.Controllers
             foreach (List<List<string>> PropertyValuePair in AllPropertyValuePair)
             {
                 PropertyValuesVM PVPair = new PropertyValuesVM();
-                Property property = new Property
+                PropertyM property = new PropertyM
                 {
                     PropertyId = Int32.Parse(PropertyValuePair[0][1]),
                     PropertyName = PropertyValuePair[0][2],
                     isTechSpec = Boolean.Parse(PropertyValuePair[0][3]),
                     isType = Boolean.Parse(PropertyValuePair[0][4])
                 };
-                tblPropertyValue propertyValue = new tblPropertyValue
+                tblPropertyValueM propertyValue = new tblPropertyValueM
                 {
                     PropertyId = Int32.Parse(PropertyValuePair[1][1]),
                     ProductId = Int32.Parse(PropertyValuePair[1][2]),
@@ -114,15 +114,15 @@ namespace JooleStoreApp.Controllers
             };
             return subcategory;
         }
-        public List<Property> GetAllPropertyByProductId(int productId)
+        public List<PropertyM> GetAllPropertyByProductId(int productId)
         {
             // TODO: IMPLEMENT
             Service service = new Service();
             List<List<string>> AllPropertyList = service.GetAllPropertyByProductId(productId);
-            List<Property> properties = new List<Property>();
+            List<PropertyM> properties = new List<PropertyM>();
             foreach (List<String> strList in AllPropertyList)
             {
-                Property property = new Property
+                PropertyM property = new PropertyM
                 {
                     PropertyId = Int32.Parse(strList[1]),
                     PropertyName = strList[2],
@@ -134,14 +134,14 @@ namespace JooleStoreApp.Controllers
             return properties;
         }
         
-        public List<tblPropertyValue> GetAllPropertyValueById(int productId)
+        public List<tblPropertyValueM> GetAllPropertyValueById(int productId)
         {
             Service service = new Service();
             List<List<String>> strListList = service.GetAllPropertyValueById(productId);
-            List<tblPropertyValue> propertyValueList = new List<tblPropertyValue>();
+            List<tblPropertyValueM> propertyValueList = new List<tblPropertyValueM>();
             foreach(List<String> strList in strListList)
             {
-                tblPropertyValue propertyValue = new tblPropertyValue
+                tblPropertyValueM propertyValue = new tblPropertyValueM
                 {
                     PropertyId = Int32.Parse(strList[1]),
                     ProductId = Int32.Parse(strList[2]),

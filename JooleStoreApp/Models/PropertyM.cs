@@ -5,11 +5,11 @@ using System.Web;
 
 namespace JooleStoreApp.Models
 {
-    public class tblPropertyValue
+    public class PropertyM
     {
         public int PropertyId { get; set; }
-        public int ProductId { get; set; }
-        public string PropertyValue { get; set; }
-
+        public string PropertyName { get; set; }
+        public bool isTechSpec { get; set; }
+        public bool isType { get; set; }
     }
 }

@@ -78,6 +78,12 @@ namespace JooleStoreApp
             );
 
             routes.MapRoute(
+                name: "Product3",
+                url: "ProductSummary/GetProductSummary/{prodId}",
+                defaults: new { controller = "ProductSummary", action = "GetProductSummary", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "Product2",
                 url: "ProductSummary/{id}",
                 defaults: new { controller = "ProductSummary", action = "Index", id = UrlParameter.Optional }

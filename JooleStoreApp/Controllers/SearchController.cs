@@ -151,9 +151,9 @@ namespace JooleStoreApp.Controllers
            
         }
 
-        //public ActionResult OnFilter() 
-        //{
-        //    return RedirectToAction("OnSearch", new { subcategory = TempData["subcategoryId"] });
-        //}
+        public ActionResult Compare(int product1Id = 2, int product2Id = 3)
+        {
+            return RedirectToAction("CompareProduct", "CompareProduct", new { product1Id, product2Id });
+        }
     }
 }

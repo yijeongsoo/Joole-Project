@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Search</h2>
+
+@* Needs to concatenate product id at the end of an onclick event. In this case, the button *@
+<button onclick="window.location='@Url.Action("GetProductSummary", "ProductSummary")' + '/3'">Search</button>

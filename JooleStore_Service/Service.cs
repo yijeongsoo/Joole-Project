@@ -104,5 +104,20 @@ namespace JooleStore_Service
         {
             return unit.property.GetPropertyNameById(propId);
         }
+      
+        public List<string> GetProductDescription(string prodId)
+        {
+            return unit.product.GetProductDescription(prodId);
+        }
+
+        public Dictionary<string, string> GetProductTypeInfo(string prodId)
+        {
+            return unit.product.GetProductTypeRange(prodId);
+        }
+
+        public Dictionary<string, string> GetTechSpecs()
+        {
+            return unit.product.GetTechSpecs();
+        }
     }
 }
