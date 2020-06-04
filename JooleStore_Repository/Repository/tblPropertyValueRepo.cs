@@ -13,6 +13,8 @@ namespace JooleStore_Repository
         // TODO: Define Methods
         List<List<string>> FindAllPropertyValueByProduct(int ProductId);
         List<string> GetByProductId(int productId);
+
+        Dictionary<string, List<Tuple<int, string, string>>> GetPropertiesOfProduct(int productId);
     }
     public class PropertyValueRepo : Repository<tblPropertyValue>, IPropertyValueRepo
     {
@@ -56,6 +58,34 @@ namespace JooleStore_Repository
                 }
             }
             return ValueList;
+        }
+
+        public Dictionary<string, List<Tuple<int, string, string>>> GetPropertiesOfProduct(int productId)
+        {
+            List<tblPropertyValue> prodProperties = db.tblPropertyValues.Where(property => property.ProductId == productId).ToList();
+            List<Property> propertyNames = db.Properties.ToList();
+            Dictionary<string, List<Tuple<int, string, string>>> result = new Dictionary<string, List<Tuple<int, string, string>>>();
+            result["techSpec"] = new List<Tuple<int, string, string>>();
+            result["type"] = new List<Tuple<int, string, string>>();
+            foreach (tblPropertyValue prodProperty in prodProperties)
+            {
+                for(int i=0; i<propertyNames.Count(); i++)
+                {
+                    if(propertyNames[i].PropertyId == prodProperty.PropertyId) 
+                    {
+                        if(propertyNames[i].isTechSpec == true) {
+                            result["techSpec"].Add(new Tuple<int, string, string>(prodProperty.PropertyId, propertyNames[i].PropertyName, prodProperty.PropertyValue));
+                            break;
+                        }
+                        else
+                        {
+                            result["type"].Add(new Tuple<int, string, string>(prodProperty.PropertyId, propertyNames[i].PropertyName, prodProperty.PropertyValue));
+                            break;
+                        }
+                    }
+                }
+            }
+            return result;
         }
     }
 }

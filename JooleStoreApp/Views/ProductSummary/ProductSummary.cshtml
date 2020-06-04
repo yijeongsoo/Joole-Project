@@ -1,8 +1,98 @@
-﻿
+﻿@using JooleStoreApp.Models;
+@*@model Product*@
+
+@model dynamic
+
 @{
     ViewBag.Title = "Product Summary";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<!-- TODO: move style to separate sheet -->
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+th {
+    border: 1px solid #bdbdbd;
+    background-color: lightgray;
+}
+</style>
+
 <h2>Product Summary</h2>
 
+<br />
+
+<!-- TODO: move styles to separate stylesheet -->
+<div style="width: 500px">
+    <h4> Product Description </h4>
+    <!-- table>
+        <tr>
+            <th>Product Name</th>
+            <td>@*Html.DisplayFor(Product => Product.ProductName)*@</td>
+        </tr>
+        <tr>
+            <th>Product Series</th>
+            <td>@*Html.DisplayFor(Product => Product.Series)*@</td>
+        </tr>
+        <tr>
+            <th>Product Model</th>
+            <td>@*Html.DisplayFor(Product => Product.Model)*@</td>
+        </tr>
+        <tr>
+            <th>Model Year</th>
+            <td>@*Html.DisplayFor(Product => Product.ModelYear)*@</td>
+        </tr>
+    </table> -->
+    <table>
+        @foreach(ProductM prod in Model.Products)
+        {
+            <tr>
+                <th>Product Name</th>
+                <td>@prod.ProductName</td>
+            </tr>
+            <tr>
+                <th>Product Series</th>
+                <td>@prod.Series</td>
+            </tr>
+            <tr>
+                <th>Product Model</th>
+                <td>@prod.Model</td>
+            </tr>
+            <tr>
+                <th>Model Year</th>
+                <td>@prod.ModelYear</td>
+            </tr>
+        }
+    </table> <br />
+
+    <h4> Product Type </h4>
+    <table>
+        @foreach(KeyValuePair<string, string> keyVal in Model.ProductTypes)
+        {
+            <tr>
+                <th>@keyVal.Key</th>
+                <td>@keyVal.Value</td>
+            </tr>
+        }
+    </table> <br />
+
+    <h4> Product Tech Specs </h4>
+    <table>
+        @foreach(KeyValuePair<string, string> keyValue in Model.TechSpecs)
+        {
+            <tr>
+                <th>@keyValue.Key</th>
+                <td>@keyValue.Value</td>
+            </tr>
+        }
+    </table>
+
+</div>

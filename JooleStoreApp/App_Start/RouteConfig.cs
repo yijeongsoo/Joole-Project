@@ -51,6 +51,12 @@ namespace JooleStoreApp
                 defaults: new { controller = "Search", action = "OnSearch", id = UrlParameter.Optional }
             );
 
+            //routes.MapRoute(
+            //    name: "Search3",
+            //    url: "Search/Filter",
+            //    defaults: new { controller = "Search", action = "OnFilter", id = UrlParameter.Optional }
+            //);
+
             // Product Detail
             routes.MapRoute(
                 name: "Product Detail1",
@@ -69,6 +75,12 @@ namespace JooleStoreApp
                 name: "Product1",
                 url: "ProductSummary",
                 defaults: new { controller = "ProductSummary", action = "Index", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "Product3",
+                url: "ProductSummary/GetProductSummary/{prodId}",
+                defaults: new { controller = "ProductSummary", action = "GetProductSummary", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(

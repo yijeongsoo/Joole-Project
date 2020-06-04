@@ -18,14 +18,14 @@
         <div class="login__container">
             <img src="~/Images/joole Logo.png" />
             <h4 class="login__subtitle">Building Product Selection Platform</h4>
-            <form class="header__search" action="/Search/OnSearch">
+            <form class="header__search" action="/Search/OnSearch" method="post">
                 <select id="search-dropdown" name="search-dropdown">
                     <option class="search__dropdown-list" value="Mechanical">Mechanical</option>
                     <option class="search__dropdown-list" value="Electrical">Electrical</option>
                     <option class="search__dropdown-list" value="Stationary">Stationary</option>
                     <option class="search__dropdown-list" value="Furniture">Furniture</option>
                 </select>
-                <select id="subcategory" name="subcategory" style="width: 150px; height: 35px; color: black; background-color: white; border: none; border-radius: 5px;">
+                <select id="subcategory" name="subcategory" style="width: 250px; height: 35px; color: black; background-color: white; border: none; border-radius: 5px;">
                 </select>
                 <button id="search-submit" type="submit">
                     <i class="fas fa-search"></i>

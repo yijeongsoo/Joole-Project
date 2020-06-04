@@ -8,6 +8,11 @@ $(document).ready(function () {
         "Stationary": [{ name: "Cabinet", id: 7 }, { name: "Table", id: 8 }]
     };
 
+    var value = $("#search-dropdown").val();
+    for (obj in dict[value]) {
+        $("#subcategory").append("<option class='search__dropdown-list' value='" + dict[value][obj].id + "'>" + dict[value][obj].name + "</option>");
+    }
+
     $("#search-dropdown").change(() => {
         var value = $("#search-dropdown").val();
         $("#subcategory").empty();

@@ -13,6 +13,8 @@ namespace JooleStore_Repository
         // TODO: Define Methods
         List<string> FindProperty(int PropertyId);
         List<List<string>> GetAllPropertyByProductId(int ProductId);
+
+        string GetPropertyNameById(int propId);
     }
     public class PropertyRepo : Repository<Property>, IPropertyRepo
     {
@@ -64,6 +66,14 @@ namespace JooleStore_Repository
                 }
             }
             return AllPropertyList;
+        }
+
+        public string GetPropertyNameById(int propId) 
+        {
+            Property property = (from u in db.Properties
+                                where u.PropertyId == propId
+                                select u).FirstOrDefault();
+            return property.PropertyName;
         }
     }
 }
