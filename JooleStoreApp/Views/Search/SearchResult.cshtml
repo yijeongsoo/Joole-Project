@@ -7,47 +7,57 @@
 <link href="~/Content/JooleStyles/SearchResult.css" rel="stylesheet" />
 <div class="search">
     <div class="search__filter">
-        <div class="filter-box__search">
-            <h4 class="filter-box__title">Search: </h4>
-            <div>
-                <button class="filter-box__button">Search</button>
-                <button class="filter-box__button">Clear</button>
+        <form action="/Search/OnSearch" method="post">
+            <div class="filter-box__search">
+                <h4 class="filter-box__title">Search: </h4>
+                <div>
+                    <button class="filter-box__button">Search</button>
+                    <button class="filter-box__button">Clear</button>
+                </div>
             </div>
-        </div>
-        <div class="filter-box__type">
-            <div class="filter-box__title-container" id="product-type">
-                <h4 class="filter-box__title">Product Type</h4>
-                <i class="fas fa-caret-down"></i>
+            <div class="filter-box__type">
+                <div class="filter-box__title-container" id="product-type">
+                    <h4 class="filter-box__title">Product Type</h4>
+                    <i class="fas fa-caret-down"></i>
+                </div>
+                <div id="filter-box__type-content">
+                    @foreach (var item in Model.TypeRangeFilterList)
+                    {
+                        <label for="@item.TypeName">@item.TypeName</label>
+                        <select name="@item.TypeName" id="@item.TypeName">
+                            <option value="All" selected="selected">All</option>
+                            @foreach (var item2 in item.TypeOptions)
+                            {
+                                <option value="@item2">@item2</option>
+                            }
+                        </select>
+                        <br />
+                    }
+                </div>
             </div>
-            <div id="filter-box__type-content">
-                @foreach (var item in Model.TypeRangeFilterList)
-                {
-                    <label for="@Html.DisplayFor(modelItem => item.TypeName)">@Html.DisplayFor(modelItem => item.TypeName)</label>
-                    <select name="@Html.DisplayFor(modelItem => item.TypeName)" id="@Html.DisplayFor(modelItem => item.TypeName)">
-                        @foreach (var item2 in item.TypeOptions)
-                        {
-                            <option value="@item2">@item2</option>
+            <div class="filter-box__tech">
+                <div class="filter-box__title-container" id="tech-spec">
+                    <h4 class="filter-box__title">Technical Specifications</h4>
+                    <i class="fas fa-caret-down"></i>
+                </div>
+                <div id="filter-box__tech-content">
+                    <script>
+                        function updateTextInput(val, id, min) {
+                            document.getElementById("text-" + id).value = min + " - " + val;
                         }
-                    </select>
-                    <br />
-                }
+                    </script>
+                    @foreach (var item in Model.TechSpecFilterList)
+                    {
+                        <label for="@item.PropertyName">@item.PropertyName</label>
+                        <input type="range" name=@item.PropertyName min=@item.MinValue max=@item.MaxValue onchange="updateTextInput(this.value, @item.PropertyId, @item.MinValue);">
+                        <input type="text" id="text-@item.PropertyId" value="@item.MinValue-">
+                        <br />
+                    }
+                    <input type="number" name="isFilter" id="isFilter" value="1" hidden />
+                    <input type="number" name="subcategory" id="subcategory" value="@TempData["subcategoryId"]" hidden />
+                </div>
             </div>
-        </div>
-        <div class="filter-box__tech">
-            <div class="filter-box__title-container" id="tech-spec">
-                <h4 class="filter-box__title">Technical Specifications</h4>
-                <i class="fas fa-caret-down"></i>
-            </div>
-            <div id="filter-box__tech-content">
-                @foreach (var item in Model.TechSpecFilterList)
-                {
-                    <p>
-                        <label for="amount">PropertyId: @item.PropertyId</label>
-                        <input type="range" min=@item.MinValue max=@item.MaxValue readonly style="border:0; color:#f6931f; font-weight:bold;">
-                    </p>
-                }
-            </div>
-        </div>
+        </form>
     </div>
     <div class="search__products">
         <h4>Category>Subcategory</h4>
@@ -55,20 +65,23 @@
             @foreach (var item in Model.Products)
             {
                 <div class="card">
-                    <img src="~/Images/@Html.DisplayFor(modelItem => item.ProductImage)" class="card__image" alt="..." onclick="window.location='@Url.Action("Index", "ProductDetail")' + '/id=@item.ProductId'">
+                    <img src="~/Images/@Html.DisplayFor(modelItem => item.ProductImage)" class="card__image" alt="..." onclick="window.location='@Url.Action("GetProductSummary", "ProductSummary")' + '/@item.ProductId'">
                     <div class="card__container">
-                        <div class="card__title-box" onclick="window.location='@Url.Action("GetProductSummary", "ProductSummary")' + '/@item.ProductId'">
+                        <div class="card__title-box" onclick="window.location='@Url.Action("Index", "ProductDetail")' + '/id=@item.ProductId'">
                             <p class="card__title">@Html.DisplayFor(modelItem => item.ProductName)</p>
                             <p class="card__title">@Html.DisplayFor(modelItem => item.Series)</p>
                             <p class="card__title">@Html.DisplayFor(modelItem => item.Model)</p>
                         </div>
-
                         <div class="card__text-box">
-                            <p class="card-text"> 35 DBA At max speed</p>
-                            <p class="card-text"> 60" fan sweep diamter</p>
-                            <p class="card-text"> 120W Power Rating</p>
+                            @foreach (var item2 in item.techSpec)
+                            {
+                                <p class="card-text">@Html.DisplayFor(modelItem => item2.Value) @Html.DisplayFor(modelItem => item2.Name)</p>
+                            }
+                            @foreach (var item3 in item.typeProp)
+                            {
+                                <p class="card-text">@Html.DisplayFor(modelItem => item3.Value) @Html.DisplayFor(modelItem => item3.Name)</p>
+                            }
                         </div>
-
                         <div class="card__check-button-container">
                             <input type="checkbox" id=@Html.DisplayFor(modelItem => item.ProductId) name=@Html.DisplayFor(modelItem => item.ProductId) value=@Html.DisplayFor(modelItem => item.ProductName)>
                             <label style="margin-left: 10px" for=@Html.DisplayFor(modelItem => item.ProductId)> Compare</label><br>
@@ -77,7 +90,7 @@
                 </div>
             }
         </div>
-        
+        <br />
         <button class="search__compare-button" id="compare-submit">Compare</button>
     </div>
 </div>
@@ -87,15 +100,12 @@
         $("#product-type").click();
         $("#tech-spec").click();
     })
-
     $("#product-type").click(function () {
         $("#filter-box__type-content").slideToggle("fast");
     });
-
     $("#tech-spec").click(function () {
         $("#filter-box__tech-content").slideToggle("fast");
     });
-
     $("#compare-submit").on("click", function () {
         let url = "";
         let count = 1;
@@ -108,7 +118,9 @@
         }
         // Remove the last & character
         url = url.substring(0, url.length - 1);
-        window.location.replace("@Url.Action("Index", "CompareProduct")/?" + url)
+        if (url.length >= 13 && url.length <=26) {
+            window.location.replace("@Url.Action("Index", "CompareProduct")/?" + url)
+        }
     })
 </script>
 
