@@ -11,8 +11,9 @@
             <div class="filter-box__search">
                 <h4 class="filter-box__title">Search: </h4>
                 <div>
-                    <button class="filter-box__button">Search</button>
+                    <button type="submit" class="filter-box__button">Search</button>
                     <button class="filter-box__button">Clear</button>
+                    
                 </div>
             </div>
             <div class="filter-box__type">
@@ -49,7 +50,7 @@
                     @foreach (var item in Model.TechSpecFilterList)
                     {
                         <label for="@item.PropertyName">@item.PropertyName</label>
-                        <input type="range" name=@item.PropertyName min=@item.MinValue max=@item.MaxValue onchange="updateTextInput(this.value, @item.PropertyId, @item.MinValue);">
+                        <input type="range" name=@item.PropertyName min=@item.MinValue max=@item.MaxValue value="@item.MaxValue" onchange="updateTextInput(this.value, @item.PropertyId, @item.MinValue);">
                         <input type="text" id="text-@item.PropertyId" value="@item.MinValue-">
                         <br />
                     }
