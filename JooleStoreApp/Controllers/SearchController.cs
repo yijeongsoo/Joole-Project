@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace JooleStoreApp.Controllers
 {
@@ -14,7 +15,14 @@ namespace JooleStoreApp.Controllers
         // GET: Search
         public ActionResult Index()
         {
-            return View();
+            if(Session["isLoggedIn"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
         }
 
         [HttpGet]
