@@ -57,7 +57,7 @@
                 <div class="card">
                     <img src="~/Images/@Html.DisplayFor(modelItem => item.ProductImage)" class="card__image" alt="..." onclick="window.location='@Url.Action("Index", "ProductDetail")' + '/id=@item.ProductId'">
                     <div class="card__container">
-                        <div class="card__title-box" onclick="window.location='@Url.Action("Index", "ProductDetail")' + '/id=@item.ProductId'">
+                        <div class="card__title-box" onclick="window.location='@Url.Action("GetProductSummary", "ProductSummary")' + '/@item.ProductId'">
                             <p class="card__title">@Html.DisplayFor(modelItem => item.ProductName)</p>
                             <p class="card__title">@Html.DisplayFor(modelItem => item.Series)</p>
                             <p class="card__title">@Html.DisplayFor(modelItem => item.Model)</p>
