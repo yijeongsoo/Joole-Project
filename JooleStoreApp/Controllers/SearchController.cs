@@ -151,9 +151,17 @@ namespace JooleStoreApp.Controllers
            
         }
 
-        public ActionResult Compare(int product1Id = 2, int product2Id = 3)
+        public ActionResult Compare(int product1Id = 0, int product2Id = 0)
         {
-            return RedirectToAction("CompareProduct", "CompareProduct", new { product1Id, product2Id });
+            if (product1Id == 0 || product2Id == 0)
+            {
+                // Pass in some error Message
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("CompareProduct", "CompareProduct", new { product1Id, product2Id });
+            }
         }
     }
 }
