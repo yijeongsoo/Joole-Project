@@ -4,93 +4,121 @@
     ViewBag.Title = "SearchResult";
 }
 
-@Styles.Render("~/Content/jquery-ui.css")
-@Scripts.Render("~/Scripts/jquery-ui.js")
-<link href="~/Content/JooleStyles/SearchResult.css" rel="stylesheet" />
-<div class="filter-box">
-    <form action="/Search/OnSearch" method="post">
-        <div class="filter-box-title">
-            Search: <button class="btn-primary">Search</button><button class="btn-primary">Clear</button>
-            <hr />
-        </div>
-        <h4>Product Type</h4>
-
-        @foreach (var item in Model.TypeRangeFilterList)
-        {
-            <label for="@item.TypeName">@item.TypeName</label>
-            <select name="@item.TypeName" id="@item.TypeName">
-                <option value="All" selected="selected">All</option>
-                @foreach (var item2 in item.TypeOptions)
-                {
-                    <option value="@item2">@item2</option>
-                }
-            </select>
-            <br />
-        }
-        <hr />
-        <h4>Technical Specifications</h4>
-        <script>
-            function updateTextInput(val, id, min) {
-                document.getElementById("text-"+id).value = min+" - "+val;
-            }
-        </script>
-        @foreach (var item in Model.TechSpecFilterList)
-        {
-            @*<div data-role="rangeslider">
-                <label for="@item.PropertyId-a">PropertyId: @item.PropertyId</label>
-                <input type="range" name="@item.PropertyId-a" id="@item.PropertyId-a" min="@item.MinValue" max="@item.MaxValue" value="40">
-                <label for="@item.PropertyId-b">PropertyId: @item.PropertyId</label>
-                <input type="range" name="@item.PropertyId-b" id="@item.PropertyId-b" min="@item.MinValue" max="@item.MaxValue" value="80">
-            </div>*@
-            @*<p>
-                <label for="amount-@item.PropertyId">PropertyId: @item.PropertyId</label>
-                <input type="text" id="amount-@item.PropertyId" readonly style="border:0; color:#f6931f; font-weight:bold;">
-            </p>
-
-            <div id="@item.PropertyId">
-                <script>createRange(@item.PropertyId, @item.MinValue, @item.MaxValue, @item.PropertyId)</script>
-            </div>*@
-            <label for="@item.PropertyName">@item.PropertyName</label>
-            <input type="range" name=@item.PropertyName min=@item.MinValue max=@item.MaxValue  onchange="updateTextInput(this.value, @item.PropertyId, @item.MinValue);">
-            <input type="text" id="text-@item.PropertyId" value="@item.MinValue-">
-            <br />
-        }
-        <input type="number" name="isFilter" id="isFilter" value="1" hidden />
-        <input type="number" name="subcategory" id="subcategory" value="@TempData["subcategoryId"]" hidden />
-    </form>
-</div>
-
-<div class="row">
-    <h4>Category>Subcategory</h4>
-    <br />
-    @foreach (var item in Model.Products)
-    {
-        <div class="column">
-            <div class="card">
-                <img src="@Html.DisplayFor(modelItem => item.ProductImage)" style="width:100%" alt="...">
-                <div class="container">
-                    <p class="card-title">@Html.DisplayFor(modelItem => item.ProductName)</p>
-                    <p class="card-title">@Html.DisplayFor(modelItem => item.Series)</p>
-                    <p class="card-title">@Html.DisplayFor(modelItem => item.Model)</p>
-                    @foreach (var item2 in item.techSpec)
-                    {
-                        <p class="card-text">@Html.DisplayFor(modelItem => item2.Value) @Html.DisplayFor(modelItem => item2.Name)</p>
-                    }
-                    @foreach (var item3 in item.typeProp)
-                    {
-                        <p class="card-text">@Html.DisplayFor(modelItem => item3.Value) @Html.DisplayFor(modelItem => item3.Name)</p>
-                    }
-                    <input type="checkbox" id=@Html.DisplayFor(modelItem => item.ProductId) name=@Html.DisplayFor(modelItem => item.ProductId) value=@Html.DisplayFor(modelItem => item.ProductName)>
-                    <label for=@Html.DisplayFor(modelItem => item.ProductId)> Compare</label><br>
+@Styles.Render("~/Content/JooleStyles/SearchResut.css")
+<div class="search">
+    <div class="search__filter">
+        <form action="/Search/OnSearch" method="post">
+            <div class="filter-box__search">
+                <h4 class="filter-box__title">Search: </h4>
+                <div>
+                    <button class="filter-box__button">Search</button>
+                    <button class="filter-box__button">Clear</button>
                 </div>
             </div>
+            <div class="filter-box__type">
+                <div class="filter-box__title-container" id="product-type">
+                    <h4 class="filter-box__title">Product Type</h4>
+                    <i class="fas fa-caret-down"></i>
+                </div>
+                <div id="filter-box__type-content">
+                    @foreach (var item in Model.TypeRangeFilterList)
+                    {
+                        <label for="@item.TypeName">@item.TypeName</label>
+                        <select name="@item.TypeName" id="@item.TypeName">
+                            <option value="All" selected="selected">All</option>
+                            @foreach (var item2 in item.TypeOptions)
+                            {
+                                <option value="@item2">@item2</option>
+                            }
+                        </select>
+                        <br />
+                    }
+                </div>
+            </div>
+            <div class="filter-box__tech">
+                <div class="filter-box__title-container" id="tech-spec">
+                    <h4 class="filter-box__title">Technical Specifications</h4>
+                    <i class="fas fa-caret-down"></i>
+                </div>
+                <div id="filter-box__tech-content">
+                    <script>
+                        function updateTextInput(val, id, min) {
+                            document.getElementById("text-" + id).value = min + " - " + val;
+                        }
+                    </script>
+                    @foreach (var item in Model.TechSpecFilterList)
+                    {
+                        <label for="@item.PropertyName">@item.PropertyName</label>
+                        <input type="range" name=@item.PropertyName min=@item.MinValue max=@item.MaxValue onchange="updateTextInput(this.value, @item.PropertyId, @item.MinValue);">
+                        <input type="text" id="text-@item.PropertyId" value="@item.MinValue-">
+                        <br />
+                    }
+                    <input type="number" name="isFilter" id="isFilter" value="1" hidden />
+                    <input type="number" name="subcategory" id="subcategory" value="@TempData["subcategoryId"]" hidden />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="search__products">
+        <h4>Category>Subcategory</h4>
+        <div class="search__products-container">
+            @foreach (var item in Model.Products)
+            {
+                    <div class="card">
+                        <img src="~/Images/@Html.DisplayFor(modelItem => item.ProductImage)" style="width:100%" alt="...">
+                        <div class="card__container">
+                            <div class="card__title-box" onclick="window.location='@Url.Action("Index", "ProductDetail")' + '/id=@item.ProductId'">
+                                <p class="card__title">@Html.DisplayFor(modelItem => item.ProductName)</p>
+                                <p class="card__title">@Html.DisplayFor(modelItem => item.Series)</p>
+                                <p class="card__title">@Html.DisplayFor(modelItem => item.Model)</p>
+                            </div>
+                            <div class="card__text-box">
+                                @foreach (var item2 in item.techSpec)
+                                {
+                                    <p class="card-text">@Html.DisplayFor(modelItem => item2.Value) @Html.DisplayFor(modelItem => item2.Name)</p>
+                                }
+                                @foreach (var item3 in item.typeProp)
+                                {
+                                    <p class="card-text">@Html.DisplayFor(modelItem => item3.Value) @Html.DisplayFor(modelItem => item3.Name)</p>
+                                }
+                            </div>
+                            <div class="card__check-button-container">
+                                <input type="checkbox" id=@Html.DisplayFor(modelItem => item.ProductId) name=@Html.DisplayFor(modelItem => item.ProductId) value=@Html.DisplayFor(modelItem => item.ProductName)>
+                                <label style="margin-left: 10px" for=@Html.DisplayFor(modelItem => item.ProductId)> Compare</label><br>
+                            </div>
+                        </div>
+                    </div>
+            }
         </div>
-    }
-</div>
-<br />
-<div class="compare-button">
-    <button class="btn-primary">Compare</button>
+        <br />
+        <button class="search__compare-button" id="compare-submit">Compare</button>
+     </div>
 </div>
 
-
+<script>
+    $(document).ready(function () {
+        $("#product-type").click();
+        $("#tech-spec").click();
+    })
+    $("#product-type").click(function () {
+        $("#filter-box__type-content").slideToggle("fast");
+    });
+    $("#tech-spec").click(function () {
+        $("#filter-box__tech-content").slideToggle("fast");
+    });
+    $("#compare-submit").on("click", function () {
+        let url = "";
+        let count = 1;
+        // Check which 25 checkbox id is selected
+        for (let i = 0; i < 25; i++) {
+            if ($("#" + i).prop("checked") == true) {
+                url += "product" + count + "Id=" + i + "&";
+                count++;
+            }
+        }
+        // Remove the last & character
+        url = url.substring(0, url.length - 1);
+        window.location.replace("@Url.Action("Index", "CompareProduct")/?" + url)
+    })
+</script>
 
