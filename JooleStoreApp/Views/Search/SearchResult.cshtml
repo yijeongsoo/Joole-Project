@@ -41,7 +41,7 @@
     {
         <div class="column">
             <div class="card">
-                <img src="@Html.DisplayFor(modelItem => item.ProductImage)" style="width:100%" alt="..." onclick="window.location='@Url.Action("Index", "ProductDetail")' + '/id=@item.ProductId'">
+                <img src="~/Images/@Html.DisplayFor(modelItem => item.ProductImage)" class="card__image" alt="..." onclick="window.location='@Url.Action("GetProductSummary", "ProductSummary")' + '/@item.ProductId'">
                 <div class="container">
                     <a class="card-title" onclick="window.location='@Url.Action("Index", "ProductDetail")' + '/id=@item.ProductId'">@Html.DisplayFor(modelItem => item.ProductName)</a><br />
                     <a class="card-title">@Html.DisplayFor(modelItem => item.Series)</a><br />
