@@ -79,6 +79,7 @@ namespace JooleStoreApp.Controllers
                 }
 
                 Session["ProfileImage"] = filename;
+                Session["isLoggedIn"] = true;
                 return RedirectToAction("Index", "Search");
             }
 

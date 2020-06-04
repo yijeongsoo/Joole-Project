@@ -62,7 +62,7 @@ namespace JooleStore_Repository
 
             foreach (User element in dbList)
             {
-                if ((element.UserEmail.ToString() == email || element.UserName == email)&& element.UserPassword.ToString() == password)
+                if ((element.UserEmail.ToString() == email || element.UserName == username))
                 {
                     return false;
                 }
