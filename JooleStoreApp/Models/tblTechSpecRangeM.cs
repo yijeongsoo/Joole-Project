@@ -11,5 +11,6 @@ namespace JooleStoreApp.Models
         public int SubcategoryId { get; set; }
         public int MinValue { get; set; }
         public int MaxValue { get; set; }
+        public string PropertyName { get; set; }
     }
 }

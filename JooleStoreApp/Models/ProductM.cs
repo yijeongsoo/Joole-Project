@@ -15,5 +15,16 @@ namespace JooleStoreApp.Models
         public string Series { get; set; }
         public int ModelYear { get; set; }
         public string Model { get; set; }
+
+        public List<PropertyViewM> techSpec { get; set; }
+        public List<PropertyViewM> typeProp { get; set; }
+
+    }
+
+    public class PropertyViewM 
+    {
+        public string Name { get; set; }
+        public string Value { get; set; }
+        public int Id { get; set; }
     }
 }
